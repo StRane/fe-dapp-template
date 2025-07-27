@@ -117,10 +117,4 @@
   body {
     @apply bg-background text-foreground mx-10 my-5 text-center;
   }
-  w3m-legal-footer,
-  w3m-footer,
-  [data-testid="w3m-legal-footer"],
-  wui-legal-footer {
-    display: none !important;
-  }
 }
