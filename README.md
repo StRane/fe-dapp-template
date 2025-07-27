@@ -1,6 +1,6 @@
-# Reown AppKit Example using wagmi and solana (Vite + React)
+# Used for personal dapp projects later on
 
-This is a [Vite](https://vitejs.dev) project together with React.
+This is a Vite project together with React Shadcn and AppKit.
 
 ## Usage
 
@@ -13,5 +13,5 @@ This is a [Vite](https://vitejs.dev) project together with React.
 ## Resources
 
 - [Reown — Docs](https://docs.reown.com)
-- [Vite — GitHub](https://github.com/vitejs/vite)
 - [Vite — Docs](https://vitejs.dev/guide/)
+- [Shadcn - Docs](https://ui.shadcn.com/)
