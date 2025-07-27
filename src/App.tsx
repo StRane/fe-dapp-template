@@ -4,7 +4,7 @@ import { WagmiProvider } from "wagmi";
 import { ThemeProvider, useTheme } from "@/components/ThemeProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ActionButtonList } from "./components/ActionButtonList";
-import { InfoList } from "./components/InfoList";
+
 import {
   projectId,
   metadata,
@@ -108,7 +108,6 @@ export function App() {
           <QueryClientProvider client={queryClient}>
             <ThemeSync /> {/* Add this to sync themes */}
             <ActionButtonList />   
-            <InfoList />
           </QueryClientProvider>
         </WagmiProvider>
     </ThemeProvider>
