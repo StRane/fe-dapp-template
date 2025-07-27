@@ -46,6 +46,7 @@ export function ThemeProvider({
     }
 
     root.classList.add(theme)
+    
   }, [theme])
 
   const value = {

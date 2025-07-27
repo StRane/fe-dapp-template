@@ -53,8 +53,15 @@ const generalConfig = {
   networks,
   themeMode: currentTheme,
   features: {
-    analytics: true,
+    analytics: false,
+    email: false,
+    socials: [],
+    legalCheckbox: false,
+    onramp: false,
+    swaps: false,
+    reownBranding: false,
   },
+  // enableWalletGuide: false,
   themeVariables: getThemeVariables(currentTheme),
 };
 

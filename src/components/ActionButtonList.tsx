@@ -16,7 +16,7 @@ import {
 import {
   useAppKitAccount,
 } from "@reown/appkit/react";
-import { useNetworkCycle } from '@/lib/useNetworkCycle';
+import { useNetworkCycle } from '@/lib/useNetWorkCycle';
 
 
 
