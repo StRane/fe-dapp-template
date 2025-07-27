@@ -1,56 +1,77 @@
-import { createAppKit } from '@reown/appkit/react'
+import { createAppKit } from "@reown/appkit/react";
 
-import { WagmiProvider } from 'wagmi'
+import { WagmiProvider } from "wagmi";
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ActionButtonList } from './components/ActionButtonList'
-import { InfoList } from './components/InfoList'
-import { projectId, metadata, networks, wagmiAdapter , solanaWeb3JsAdapter} from './config'
+import { ThemeProvider } from "@/components/ThemeProvider";
 
-import "./App.css"
+import { ModeToggle } from "./components/ModeToggle";
 
-const queryClient = new QueryClient()
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ActionButtonList } from "./components/ActionButtonList";
+import { InfoList } from "./components/InfoList";
+import {
+  projectId,
+  metadata,
+  networks,
+  wagmiAdapter,
+  solanaWeb3JsAdapter,
+} from "./config";
+
+import "./App.css";
+
+const queryClient = new QueryClient();
 
 const generalConfig = {
   projectId,
   metadata,
   networks,
-  themeMode: 'light' as const,
+  themeMode: "light" as const,
   features: {
-    analytics: true // Optional - defaults to your Cloud configuration
+    analytics: true, // Optional - defaults to your Cloud configuration
   },
   themeVariables: {
-    '--w3m-accent': '#000000',
-  }
-}
+    "--w3m-accent": "#000000",
+  },
+};
 
 // Create modal
 createAppKit({
   adapters: [wagmiAdapter, solanaWeb3JsAdapter],
   ...generalConfig,
-})
+});
 
 export function App() {
-
   return (
-    <div className={"pages"}>
+    <div>
       {/* <img src="/reown.svg" alt="Reown" style={{ width: '150px', height: '150px' }} /> */}
       <h1>AppKit Wagmi+solana React dApp Example</h1>
       <WagmiProvider config={wagmiAdapter.wagmiConfig}>
         <QueryClientProvider client={queryClient}>
+          <ThemeProvider>
             {/* <appkit-button /> */}
             <ActionButtonList />
+            <ModeToggle />
             <div className="advice">
               <p>
-                This projectId only works on localhost. <br/>
-                Go to <a href="https://cloud.reown.com" target="_blank" className="link-button" rel="Reown Cloud">Reown Cloud</a> to get your own.
+                This projectId only works on localhost. <br />
+                Go to{" "}
+                <a
+                  href="https://cloud.reown.com"
+                  target="_blank"
+                  className="link-button"
+                  rel="Reown Cloud"
+                >
+                  Reown Cloud
+                </a>{" "}
+                to get your own.
               </p>
             </div>
             <InfoList />
+          </ThemeProvider>
         </QueryClientProvider>
       </WagmiProvider>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
