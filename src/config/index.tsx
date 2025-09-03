@@ -1,5 +1,5 @@
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
-import { sepolia, solanaTestnet,} from '@reown/appkit/networks'
+import { sepolia, solanaTestnet} from '@reown/appkit/networks'
 import type { AppKitNetwork } from '@reown/appkit/networks'
 import { SolanaAdapter } from '@reown/appkit-adapter-solana/react'
 
@@ -9,6 +9,33 @@ export const projectId = import.meta.env.VITE_PROJECT_ID || "b56e18d47c72ab683b1
 
 if (!projectId) {
   throw new Error('Project ID is not defined')
+}
+
+export const solanaLocal: AppKitNetwork = {
+  id: '2G7gTWexYtKfRYKhLRHZ4UzDxm6kDimfUEZkR9pc4J4E',
+  name: 'Solana Local',
+  // chainId: 1337,
+  testnet: true,
+  rpcUrls: {
+    default: {
+      http: ['http://localhost:8899'],
+      webSocket: ['ws://localhost:8900']
+    }
+  },
+  blockExplorers: {
+    default: {
+      name: 'Solana Explorer',
+      url: 'https://explorer.solana.com',
+      apiUrl: 'https://explorer.solana.com'
+    }
+  },
+  chainNamespace: 'solana',
+  caipNetworkId: 'solana:2G7gTWexYtKfRYKhLRHZ4UzDxm6kDimfUEZkR9pc4J4E',
+  nativeCurrency: {
+    name: 'Solana',
+    symbol: 'SOL',
+    decimals: 9
+  },
 }
 
 export const metadata = {

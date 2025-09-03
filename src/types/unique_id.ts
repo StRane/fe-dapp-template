@@ -1,0 +1,767 @@
+/**
+ * Program IDL in camelCase format in order to be used in JS/TS.
+ *
+ * Note that this is only a type helper and is not the actual IDL. The original
+ * IDL can be found at `target/idl/unique_id.json`.
+ */
+export type UniqueId = {
+  "address": "u7X6Ut4Mm9wqQ8ci2XiUjtcyqRJnHScStUo81Deh6bA",
+  "metadata": {
+    "name": "uniqueId",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "getNonce",
+      "discriminator": [
+        132,
+        129,
+        238,
+        76,
+        118,
+        10,
+        212,
+        7
+      ],
+      "accounts": [
+        {
+          "name": "userState"
+        }
+      ],
+      "args": [],
+      "returns": "u64"
+    },
+    {
+      "name": "getTokenIdByUniqueId",
+      "discriminator": [
+        131,
+        149,
+        173,
+        14,
+        187,
+        2,
+        60,
+        26
+      ],
+      "accounts": [
+        {
+          "name": "collection"
+        }
+      ],
+      "args": [
+        {
+          "name": "uniqueId",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ],
+      "returns": "u64"
+    },
+    {
+      "name": "getUniqueIdByTokenId",
+      "discriminator": [
+        30,
+        187,
+        121,
+        126,
+        124,
+        78,
+        248,
+        188
+      ],
+      "accounts": [
+        {
+          "name": "collection"
+        }
+      ],
+      "args": [
+        {
+          "name": "tokenId",
+          "type": "u64"
+        }
+      ],
+      "returns": {
+        "array": [
+          "u8",
+          32
+        ]
+      }
+    },
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "collection",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  108,
+                  108,
+                  101,
+                  99,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "symbol",
+          "type": "string"
+        },
+        {
+          "name": "baseUri",
+          "type": "string"
+        },
+        {
+          "name": "wormholeProgramId",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "mintNft",
+      "discriminator": [
+        211,
+        57,
+        6,
+        167,
+        15,
+        219,
+        35,
+        251
+      ],
+      "accounts": [
+        {
+          "name": "collection",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  108,
+                  108,
+                  101,
+                  99,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "userState",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  95,
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "tokenAccount",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "account",
+                "path": "tokenProgram"
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "tokenProgram"
+        },
+        {
+          "name": "associatedTokenProgram",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "requestCrossChainMint",
+      "discriminator": [
+        213,
+        76,
+        151,
+        165,
+        237,
+        18,
+        212,
+        65
+      ],
+      "accounts": [
+        {
+          "name": "collection",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  108,
+                  108,
+                  101,
+                  99,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint",
+          "writable": true
+        },
+        {
+          "name": "tokenAccount"
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "wormholeBridge"
+        },
+        {
+          "name": "wormholeMessage",
+          "writable": true
+        },
+        {
+          "name": "wormholeEmitter"
+        },
+        {
+          "name": "wormholeSequence",
+          "writable": true
+        },
+        {
+          "name": "wormholeFeeCollector",
+          "writable": true
+        },
+        {
+          "name": "wormholeProgram",
+          "address": "worm2ZoG2kUd4vFXhvjh93UUH596ayRfgQ2MgjNMTth"
+        },
+        {
+          "name": "clock",
+          "address": "SysvarC1ock11111111111111111111111111111111"
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "nonce",
+          "type": "u32"
+        },
+        {
+          "name": "targetChainId",
+          "type": "u16"
+        },
+        {
+          "name": "recipient",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "totalSupply",
+      "discriminator": [
+        49,
+        116,
+        18,
+        66,
+        67,
+        62,
+        214,
+        40
+      ],
+      "accounts": [
+        {
+          "name": "collection"
+        }
+      ],
+      "args": [],
+      "returns": "u64"
+    },
+    {
+      "name": "uniqueIdExists",
+      "discriminator": [
+        6,
+        24,
+        109,
+        12,
+        116,
+        44,
+        151,
+        249
+      ],
+      "accounts": [
+        {
+          "name": "collection"
+        }
+      ],
+      "args": [
+        {
+          "name": "uniqueId",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ],
+      "returns": "bool"
+    }
+  ],
+  "accounts": [
+    {
+      "name": "collection",
+      "discriminator": [
+        48,
+        160,
+        232,
+        205,
+        191,
+        207,
+        26,
+        141
+      ]
+    },
+    {
+      "name": "userState",
+      "discriminator": [
+        72,
+        177,
+        85,
+        249,
+        76,
+        167,
+        186,
+        126
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "crossChainMintRequested",
+      "discriminator": [
+        168,
+        128,
+        136,
+        192,
+        21,
+        136,
+        248,
+        248
+      ]
+    },
+    {
+      "name": "nftMinted",
+      "discriminator": [
+        175,
+        29,
+        105,
+        0,
+        195,
+        2,
+        245,
+        38
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "uniqueIdAlreadyExists",
+      "msg": "Unique ID already exists"
+    },
+    {
+      "code": 6001,
+      "name": "notTokenOwner",
+      "msg": "Not the token owner"
+    },
+    {
+      "code": 6002,
+      "name": "invalidSequenceData",
+      "msg": "Invalid sequence data"
+    },
+    {
+      "code": 6003,
+      "name": "mintNotFound",
+      "msg": "Mint not found"
+    },
+    {
+      "code": 6004,
+      "name": "uniqueIdNotFound",
+      "msg": "Unique ID not found"
+    },
+    {
+      "code": 6005,
+      "name": "tokenIdNotFound",
+      "msg": "Token ID not found"
+    }
+  ],
+  "types": [
+    {
+      "name": "collection",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "name": "baseUri",
+            "type": "string"
+          },
+          {
+            "name": "totalSupply",
+            "type": "u64"
+          },
+          {
+            "name": "wormholeProgramId",
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "uniqueIdToTokenId",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "uniqueIdToTokenId"
+                }
+              }
+            }
+          },
+          {
+            "name": "tokenIdToUniqueId",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "tokenIdToUniqueId"
+                }
+              }
+            }
+          },
+          {
+            "name": "mintToUniqueId",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "mintToUniqueId"
+                }
+              }
+            }
+          },
+          {
+            "name": "crossChainUniqueIds",
+            "type": {
+              "vec": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "crossChainMintRequested",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "sender",
+            "type": "pubkey"
+          },
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "uniqueId",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "targetChainId",
+            "type": "u16"
+          },
+          {
+            "name": "sequence",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mintToUniqueId",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "uniqueId",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "nftMinted",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "tokenId",
+            "type": "u64"
+          },
+          {
+            "name": "uniqueId",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "nonce",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tokenIdToUniqueId",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "tokenId",
+            "type": "u64"
+          },
+          {
+            "name": "uniqueId",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "uniqueIdToTokenId",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "uniqueId",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "tokenId",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "userState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "nonce",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+};

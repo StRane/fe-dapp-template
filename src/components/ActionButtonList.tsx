@@ -1,11 +1,13 @@
 import {
   useDisconnect,
   useAppKit,
+  useAppKitAccount,
 } from "@reown/appkit/react";
 
 import { Button } from "@/components/ui/button";
-import { Wallet } from "lucide-react";
+import { Wallet, Coins, Image, Fingerprint } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import {
   DropdownMenu,
@@ -13,23 +15,19 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import {
-  useAppKitAccount,
-} from "@reown/appkit/react";
 import { useNetworkCycle } from '@/lib/useNetWorkCycle';
-
-
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export const ActionButtonList = () => {
   const { disconnect } = useDisconnect();
   const { open } = useAppKit();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const eip155AccountState = useAppKitAccount({ namespace: "eip155" });
   const solanaAccountState = useAppKitAccount({ namespace: "solana" });
   const { switchToNext } = useNetworkCycle();
-  const {address} = useAppKitAccount();
-
-
+  const { address } = useAppKitAccount();
 
   const handleDisconnect = async () => {
     try {
@@ -38,50 +36,86 @@ export const ActionButtonList = () => {
       console.error("Failed to disconnect:", error);
     }
   };
+
+  // Determine current tab based on pathname
+  const currentTab = location.pathname === '/vault' ? 'vault' :
+                     'uniqueid';
+
+  const handleTabChange = (value: string) => {
+    switch(value) {
+      case 'vault':
+        navigate('/vault');
+        break;
+      default:
+        navigate('/uniqueid');
+    }
+  };
+
   return (
-    <div className="flex flex-row-reverse justify-start gap-1">
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline">
-            <Wallet />
-            {address ? (
-              <span>{address}</span>
+    <div className="flex items-center justify-between w-full px-4 py-2 border-b">
+      {/* Left side - Navigation Tabs */}
+      <div className="flex items-center gap-4">
+        {solanaAccountState.isConnected && (
+          <Tabs value={currentTab} onValueChange={handleTabChange}>
+            <TabsList>
+              <TabsTrigger value="uniqueid" className="flex items-center gap-2">
+                <Fingerprint className="w-4 h-4" />
+                Unique ID
+              </TabsTrigger>
+              <TabsTrigger value="vault" className="flex items-center gap-2">
+                <Coins className="w-4 h-4" />
+                NFT Vault
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+        )}
+      </div>
+
+      {/* Right side - Wallet & Theme */}
+      <div className="flex items-center gap-2">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="sm">
+              <Wallet className="w-4 h-4 mr-2" />
+              {address ? (
+                <span className="max-w-[150px] truncate">
+                  {address.slice(0, 6)}...{address.slice(-4)}
+                </span>
+              ) : (
+                <span>Connect Wallet</span>
+              )}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            {eip155AccountState.isConnected ? (
+              <DropdownMenuItem className="font-mono text-xs">
+                EVM: {eip155AccountState.address?.slice(0, 10)}...
+              </DropdownMenuItem>
             ) : (
-              <span>Connect Wallet</span>
+              <DropdownMenuItem
+                onClick={() => open({ view: "Connect", namespace: "eip155" })}
+                disabled={eip155AccountState.isConnected}
+              >
+                Connect EVM
+              </DropdownMenuItem>
             )}
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          {eip155AccountState.isConnected ? (
-            <DropdownMenuItem>
-              {eip155AccountState.address}
-              <br />
-            </DropdownMenuItem>
-          ) : (
-            <DropdownMenuItem
-              onClick={() => open({ view: "Connect", namespace: "eip155" })}
-              disabled={eip155AccountState.isConnected}
-            >
-              Open EVM
-            </DropdownMenuItem>
-          )}
-          {solanaAccountState.isConnected ? (
-            <DropdownMenuItem>
-              {solanaAccountState.address}
-              <br />
-            </DropdownMenuItem>
-          ) : (
-            <DropdownMenuItem
-              onClick={() => open({ view: "Connect", namespace: "solana" })}
-            >
-              Open Solana
-            </DropdownMenuItem>
-          )}
-          <DropdownMenuItem onClick={handleDisconnect}>Disconnect</DropdownMenuItem>
-          <DropdownMenuItem onClick={switchToNext}>Switch</DropdownMenuItem>
+            {solanaAccountState.isConnected ? (
+              <DropdownMenuItem className="font-mono text-xs">
+                SOL: {solanaAccountState.address?.slice(0, 10)}...
+              </DropdownMenuItem>
+            ) : (
+              <DropdownMenuItem
+                onClick={() => open({ view: "Connect", namespace: "solana" })}
+              >
+                Connect Solana
+              </DropdownMenuItem>
+            )}
+            <DropdownMenuItem onClick={switchToNext}>Switch Network</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleDisconnect}>Disconnect</DropdownMenuItem>
           </DropdownMenuContent>
-      </DropdownMenu>
-      <ModeToggle />
+        </DropdownMenu>
+        <ModeToggle />
+      </div>
     </div>
   );
 };

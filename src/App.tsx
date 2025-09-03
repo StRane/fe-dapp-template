@@ -1,9 +1,12 @@
 import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createAppKit } from "@reown/appkit/react";
 import { WagmiProvider } from "wagmi";
 import { ThemeProvider, useTheme } from "@/components/ThemeProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ActionButtonList } from "./components/ActionButtonList";
+import { UniqueIdManager } from "./components/UniqueIdManager";
+import NFTVaultInterface from "@/components/VaultManager";
 
 import {
   projectId,
@@ -13,7 +16,6 @@ import {
   solanaWeb3JsAdapter,
 } from "./config";
 import "./App.css";
-
 
 const queryClient = new QueryClient();
 
@@ -101,22 +103,29 @@ function ThemeSync() {
       root.style.setProperty(key, value);
     });
 
-    // Also update the data-theme attribute that AppKit might use
     root.setAttribute("data-theme", resolvedTheme);
   }, [theme]);
 
-  return null; // This component doesn't render anything
+  return null;
 }
 
 export function App() {
   return (
     <ThemeProvider>
-        <WagmiProvider config={wagmiAdapter.wagmiConfig}>
-          <QueryClientProvider client={queryClient}>
-            <ThemeSync /> {/* Add this to sync themes */}
-            <ActionButtonList />   
-          </QueryClientProvider>
-        </WagmiProvider>
+      <WagmiProvider config={wagmiAdapter.wagmiConfig}>
+        <QueryClientProvider client={queryClient}>
+          <ThemeSync />
+          <Router>
+            <div className="min-h-screen">
+              <ActionButtonList />
+              <Routes>
+                <Route path="/uniqueid" element={<UniqueIdManager />} />
+                <Route path="/vault" element={<NFTVaultInterface />} />
+              </Routes>
+            </div>
+          </Router>
+        </QueryClientProvider>
+      </WagmiProvider>
     </ThemeProvider>
   );
 }
