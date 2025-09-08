@@ -8,19 +8,20 @@ import {
   Commitment
 } from '@solana/web3.js';
 import {
-  TOKEN_2022_PROGRAM_ID,
+  TOKEN_PROGRAM_ID,
   getAssociatedTokenAddress,
 } from '@solana/spl-token';
 import { AnchorWallet } from '@solana/wallet-adapter-react'
 // import type { Provider } from "@reown/appkit-adapter-solana/react";
 
-import type { UniqueId } from '../types/unique_id';
-import IDL from '../idl/unique_id.json';
+import type { UniqueLow } from '../types/unique_low';
+import IDL from '../idl/unique_low.json';
 
 // CONFIGURATION - Update with your deployed program
 const CONFIG = {
   // Your deployed program ID on Solana Testnet/Devnet
-  PROGRAM_ID: 'u7X6Ut4Mm9wqQ8ci2XiUjtcyqRJnHScStUo81Deh6bA', // <-- CHANGE THIS to your deployed address
+  UNIQUE_ID: '5XdsDEXPiHndfBkrvJKjsFZy3Zf95bUZLRZQvJ4W6Bpa', // <-- CHANGE THIS to your deployed address
+  // VAULT_ID= "6szSVnHy2GrCi6y7aQxJfQG9WpVkTgdB6kDXixepvdoW",
 
   // RPC endpoints for different networks
   RPC_ENDPOINTS: {
@@ -64,7 +65,7 @@ export interface MintedNFT {
 
 export interface UseUniqueIdReturn {
   // State
-  program: Program<UniqueId> | null;
+  program: Program<UniqueLow> | null;
   collection: Collection | null;
   userState: UserState | null;
   totalSupply: number;
@@ -101,10 +102,9 @@ export const useUniqueId = (): UseUniqueIdReturn => {
   const { address, isConnected } = useAppKitAccount();
   const { caipNetwork, caipNetworkId } = useAppKitNetwork();
   const { walletProvider } = useAppKitProvider('solana');
-
   // State
+  const [program, setProgram] = useState<Program<UniqueLow> | null>(null);
   const [connection, setConnection] = useState<Connection | null>(null);
-  const [program, setProgram] = useState<Program<UniqueId> | null>(null);
   const [collection, setCollection] = useState<Collection | null>(null);
   const [userState, setUserState] = useState<UserState | null>(null);
   const [totalSupply, setTotalSupply] = useState<number>(0);
@@ -114,15 +114,23 @@ export const useUniqueId = (): UseUniqueIdReturn => {
   const [isCollectionInitialized, setIsCollectionInitialized] = useState<boolean>(false); // Renamed for clarity!
 
   // PDAs
-  const [collectionPda, setCollectionPda] = useState<PublicKey | null>(null);
   const [userStatePda, setUserStatePda] = useState<PublicKey | null>(null);
 
   // Program ID
-  const programId = new PublicKey(CONFIG.PROGRAM_ID);
+  const uniqueId = new PublicKey(CONFIG.UNIQUE_ID);
+
+
 
   // Check if we're on Solana network
   const isSolanaNetwork = caipNetworkId?.includes('solana') || false;
   const currentNetwork = caipNetwork?.name || null;
+  const COLLECTION_PDA = new PublicKey(
+    "EoZ5NFigrZ7uqUUSH6ShDsYGMooe5ziTfgWvAbFmVTXt"
+  );
+
+  // const collectionPda = COLLECTION_PDA.toBase58()
+
+
 
   // Setup connection based on network
   useEffect(() => {
@@ -151,29 +159,28 @@ export const useUniqueId = (): UseUniqueIdReturn => {
         );
 
         // Initialize program
-        const program = new Program<UniqueId>(
-          IDL as UniqueId,
+        const program = new Program<UniqueLow>(
+          IDL as UniqueLow,
           anchorProvider
         );
         setProgram(program);
 
 
         // Derive PDAs
-        const [collectionPda] = PublicKey.findProgramAddressSync(
-          [CONFIG.COLLECTION_SEED],
-          programId
-        );
-        setCollectionPda(collectionPda);
+        // const COLLECTION_PDA = new PublicKey(
+        //   "EoZ5NFigrZ7uqUUSH6ShDsYGMooe5ziTfgWvAbFmVTXt"
+        // );
+
 
         const [userStatePda] = PublicKey.findProgramAddressSync(
           [CONFIG.USER_STATE_SEED, new PublicKey(address).toBuffer()],
-          programId
+          uniqueId
         );
         setUserStatePda(userStatePda);
 
         console.log('Program initialized:', {
-          programId: programId.toBase58(),
-          collectionPda: collectionPda.toBase58(),
+          programId: uniqueId.toBase58(),
+          collectionPda: COLLECTION_PDA.toBase58(),
           userStatePda: userStatePda.toBase58(),
           userAddress: address,
           chainID: caipNetworkId,
@@ -192,14 +199,14 @@ export const useUniqueId = (): UseUniqueIdReturn => {
 
   // Refresh all data
   const refreshData = useCallback(async () => {
-    if (!program || !collectionPda || !userStatePda || !connection) return;
+    if (  !userStatePda || !connection || !program) return;
 
     setLoading(true);
     setError(null);
 
     try {
       // Fetch collection data
-      const collectionData = await program.account.collection.fetchNullable(collectionPda);
+      const collectionData = await program.account.collection.fetchNullable(COLLECTION_PDA);
       if (collectionData) {
         setCollection(collectionData as Collection);
         setTotalSupply(collectionData.totalSupply.toNumber());
@@ -229,7 +236,7 @@ export const useUniqueId = (): UseUniqueIdReturn => {
     } finally {
       setLoading(false);
     }
-  }, [program, collectionPda, userStatePda, connection]);
+  }, [program, userStatePda, connection]);
 
   // Initialize collection (only needs to be called once ever!)
   const initializeCollection = useCallback(async (
@@ -308,7 +315,7 @@ export const useUniqueId = (): UseUniqueIdReturn => {
         mintKeypair.publicKey,
         userPublicKey,
         false,
-        TOKEN_2022_PROGRAM_ID
+        TOKEN_PROGRAM_ID
       );
 
       console.log('Minting NFT...', {
@@ -322,7 +329,6 @@ export const useUniqueId = (): UseUniqueIdReturn => {
         .accounts({
           mint: mintKeypair.publicKey,
           user: userPublicKey,
-          tokenProgram: TOKEN_2022_PROGRAM_ID,
         })
         .signers([mintKeypair])
         .rpc();
@@ -333,7 +339,7 @@ export const useUniqueId = (): UseUniqueIdReturn => {
       await refreshData();
 
       // Get the unique ID for this mint
-      const collectionData = await program.account.collection.fetch(collectionPda!);
+      const collectionData = await program.account.collection.fetch(COLLECTION_PDA!);
       const mintMapping = collectionData.mintToUniqueId.find(
         m => m.mint.toBase58() === mintKeypair.publicKey.toBase58()
       );
@@ -352,7 +358,7 @@ export const useUniqueId = (): UseUniqueIdReturn => {
     } finally {
       setLoading(false);
     }
-  }, [program, address, userStatePda, walletProvider, collectionPda, refreshData]);
+  }, [program, address, userStatePda, walletProvider, refreshData]);
 
   // Mint multiple NFTs
   const mintMultipleNFTs = useCallback(async (count: number): Promise<MintedNFT[] | null> => {
@@ -390,13 +396,13 @@ export const useUniqueId = (): UseUniqueIdReturn => {
   }, [program, userStatePda]);
 
   const getTotalSupply = useCallback(async (): Promise<number | null> => {
-    if (!program || !collectionPda) return null;
+    if (!program ) return null;
 
     try {
       const totalSupply = await program.methods
         .totalSupply()
         .accounts({
-          collection: collectionPda,
+          collection: COLLECTION_PDA,
         })
         .view();
 
@@ -405,16 +411,16 @@ export const useUniqueId = (): UseUniqueIdReturn => {
       console.error('Error getting total supply:', err);
       return null;
     }
-  }, [program, collectionPda]);
+  }, [program]);
 
   const uniqueIdExists = useCallback(async (uniqueId: number[]): Promise<boolean> => {
-    if (!program || !collectionPda) return false;
+    if (!program) return false;
 
     try {
       const exists = await program.methods
         .uniqueIdExists(uniqueId)
         .accounts({
-          collection: collectionPda,
+          collection: COLLECTION_PDA,
         })
         .view();
 
@@ -423,16 +429,16 @@ export const useUniqueId = (): UseUniqueIdReturn => {
       console.error('Error checking unique ID:', err);
       return false;
     }
-  }, [program, collectionPda]);
+  }, [program]);
 
   const getTokenIdByUniqueId = useCallback(async (uniqueId: number[]): Promise<number | null> => {
-    if (!program || !collectionPda) return null;
+    if (!program ) return null;
 
     try {
       const tokenId = await program.methods
         .getTokenIdByUniqueId(uniqueId)
         .accounts({
-          collection: collectionPda,
+          collection: COLLECTION_PDA,
         })
         .view();
 
@@ -441,7 +447,7 @@ export const useUniqueId = (): UseUniqueIdReturn => {
       console.error('Error getting token ID:', err);
       return null;
     }
-  }, [program, collectionPda]);
+  }, [program]);
 
   const getUniqueIdByTokenId = useCallback(async (tokenId: number): Promise<number[] | null> => {
     if (!collection) return null;
@@ -477,12 +483,12 @@ export const useUniqueId = (): UseUniqueIdReturn => {
     walletAddress: address,
 
     // PDAs
-    collectionPda,
+    collectionPda: COLLECTION_PDA,
     userStatePda,
 
     // Network info
     currentNetwork,
-    programId: CONFIG.PROGRAM_ID,
+    programId: CONFIG.UNIQUE_ID,
 
     // Functions
     initializeCollection, // Added!

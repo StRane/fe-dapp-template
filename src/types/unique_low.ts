@@ -2,12 +2,12 @@
  * Program IDL in camelCase format in order to be used in JS/TS.
  *
  * Note that this is only a type helper and is not the actual IDL. The original
- * IDL can be found at `target/idl/unique_id.json`.
+ * IDL can be found at `target/idl/unique_low.json`.
  */
-export type UniqueId = {
-  "address": "u7X6Ut4Mm9wqQ8ci2XiUjtcyqRJnHScStUo81Deh6bA",
+export type UniqueLow = {
+  "address": "5XdsDEXPiHndfBkrvJKjsFZy3Zf95bUZLRZQvJ4W6Bpa",
   "metadata": {
-    "name": "uniqueId",
+    "name": "uniqueLow",
     "version": "0.1.0",
     "spec": "0.1.0",
     "description": "Created with Anchor"
@@ -236,8 +236,41 @@ export type UniqueId = {
                 "path": "user"
               },
               {
-                "kind": "account",
-                "path": "tokenProgram"
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
               },
               {
                 "kind": "account",
@@ -289,7 +322,8 @@ export type UniqueId = {
           "signer": true
         },
         {
-          "name": "tokenProgram"
+          "name": "tokenProgram",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
           "name": "associatedTokenProgram",

@@ -1,0 +1,32 @@
+brzostrane@Umuts-MacBook-Pro unique-id % anchor deploy -p unique-low --provider.cluster testnet 
+Deploying cluster: https://api.testnet.solana.com
+Upgrade authority: /Users/brzostrane/.config/solana/id.json
+Deploying program "unique_low"...
+Program path: /Users/brzostrane/Desktop/study_rust/unique-id/target/deploy/unique_low.so...
+Program Id: 5XdsDEXPiHndfBkrvJKjsFZy3Zf95bUZLRZQvJ4W6Bpa
+
+Signature: 34sTufQp1Cu8H7JXnKp25JfDnR7dENa5WHkJcSh78apX7NmexZaavBD363vfYyVjAPLNo54ExF3q5QdU5qyPJmfs
+
+Deploy success
+brzostrane@Umuts-MacBook-Pro unique-id % anchor deploy -p simple_vault --provider.cluster testnet
+Deploying cluster: https://api.testnet.solana.com
+Upgrade authority: /Users/brzostrane/.config/solana/id.json
+Deploying program "simple_vault"...
+Program path: /Users/brzostrane/Desktop/study_rust/unique-id/target/deploy/simple_vault.so...
+Program Id: 6szSVnHy2GrCi6y7aQxJfQG9WpVkTgdB6kDXixepvdoW
+
+Signature: 4apGFxomGqwwuJnTWY1imdKBmCrAhdXU2U3DjYDq7qZ8t1zE9iqD9gcGZS33JAtoHY1prjviMEr1DKEEToUHWpj4
+
+Deploy success
+brzostrane@Umuts-MacBook-Pro unique-id % anchor run deploy_test                                  
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Deployer wallet: GXHdciYz5RQS5oGyF7JWF61sxFNuM4RxXw2s2ZX25cVd
+✅ NFT Collection initialized: 5aP3Rwmgnq7419tA9cCYnq4AAgKiGcLNk8mrSW1KedguWDdkgt3h1XnW4GFQRVsWvdb3vEuyKinvzUSRYREnyqTp
+✅ Asset mint created: 7Uc3xCQxiPqMHVXPrzcgUw8rrKQ7vCu5HUXL4TVRntDS
+✅ Minted initial tokens to deployer ATA: GrxrVYtnx23B5oTeCiEmnoSXHJ3JTE5QpqUndxUseJDa
+✅ Minted NFT to deployer: 4xZMLJQp6MQegkGbZFWZfzDmugLX8Ke5kCk3dbCnwKdf
+✅ Vault initialized at: Cs6Vz6BNq6HHViusWzVzK9cg1u5cCvdW3nSvDCCZJd4m
+Share mint: Ggbz1DvG6sh5FwTCFUqc85M6RYVduivGu3BhyxVHqpP1
+Collection: EoZ5NFigrZ7uqUUSH6ShDsYGMooe5ziTfgWvAbFmVTXt
+
+🎉 Deployment complete!
