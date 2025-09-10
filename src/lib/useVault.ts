@@ -124,7 +124,7 @@ export const useVault = (): UseVaultNFTReturn => {
     // PDAs
     const [vaultPda, setVaultPda] = useState<PublicKey | null>(null);
 
-    const programId = new PublicKey(CONFIG.PROGRAM_ID);
+    // const programId = new PublicKey(CONFIG.PROGRAM_ID);
     const isSolanaNetwork = caipNetworkId?.includes('solana') || false;
     const currentNetwork = caipNetwork?.name || null;
 
@@ -229,26 +229,7 @@ export const useVault = (): UseVaultNFTReturn => {
                 userPublicKey
             );
 
-            // --- User's Asset Token Account (you created already at deploy)
-            // const userAssetToken = getAssociatedTokenAddressSync(
-            //   CONFIG.assetMint,
-            //   userPublicKey
-            // );
 
-            // --- Vault Token Account (PDA ATA)
-            // const [vaultTokenAccount] = PublicKey.findProgramAddressSync(
-            //     [
-            //         vaultPda.toBuffer(),
-            //         Buffer.from([
-            //             6, 221, 246, 225, 215, 101, 161, 147,
-            //             217, 203, 225, 70, 206, 235, 121, 172,
-            //             28, 180, 133, 237, 95, 91, 55, 145,
-            //             58, 140, 245, 133, 126, 255, 0, 169
-            //         ]),
-            //         CONFIG.assetMint.toBuffer(),
-            //     ],
-            //     program.programId
-            // );
 
             const vaultTokenAccount = new PublicKey("EHsxdtLzoZvQVj9dyh3sPocwF5R3nT7gdRM2wzpXTnga")
 

@@ -147,13 +147,43 @@
           "writable": true
         },
         {
+          "name": "user_share_pda",
+          "docs": [
+            "It's safe because: 1) Seeds are deterministic, 2) Only used as token account authority, 3) No data stored in this account"
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  95,
+                  115,
+                  104,
+                  97,
+                  114,
+                  101,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user_nft_mint"
+              }
+            ]
+          }
+        },
+        {
           "name": "user_share_token",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "account",
-                "path": "user"
+                "path": "user_share_pda"
               },
               {
                 "kind": "const",
@@ -234,6 +264,32 @@
                 89
               ]
             }
+          }
+        },
+        {
+          "name": "nft_info",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user_nft_token"
+              },
+              {
+                "kind": "account",
+                "path": "user_share_token"
+              }
+            ]
           }
         },
         {
@@ -417,6 +473,311 @@
           "type": "pubkey"
         }
       ]
+    },
+    {
+      "name": "withdraw",
+      "discriminator": [
+        183,
+        18,
+        70,
+        156,
+        148,
+        109,
+        161,
+        34
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "nft_collection",
+          "docs": [
+            "The NFT collection account (PDA from your NFT program)"
+          ]
+        },
+        {
+          "name": "user_nft_token",
+          "docs": [
+            "✅ Must own at least 1 NFT where the mint authority is the collection"
+          ]
+        },
+        {
+          "name": "user_nft_mint"
+        },
+        {
+          "name": "asset_mint",
+          "writable": true
+        },
+        {
+          "name": "user_asset_token",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "asset_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "vault_token_account",
+          "writable": true
+        },
+        {
+          "name": "share_mint",
+          "writable": true
+        },
+        {
+          "name": "user_share_pda",
+          "docs": [
+            "It's safe because: 1) Seeds are deterministic, 2) Only used as token account authority, 3) No data stored in this account"
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  95,
+                  115,
+                  104,
+                  97,
+                  114,
+                  101,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user_nft_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_share_token",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "user_share_pda"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "share_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "nft_info",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user_nft_token"
+              },
+              {
+                "kind": "account",
+                "path": "user_share_token"
+              }
+            ]
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        }
+      ],
+      "args": [
+        {
+          "name": "shares",
+          "type": "u64"
+        }
+      ]
     }
   ],
   "accounts": [
@@ -434,6 +795,19 @@
       ]
     },
     {
+      "name": "UserInfo",
+      "discriminator": [
+        83,
+        134,
+        200,
+        56,
+        144,
+        56,
+        10,
+        62
+      ]
+    },
+    {
       "name": "Vault",
       "discriminator": [
         211,
@@ -447,6 +821,34 @@
       ]
     }
   ],
+  "events": [
+    {
+      "name": "InterestAccrued",
+      "discriminator": [
+        79,
+        218,
+        196,
+        73,
+        32,
+        148,
+        138,
+        71
+      ]
+    },
+    {
+      "name": "WithdrawEvent",
+      "discriminator": [
+        22,
+        9,
+        133,
+        26,
+        160,
+        44,
+        71,
+        192
+      ]
+    }
+  ],
   "errors": [
     {
       "code": 6000,
@@ -457,6 +859,16 @@
       "code": 6001,
       "name": "InvalidNftCollection",
       "msg": "NFT does not belong to required collection"
+    },
+    {
+      "code": 6002,
+      "name": "InsufficientShares",
+      "msg": "Insufficent shares"
+    },
+    {
+      "code": 6003,
+      "name": "InsufficientLiquidity",
+      "msg": "Insufficent reserves"
     }
   ],
   "types": [
@@ -538,6 +950,22 @@
       }
     },
     {
+      "name": "InterestAccrued",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "total_interest",
+            "type": "u64"
+          },
+          {
+            "name": "new_index",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
       "name": "MintToUniqueId",
       "type": {
         "kind": "struct",
@@ -601,6 +1029,34 @@
       }
     },
     {
+      "name": "UserInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "nft_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "shares",
+            "type": "u64"
+          },
+          {
+            "name": "last_update",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
       "name": "Vault",
       "type": {
         "kind": "struct",
@@ -622,8 +1078,56 @@
             "type": "pubkey"
           },
           {
+            "name": "total_borrowed",
+            "type": "u64"
+          },
+          {
+            "name": "borrow_index",
+            "type": "u64"
+          },
+          {
+            "name": "borrow_rate",
+            "type": "u64"
+          },
+          {
+            "name": "last_update_time",
+            "type": "i64"
+          },
+          {
+            "name": "reserve_factor",
+            "type": "u64"
+          },
+          {
+            "name": "total_reserves",
+            "type": "u64"
+          },
+          {
+            "name": "total_shares",
+            "type": "u64"
+          },
+          {
             "name": "bump",
             "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WithdrawEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "shares",
+            "type": "u64"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
           }
         ]
       }
