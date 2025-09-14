@@ -5,7 +5,7 @@ import {
 } from "@reown/appkit/react";
 
 import { Button } from "@/components/ui/button";
-import { Wallet, Coins, Image, Fingerprint } from "lucide-react";
+import { Wallet, Coins, Fingerprint, Zap } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -14,9 +14,9 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { useNetworkCycle } from '@/lib/useNetWorkCycle';
-import { useNavigate, useLocation } from 'react-router-dom';
+} from "@/components/ui/dropdown-menu";
+import { useNetworkCycle } from "@/lib/useNetWorkCycle";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const ActionButtonList = () => {
   const { disconnect } = useDisconnect();
@@ -38,16 +38,34 @@ export const ActionButtonList = () => {
   };
 
   // Determine current tab based on pathname
-  const currentTab = location.pathname === '/vault' ? 'vault' :
-                     'uniqueid';
+  const getCurrentTab = () => {
+    switch (location.pathname) {
+      case "/token":
+        return "token";
+      case "/vault":
+        return "vault";
+      case "/uniqueid":
+        return "uniqueid";
+      default:
+        return "uniqueid"; // Default tab
+    }
+  };
+
+  const currentTab = getCurrentTab();
 
   const handleTabChange = (value: string) => {
-    switch(value) {
-      case 'vault':
-        navigate('/vault');
+    switch (value) {
+      case "token":
+        navigate("/token");
+        break;
+      case "vault":
+        navigate("/vault");
+        break;
+      case "uniqueid":
+        navigate("/uniqueid");
         break;
       default:
-        navigate('/uniqueid');
+        navigate("/uniqueid");
     }
   };
 
@@ -58,9 +76,13 @@ export const ActionButtonList = () => {
         {solanaAccountState.isConnected && (
           <Tabs value={currentTab} onValueChange={handleTabChange}>
             <TabsList>
+              <TabsTrigger value="token" className="flex items-center gap-2">
+                <Zap className="w-4 h-4" />
+                Test Token
+              </TabsTrigger>
               <TabsTrigger value="uniqueid" className="flex items-center gap-2">
                 <Fingerprint className="w-4 h-4" />
-                Unique ID
+                Unique ID NFT
               </TabsTrigger>
               <TabsTrigger value="vault" className="flex items-center gap-2">
                 <Coins className="w-4 h-4" />
@@ -68,6 +90,13 @@ export const ActionButtonList = () => {
               </TabsTrigger>
             </TabsList>
           </Tabs>
+        )}
+        
+        {/* Show program info when not connected */}
+        {!solanaAccountState.isConnected && (
+          <div className="text-sm text-muted-foreground">
+            Connect Solana wallet to access programs
+          </div>
         )}
       </div>
 
@@ -110,8 +139,12 @@ export const ActionButtonList = () => {
                 Connect Solana
               </DropdownMenuItem>
             )}
-            <DropdownMenuItem onClick={switchToNext}>Switch Network</DropdownMenuItem>
-            <DropdownMenuItem onClick={handleDisconnect}>Disconnect</DropdownMenuItem>
+            <DropdownMenuItem onClick={switchToNext}>
+              Switch Network
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={handleDisconnect}>
+              Disconnect
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
         <ModeToggle />

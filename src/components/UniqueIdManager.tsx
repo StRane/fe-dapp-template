@@ -105,7 +105,7 @@ export const UniqueIdManager: React.FC = () => {
       await navigator.clipboard.writeText(text);
       showNotification('success', `${label} copied to clipboard`);
     } catch (err) {
-      showNotification('error', 'Failed to copy to clipboard');
+      showNotification('error', (err as Error).message);
     }
   };
 

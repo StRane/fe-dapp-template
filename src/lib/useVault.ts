@@ -34,13 +34,15 @@ const CONFIG = {
 
     // NFT Collection related
     collectionPda: new PublicKey('EoZ5NFigrZ7uqUUSH6ShDsYGMooe5ziTfgWvAbFmVTXt'),
+    USER_INFO_SEED: Buffer.from("user_info"),
+    BORROW_INFO_SEED: Buffer.from("borrow_info"),
+    VAULT_ASSET_MINT: new PublicKey("7Uc3xCQxiPqMHVXPrzcgUw8rrKQ7vCu5HUXL4TVRntDS"),
     // let collectionBump: number;
     //let nftMint: PublicKey;
     //let user1NftTokenAccount: PublicKey;
 
     // Asset token (what users deposit)
-    assetMint: new PublicKey("7Uc3xCQxiPqMHVXPrzcgUw8rrKQ7vCu5HUXL4TVRntDS"),
-    user1AssetTokenAccount: new PublicKey("GrxrVYtnx23B5oTeCiEmnoSXHJ3JTE5QpqUndxUseJDa"),
+    // user1AssetTokenAccount: new PublicKey("GrxrVYtnx23B5oTeCiEmnoSXHJ3JTE5QpqUndxUseJDa"),
 
 
     // Vault related
@@ -54,9 +56,7 @@ const CONFIG = {
     VAULT_SEED: Buffer.from("vault"),
     // NFT_USER_INFO_SEED: Buffer.from("nft_user_info"),
     // NFT_BORROW_INFO_SEED: Buffer.from("nft_borrow_info"),
-    USER_INFO_SEED: Buffer.from("user_info"),
-    BORROW_INFO_SEED: Buffer.from("borrow_info"),
-    VAULT_ASSET_MINT: new PublicKey("7Uc3xCQxiPqMHVXPrzcgUw8rrKQ7vCu5HUXL4TVRntDS"),
+    
 };
 
 // Types
@@ -239,7 +239,7 @@ export const useVault = (): UseVaultNFTReturn => {
             //   userPublicKey
             // );
             const collPda = CONFIG.collectionPda;
-            const assetMint = CONFIG.assetMint;
+            const assetMint = CONFIG.VAULT_ASSET_MINT;
             const shareMint = CONFIG.shareMint
 
             const depositTxParams = {
@@ -264,7 +264,7 @@ export const useVault = (): UseVaultNFTReturn => {
                     nftCollection: CONFIG.collectionPda,
                     userNftToken: userNftTokenAccount,
                     userNftMint: nftMint,
-                    assetMint: CONFIG.assetMint,
+                    assetMint: CONFIG.VAULT_ASSET_MINT,
                     vaultTokenAccount,
                     shareMint: CONFIG.shareMint,
                 })
@@ -363,7 +363,7 @@ export const useVault = (): UseVaultNFTReturn => {
 
 
         // Hardcoded values for easy access
-        assetMint: CONFIG.assetMint,
+        assetMint: CONFIG.VAULT_ASSET_MINT,
         vaultPda: vaultPda ?? CONFIG.vaultPda,
         shareMint: CONFIG.shareMint,
         nftCollection: CONFIG.collectionPda,
