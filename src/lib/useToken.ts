@@ -68,7 +68,7 @@ export interface UseTokenReturn {
     mintPda: PublicKey | null;
 
     // Functions
-    initializeToken: () => Promise<{ mint: PublicKey; tx: string } | null>;
+    // initializeToken: () => Promise<{ mint: PublicKey; tx: string } | null>;
     mintTokens: (amount: BN, mintAddress?: PublicKey) => Promise<string | null>;
     getUserBalance: (mintAddress?: PublicKey) => Promise<number>;
     refreshTokenInfo: (mintAddress?: PublicKey) => Promise<void>;
@@ -81,7 +81,7 @@ export interface UseTokenReturn {
 export const useToken = (): UseTokenReturn => {
     // AppKit hooks (wallet info only)
     const { address, isConnected } = useAppKitAccount();
-    const { caipNetwork, caipNetworkId } = useAppKitNetwork();
+    // const { caipNetwork, caipNetworkId } = useAppKitNetwork();
     const { walletProvider } = useAppKitProvider<AnchorWallet>('solana');
 
     // Network store (shared across all programs)
@@ -93,7 +93,7 @@ export const useToken = (): UseTokenReturn => {
     const currentNetwork = useNetworkStore((state) => state.currentNetwork);
     const isSolanaNetwork = useNetworkStore((state) => state.isSolanaNetwork);
     const isNetworkReady = useNetworkStore((state) => state.isReady);
-    const { syncNetworkFromAppKit, reset: resetNetwork } = useNetworkStore();
+    // const { syncNetworkFromAppKit, reset: resetNetwork } = useNetworkStore();
 
     // Token store (program-specific)
     // const tokenState = useTokenStore(selectTokenState);
@@ -112,7 +112,7 @@ export const useToken = (): UseTokenReturn => {
         setUserTokens,
         setLoading,
         setError,
-        reset: resetToken,
+        
     } = useTokenStore();
 
     // Local state (specific to this hook)
