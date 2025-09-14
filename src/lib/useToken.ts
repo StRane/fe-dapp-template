@@ -3,7 +3,6 @@ import { useAppKitAccount, useAppKitNetwork, useAppKitProvider } from '@reown/ap
 import { Program, AnchorProvider, BN } from '@coral-xyz/anchor';
 import {
     PublicKey,
-    Connection,
     Commitment,
     Keypair,
 } from '@solana/web3.js';
@@ -14,124 +13,164 @@ import {
     TokenAccountNotFoundError,
     TokenInvalidAccountOwnerError,
 } from '@solana/spl-token';
-import { AnchorWallet } from '@solana/wallet-adapter-react';
+import { AnchorWallet, Wallet } from '@solana/wallet-adapter-react';
 
-import type { TestToken } from '@/types/test_token'; // You'll need to generate this type
-import IDL from '@/idl/test_token.json'; // You'll need to generate this IDL
+import type { TestToken } from '@/types/test_token';
+import IDL from '@/idl/test_token.json';
 
-// CONFIGURATION
+// Import separated stores
+import {
+    useNetworkStore,
+    selectConnection,
+    selectCurrentNetwork,
+    selectIsSolanaNetwork,
+    selectIsNetworkReady
+} from '@/store/networkStore';
+
+import {
+    useTokenStore,
+    selectTokenState,
+    selectTokenData,
+    selectTokenProgram,
+    selectMintAuthPda,
+    type TokenInfo,
+    type UserToken
+} from '@/store/tokenStore';
+
 const CONFIG = {
-    // Your test token program ID
-    PROGRAM_ID: 'HY3dPfn3MJqLSbQm4jExye2H8KZag8AkD2AmBXgL2SKm', // From your lib.rs
-
-    RPC_ENDPOINTS: {
-        'solana-testnet': 'https://api.testnet.solana.com',
-        'solana-devnet': 'https://api.devnet.solana.com',
-        'solana-mainnet': 'https://api.mainnet-beta.solana.com',
-        'solana-localnet': 'http://localhost:8899',
-        'Solana Local': 'http://localhost:8899',
-    },
-
-    // Seeds
+    PROGRAM_ID: 'HY3dPfn3MJqLSbQm4jExye2H8KZag8AkD2AmBXgL2SKm',
     MINT_AUTH_SEED: Buffer.from("mint_auth"),
 };
 
-// Types
-export interface MintAuthorityPda {
-    bump: number;
-}
-
-export interface TokenInfo {
-    mint: PublicKey;
-    mintAuthority: PublicKey;
-    balance: number;
-    decimals: number;
-    supply: string;
-}
-
 export interface UseTokenReturn {
-    // State
+    // Network state from network store
+    connection: any | null;
+    currentNetwork: string | null;
+    isSolanaNetwork: boolean;
+    isNetworkReady: boolean;
+
+    // Token state from token store
     program: Program<TestToken> | null;
-    connection: Connection | null;
+    tokenInfo: TokenInfo | null;
+    userTokens: UserToken[];
+    selectedToken: PublicKey | null;
+    mintAuthPda: PublicKey | null;
     loading: boolean;
     error: string | null;
+
+    // AppKit state
     isConnected: boolean;
     walletAddress: string | undefined;
 
-    // Token Info
-    tokenInfo: TokenInfo | null;
+    // Local state (specific to this hook)
     userTokenAccount: PublicKey | null;
     userBalance: number;
-    
-    // PDAs
     mintPda: PublicKey | null;
-    mintAuthPda: PublicKey | null;
-
-    // Network info
-    currentNetwork: string | null;
-    programId: string;
 
     // Functions
     initializeToken: () => Promise<{ mint: PublicKey; tx: string } | null>;
     mintTokens: (amount: BN, mintAddress?: PublicKey) => Promise<string | null>;
     getUserBalance: (mintAddress?: PublicKey) => Promise<number>;
     refreshTokenInfo: (mintAddress?: PublicKey) => Promise<void>;
-    
+
     // Utility functions
     createUserTokenAccount: (mintAddress: PublicKey) => Promise<PublicKey | null>;
-    getAllUserTokenAccounts: () => Promise<Array<{ 
-        mint: PublicKey; 
-        balance: number; 
-        account: PublicKey; 
-        mintAddress: PublicKey; 
-        decimals: number; 
-    }>>;
+    getAllUserTokenAccounts: () => Promise<UserToken[]>;
 }
 
 export const useToken = (): UseTokenReturn => {
-    // AppKit hooks
+    // AppKit hooks (wallet info only)
     const { address, isConnected } = useAppKitAccount();
     const { caipNetwork, caipNetworkId } = useAppKitNetwork();
-    const { walletProvider } = useAppKitProvider('solana');
+    const { walletProvider } = useAppKitProvider<AnchorWallet>('solana');
 
-    // State
-    const [program, setProgram] = useState<Program<TestToken> | null>(null);
-    const [connection, setConnection] = useState<Connection | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
-    const [tokenInfo, setTokenInfo] = useState<TokenInfo | null>(null);
+    // Network store (shared across all programs)
+    // const connection = useNetworkStore(selectConnection);
+    // const currentNetwork = useNetworkStore(selectCurrentNetwork);
+    // const isSolanaNetwork = useNetworkStore(selectIsSolanaNetwork);
+    // const isNetworkReady = useNetworkStore(selectIsNetworkReady);
+    const connection = useNetworkStore((state) => state.connection);
+    const currentNetwork = useNetworkStore((state) => state.currentNetwork);
+    const isSolanaNetwork = useNetworkStore((state) => state.isSolanaNetwork);
+    const isNetworkReady = useNetworkStore((state) => state.isReady);
+    const { syncNetworkFromAppKit, reset: resetNetwork } = useNetworkStore();
+
+    // Token store (program-specific)
+    // const tokenState = useTokenStore(selectTokenState);
+    const program = useTokenStore((state) => state.program);
+    const mintAuthPda = useTokenStore((state) => state.mintAuthPda);
+    const loading = useTokenStore((state) => state.loading);
+    const error = useTokenStore((state) => state.error);
+    // const tokenData = useTokenStore(selectTokenData);
+    const tokenInfo = useTokenStore((state) => state.tokenInfo);
+    const userTokens = useTokenStore((state) => state.userTokens);
+    const selectedToken = useTokenStore((state) => state.selectedToken);
+    const {
+        setProgram,
+        setMintAuthPda,
+        setTokenInfo,
+        setUserTokens,
+        setLoading,
+        setError,
+        reset: resetToken,
+    } = useTokenStore();
+
+    // Local state (specific to this hook)
     const [userTokenAccount, setUserTokenAccount] = useState<PublicKey | null>(null);
     const [userBalance, setUserBalance] = useState<number>(0);
-
-    // PDAs
     const [mintPda, setMintPda] = useState<PublicKey | null>(null);
-    const [mintAuthPda, setMintAuthPda] = useState<PublicKey | null>(null);
 
-    // Program ID and network info
     const programId = new PublicKey(CONFIG.PROGRAM_ID);
-    const isSolanaNetwork = caipNetworkId?.includes('solana') || false;
-    const currentNetwork = caipNetwork?.name || null;
 
-    // Setup connection
-    useEffect(() => {
-        if (isSolanaNetwork && currentNetwork) {
-            const rpcUrl = CONFIG.RPC_ENDPOINTS[currentNetwork as keyof typeof CONFIG.RPC_ENDPOINTS]
-                || CONFIG.RPC_ENDPOINTS['solana-testnet'];
-            const newConnection = new Connection(rpcUrl, 'confirmed');
-            setConnection(newConnection);
-            console.log('Token hook connected to:', currentNetwork, rpcUrl);
-        }
-    }, [isSolanaNetwork, currentNetwork]);
+    // Note: Network sync happens in the component, not here
+    // This prevents duplicate sync calls that cause infinite loops
 
-    // Initialize program
+    // Reset stores when wallet disconnects
+    // useEffect(() => {
+    //     if (!isConnected) {
+    //         resetNetwork();
+    //         // resetToken();
+    //     }
+    // }, [isConnected, resetNetwork, resetToken]);
+
+    // Initialize program when network is ready
     useEffect(() => {
         const initializeProgram = async () => {
-            if (!isConnected || !address || !connection || !walletProvider || !isSolanaNetwork) {
-                setProgram(null);
+            console.log('[useToken] Program initialization check:', {
+                isConnected,
+                address: !!address,
+                hasConnection: !!connection,
+                hasWalletProvider: !!walletProvider,
+                isNetworkReady,
+                hasExistingProgram: !!program,
+            });
+            // console.log('[useToken] Connection check')
+            // console.log(connection);
+
+
+            if (!isConnected || !address || !connection || !walletProvider || !isNetworkReady) {
+                // Clear program state if conditions not met
+                console.log("[useToken] Not connected")
+                if (program) {
+                    console.log('[useToken] Clearing program - conditions not met');
+                    setProgram(null);
+                    setMintAuthPda(null);
+                }
+                return;
+            }
+
+            // Don't reinitialize if program already exists for this network
+            if (program && mintAuthPda) {
+                console.log('[useToken] Program already initialized, skipping');
                 return;
             }
 
             try {
+                setLoading(true);
+                setError(null);
+
+                console.log('[useToken] Initializing program...');
+
                 const anchorProvider = new AnchorProvider(
                     connection,
                     walletProvider as AnchorWallet,
@@ -142,29 +181,48 @@ export const useToken = (): UseTokenReturn => {
                     IDL as TestToken,
                     anchorProvider
                 );
-                setProgram(program);
 
                 // Derive mint authority PDA
                 const [mintAuthPda] = PublicKey.findProgramAddressSync(
                     [CONFIG.MINT_AUTH_SEED],
                     programId
                 );
+
+                console.log('[useToken] Derived PDA:', {
+                    mintAuthPda: mintAuthPda.toBase58(),
+                    seed: CONFIG.MINT_AUTH_SEED,
+                    programId: programId.toBase58()
+                });
+
+                // Update token store
+                setProgram(program);
                 setMintAuthPda(mintAuthPda);
 
-                console.log('Token program initialized:', {
+                console.log('[useToken] Program initialized successfully:', {
                     programId: programId.toBase58(),
                     mintAuthPda: mintAuthPda.toBase58(),
                     userAddress: address,
+                    network: currentNetwork,
                 });
 
             } catch (err) {
-                console.error('Failed to initialize token program:', err);
+                console.error('[useToken] Failed to initialize program:', err);
                 setError(`Failed to initialize: ${(err as Error).message}`);
+            } finally {
+                setLoading(false);
             }
         };
 
         initializeProgram();
-    }, [isConnected, address, connection, walletProvider, isSolanaNetwork]);
+    }, [
+        isConnected,
+        address,
+        connection?.rpcEndpoint, // Use stable property instead of connection object
+        walletProvider?.publicKey, // Use stable property instead of walletProvider object
+        isNetworkReady,
+        currentNetwork,
+        program, // This is fine - checking if program exists
+    ]);
 
     // Initialize new token (create mint + mint authority)
     const initializeToken = useCallback(async (): Promise<{ mint: PublicKey; tx: string } | null> => {
@@ -180,7 +238,7 @@ export const useToken = (): UseTokenReturn => {
             const mintKeypair = Keypair.generate();
             const userPublicKey = new PublicKey(address);
 
-            console.log('Initializing new token...', {
+            console.log('[useToken] Initializing new token...', {
                 mint: mintKeypair.publicKey.toBase58(),
                 mintAuth: mintAuthPda.toBase58(),
                 payer: userPublicKey.toBase58(),
@@ -191,19 +249,15 @@ export const useToken = (): UseTokenReturn => {
                 .accounts({
                     payer: userPublicKey,
                     mint: mintKeypair.publicKey,
-                    // mintAuth: mintAuthPda, // Auto-derived by Anchor
-                    // systemProgram: SystemProgram.programId,
-                    // tokenProgram: TOKEN_PROGRAM_ID,
-                    // rent: SYSVAR_RENT_PUBKEY,
                 })
                 .signers([mintKeypair])
                 .rpc();
 
-            console.log('✅ Token initialized:', tx);
+            console.log('[useToken] ✅ Token initialized:', tx);
 
-            // Set this as the current mint
+            // Set this as the current mint (local state)
             setMintPda(mintKeypair.publicKey);
-            
+
             // Refresh token info
             await refreshTokenInfo(mintKeypair.publicKey);
 
@@ -212,13 +266,13 @@ export const useToken = (): UseTokenReturn => {
                 tx
             };
         } catch (err) {
-            console.error('❌ Error initializing token:', err);
+            console.error('[useToken] ❌ Error initializing token:', err);
             setError(`Failed to initialize token: ${(err as Error).message}`);
             return null;
         } finally {
             setLoading(false);
         }
-    }, [program, address, mintAuthPda]);
+    }, [program, address, mintAuthPda, setLoading, setError]);
 
     // Mint tokens to user
     const mintTokens = useCallback(async (amount: BN, mintAddress?: PublicKey): Promise<string | null> => {
@@ -238,17 +292,10 @@ export const useToken = (): UseTokenReturn => {
 
         try {
             const userPublicKey = new PublicKey(address);
-            
-            // Get or create user's associated token account
-            const recipientAccount = getAssociatedTokenAddressSync(
-                targetMint,
-                userPublicKey
-            );
 
-            console.log('Minting tokens...', {
+            console.log('[useToken] Minting tokens...', {
                 amount: amount.toString(),
                 mint: targetMint.toBase58(),
-                recipient: recipientAccount.toBase58(),
                 caller: userPublicKey.toBase58(),
             });
 
@@ -257,28 +304,23 @@ export const useToken = (): UseTokenReturn => {
                 .accounts({
                     caller: userPublicKey,
                     mint: targetMint,
-                    // recipient: recipientAccount,
-                    // mintAuth: mintAuthPda, // Auto-derived
-                    // tokenProgram: TOKEN_PROGRAM_ID,
-                    // associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
-                    // systemProgram: SystemProgram.programId,
                 })
                 .rpc();
 
-            console.log('✅ Tokens minted:', tx);
+            console.log('[useToken] ✅ Tokens minted:', tx);
 
             // Refresh balances
             await refreshTokenInfo(targetMint);
 
             return tx;
         } catch (err) {
-            console.error('❌ Error minting tokens:', err);
+            console.error('[useToken] ❌ Error minting tokens:', err);
             setError(`Failed to mint tokens: ${(err as Error).message}`);
             return null;
         } finally {
             setLoading(false);
         }
-    }, [program, address, mintAuthPda, mintPda]);
+    }, [program, address, mintAuthPda, mintPda, setLoading, setError]);
 
     // Get user's token balance
     const getUserBalance = useCallback(async (mintAddress?: PublicKey): Promise<number> => {
@@ -290,14 +332,14 @@ export const useToken = (): UseTokenReturn => {
         try {
             const userPublicKey = new PublicKey(address);
             const tokenAccount = getAssociatedTokenAddressSync(targetMint, userPublicKey);
-            
+
             const accountInfo = await getAccount(connection, tokenAccount);
             return Number(accountInfo.amount);
         } catch (err) {
             if (err instanceof TokenAccountNotFoundError || err instanceof TokenInvalidAccountOwnerError) {
                 return 0; // Account doesn't exist yet
             }
-            console.error('Error getting balance:', err);
+            console.error('[useToken] Error getting balance:', err);
             return 0;
         }
     }, [connection, address, mintPda]);
@@ -309,7 +351,7 @@ export const useToken = (): UseTokenReturn => {
         try {
             const userPublicKey = new PublicKey(address);
             const tokenAccount = getAssociatedTokenAddressSync(mintAddress, userPublicKey);
-            
+
             // Check if account exists
             try {
                 await getAccount(connection, tokenAccount);
@@ -321,80 +363,82 @@ export const useToken = (): UseTokenReturn => {
             }
 
             // Account doesn't exist - it will be created automatically by the mint instruction
-            console.log('Token account will be created automatically:', tokenAccount.toBase58());
+            console.log('[useToken] Token account will be created automatically:', tokenAccount.toBase58());
             return tokenAccount;
         } catch (err) {
-            console.error('Error with token account:', err);
+            console.error('[useToken] Error with token account:', err);
             return null;
         }
     }, [connection, address]);
 
-    //     getAllUserTokenAccounts: () => Promise<Array<{ 
-    //     mint: PublicKey; 
-    //     balance: number; 
-    //     account: PublicKey; 
-    //     mintAuthority: PublicKey | null; 
-    //     decimals: number; 
-    // }>>;
-
     // Get all user token accounts for this program's tokens
-    const getAllUserTokenAccounts = useCallback(async (): Promise<Array<{ mint: PublicKey; balance: number; account: PublicKey; mintAddress:PublicKey; decimals: number }>> => {
-        if (!connection || !address || !mintAuthPda) return [];
+    const getAllUserTokenAccounts = useCallback(async (): Promise<UserToken[]> => {
+        console.log('[useToken] State BEFORE fetching accounts:', {
+            currentConnection: connection,
+            currentAddress: address,
+            currentMintAuthPda: mintAuthPda,
+
+        });
+        if (!connection || !address || !mintAuthPda) {
+            // console.log("messed up")
+            return []
+        };
 
         try {
             const userPublicKey = new PublicKey(address);
-            
+
             // Get all token accounts owned by user
             const tokenAccounts = await connection.getParsedTokenAccountsByOwner(
                 userPublicKey,
                 { programId: TOKEN_PROGRAM_ID }
             );
 
-            const results = [];
+            const results: UserToken[] = [];
             for (const { account, pubkey } of tokenAccounts.value) {
                 const parsedInfo = account.data.parsed.info;
                 const mintAddress = new PublicKey(parsedInfo.mint);
                 const balance = Number(parsedInfo.tokenAmount.uiAmount) || 0;
-                const decimals =Number(parsedInfo.tokenAmount.decimals);
-                
+                const decimals = Number(parsedInfo.tokenAmount.decimals);
+
                 // Only include accounts with balance and decimals > 0 (fungible tokens, not NFTs)
                 if (balance > 0 && decimals > 0) {
                     try {
                         // Get mint info to check mint authority
                         const mintInfo = await connection.getParsedAccountInfo(mintAddress);
                         const mintData = mintInfo.value?.data;
-                        
+
                         if (mintData && 'parsed' in mintData) {
-                            const mintAuthority = mintData.parsed.info.mintAuthority 
-                                ? new PublicKey(mintData.parsed.info.mintAuthority) 
+                            const mintAuthority = mintData.parsed.info.mintAuthority
+                                ? new PublicKey(mintData.parsed.info.mintAuthority)
                                 : null;
-                            
+
                             // Filter by mint authority (your program's PDA)
                             if (mintAuthority && mintAuthority.equals(mintAuthPda)) {
                                 results.push({
                                     mint: mintAddress,
                                     balance,
                                     account: pubkey,
-                                    mintAddress,
                                     decimals
                                 });
                             }
                         }
                     } catch (err) {
-                        console.warn('Error checking mint authority for', mintAddress.toBase58(), err);
+                        console.warn('[useToken] Error checking mint authority for', mintAddress.toBase58(), err);
                         // Continue with next token
                     }
                 }
             }
 
-            console.log(results)
+            // Update token store with results
+            setUserTokens(results);
+            console.log('[useToken] User token accounts updated:', results.length);
 
             return results;
         } catch (err) {
-            console.error('Error getting user token accounts:', err);
+            console.error('[useToken] Error getting user token accounts:', err);
             return [];
         }
-    }, [connection, address, mintAuthPda]);
+    }, [connection, address, mintAuthPda, setUserTokens]);
 
     // Refresh token info
     const refreshTokenInfo = useCallback(async (mintAddress?: PublicKey) => {
@@ -411,14 +455,17 @@ export const useToken = (): UseTokenReturn => {
 
             if (mintData && 'parsed' in mintData) {
                 const parsed = mintData.parsed.info;
-                
-                setTokenInfo({
+
+                const tokenInfo: TokenInfo = {
                     mint: targetMint,
                     mintAuthority: new PublicKey(parsed.mintAuthority),
                     balance: 0, // Will be updated below
                     decimals: parsed.decimals,
                     supply: parsed.supply,
-                });
+                };
+
+                // Update token store
+                setTokenInfo(tokenInfo);
             }
 
             // Get user balance
@@ -435,34 +482,37 @@ export const useToken = (): UseTokenReturn => {
             }
 
         } catch (err) {
-            console.error('Error refreshing token info:', err);
+            console.error('[useToken] Error refreshing token info:', err);
             setError(`Failed to refresh: ${(err as Error).message}`);
         } finally {
             setLoading(false);
         }
-    }, [connection, mintPda, getUserBalance, address]);
+    }, [connection, mintPda, getUserBalance, address, setTokenInfo, setLoading, setError]);
 
     return {
-        // State
-        program,
+        // Network state from network store
         connection,
-        loading,
-        error,
+        currentNetwork,
+        isSolanaNetwork,
+        isNetworkReady,
+
+        // Token state from token store
+        program: program,
+        tokenInfo: tokenInfo,
+        userTokens: userTokens,
+        selectedToken: selectedToken,
+        mintAuthPda: mintAuthPda,
+        loading: loading,
+        error: error,
+
+        // AppKit state
         isConnected: isConnected && isSolanaNetwork,
         walletAddress: address,
 
-        // Token Info
-        tokenInfo,
+        // Local state
         userTokenAccount,
         userBalance,
-
-        // PDAs
         mintPda,
-        mintAuthPda,
-
-        // Network info
-        currentNetwork,
-        programId: CONFIG.PROGRAM_ID,
 
         // Functions
         initializeToken,
