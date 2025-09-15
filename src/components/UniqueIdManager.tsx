@@ -45,14 +45,6 @@ export const UniqueIdManager: React.FC = () => {
   console.log('[UniqueIdManager] === COMPONENT RENDER START ===');
   
   const { address, isConnected } = useAppKitAccount();
-  const { caipNetwork } = useAppKitNetwork();
-
-  console.log('[UniqueIdManager] Component props:', {
-    isConnected,
-    address: address?.slice(0, 8),
-    networkName: caipNetwork?.name,
-    networkId: caipNetwork?.id
-  });
 
   // Use the hook for all business logic and state
   const {
@@ -110,21 +102,6 @@ export const UniqueIdManager: React.FC = () => {
     programId
   });
 
-  // Network sync effect - follows TokenManager pattern
-  useEffect(() => {
-    console.log('[UniqueIdManager] === NETWORK SYNC EFFECT START ===');
-    console.log('[UniqueIdManager] Network sync conditions:', {
-      isConnected,
-      networkName: caipNetwork?.name,
-      networkId: caipNetwork?.id
-    });
-
-    if (isConnected && (caipNetwork?.name || caipNetwork?.id)) {
-      console.log('[UniqueIdManager] Network sync will be handled by hook');
-      // Network sync happens in the hook, not here
-    }
-    console.log('[UniqueIdManager] === NETWORK SYNC EFFECT END ===');
-  }, [isConnected, caipNetwork?.name, caipNetwork?.id]);
 
   // Refresh data when ready - follows TokenManager pattern
   useEffect(() => {

@@ -81,7 +81,7 @@ export interface UseTokenReturn {
 export const useToken = (): UseTokenReturn => {
     // AppKit hooks (wallet info only)
     const { address, isConnected } = useAppKitAccount();
-    // const { caipNetwork, caipNetworkId } = useAppKitNetwork();
+    const { caipNetwork } = useAppKitNetwork();
     const { walletProvider } = useAppKitProvider<AnchorWallet>('solana');
 
     // Network store (shared across all programs)
@@ -93,7 +93,7 @@ export const useToken = (): UseTokenReturn => {
     const currentNetwork = useNetworkStore((state) => state.currentNetwork);
     const isSolanaNetwork = useNetworkStore((state) => state.isSolanaNetwork);
     const isNetworkReady = useNetworkStore((state) => state.isReady);
-    // const { syncNetworkFromAppKit, reset: resetNetwork } = useNetworkStore();
+    const { syncNetworkFromAppKit } = useNetworkStore();
 
     // Token store (program-specific)
     // const tokenState = useTokenStore(selectTokenState);
@@ -112,7 +112,7 @@ export const useToken = (): UseTokenReturn => {
         setUserTokens,
         setLoading,
         setError,
-        
+
     } = useTokenStore();
 
     // Local state (specific to this hook)
@@ -125,13 +125,23 @@ export const useToken = (): UseTokenReturn => {
     // Note: Network sync happens in the component, not here
     // This prevents duplicate sync calls that cause infinite loops
 
-    // Reset stores when wallet disconnects
-    // useEffect(() => {
-    //     if (!isConnected) {
-    //         resetNetwork();
-    //         // resetToken();
-    //     }
-    // }, [isConnected, resetNetwork, resetToken]);
+    useEffect(() => {
+        console.log('[useToken] === NETWORK SYNC EFFECT START ===');
+        console.log('[useToken] Network sync inputs:', {
+            isConnected,
+            networkName: caipNetwork?.name,
+            networkId: caipNetwork?.id
+        });
+
+        if (isConnected && (caipNetwork?.name || caipNetwork?.id)) {
+            console.log('[useToken] Triggering network sync from AppKit');
+            syncNetworkFromAppKit(
+                caipNetwork?.name || null,
+                caipNetwork?.id?.toString() || null
+            );
+        }
+        console.log('[useToken] === NETWORK SYNC EFFECT END ===');
+    }, [isConnected, caipNetwork?.name, caipNetwork?.id, syncNetworkFromAppKit]);
 
     // Initialize program when network is ready
     useEffect(() => {

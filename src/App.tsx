@@ -6,8 +6,9 @@ import { ThemeProvider, useTheme } from "@/components/ThemeProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ActionButtonList } from "./components/ActionButtonList";
 import { UniqueIdManager } from "./components/UniqueIdManager";
-import { TokenManager} from "./components/TokenManager";
+import { TokenManager } from "./components/TokenManager";
 import NFTVaultInterface from "@/components/VaultManager";
+import { SelectionProvider } from "@/context/SelectionContext";
 
 import {
   projectId,
@@ -116,16 +117,18 @@ export function App() {
       <WagmiProvider config={wagmiAdapter.wagmiConfig}>
         <QueryClientProvider client={queryClient}>
           <ThemeSync />
-          <Router>
-            <div className="min-h-screen">
-              <ActionButtonList />
-              <Routes>
-                <Route path="/token" element={<TokenManager />} />
-                <Route path="/uniqueid" element={<UniqueIdManager />} />
-                <Route path="/vault" element={<NFTVaultInterface />} />
-              </Routes>
-            </div>
-          </Router>
+          <SelectionProvider>
+            <Router>
+              <div className="min-h-screen">
+                <ActionButtonList />
+                <Routes>
+                  <Route path="/token" element={<TokenManager />} />
+                  <Route path="/uniqueid" element={<UniqueIdManager />} />
+                  <Route path="/vault" element={<NFTVaultInterface />} />
+                </Routes>
+              </div>
+            </Router>
+          </SelectionProvider>
         </QueryClientProvider>
       </WagmiProvider>
     </ThemeProvider>
