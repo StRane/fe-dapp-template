@@ -3,12 +3,10 @@ import React, { useState, useEffect } from "react";
 import { BN } from "@coral-xyz/anchor";
 import { PublicKey } from "@solana/web3.js";
 import { useAppKitAccount, useAppKitNetwork } from "@reown/appkit/react";
-import { getAssociatedTokenAddressSync } from "@solana/spl-token";
 import { AppHeader } from "@/components/shared/AppHeader";
 
 import { useToken } from "@/lib/useToken";
 import { useTokenSelection, useNFTSelection } from "@/context/SelectionContext";
-
 
 import { Button } from "@/components/ui/button";
 import {
@@ -49,7 +47,6 @@ export const TokenManager: React.FC = () => {
 
   const { address, isConnected } = useAppKitAccount();
 
-
   // Selection context
   const {
     selectedTokenAccount,
@@ -66,32 +63,32 @@ export const TokenManager: React.FC = () => {
     selectedNFT: selectedNFT?.toBase58(),
   });
 
-  // Hook for business logic
+  // Hook - now purely reads from store + provides actions
   const {
-    // Network state
+    // Store data (read-only)
+    program,
+    userTokens,
+    mintAuthPda,
+    loading,
+    error,
+    
+    // Network state (read-only)
     connection,
     currentNetwork,
     isSolanaNetwork,
     isNetworkReady,
 
-    // Token state
-    program,
-    mintAuthPda,
-    userTokens,
-    loading,
-    error,
-
     // AppKit state
     isConnected: hookConnected,
     walletAddress,
 
-    // Functions
+    // Actions only
     mintTokens,
     getUserBalance,
-    getAllUserTokenAccounts,
+    refreshAllData,
   } = useToken();
 
-  console.log("[TokenManager] Hook state:", {
+  console.log("[TokenManager] Store state from hook:", {
     hasConnection: !!connection,
     currentNetwork,
     isNetworkReady,
@@ -101,7 +98,7 @@ export const TokenManager: React.FC = () => {
     hookConnected,
   });
 
-  // Local state
+  // Local state - only for UI
   const [mintAmount, setMintAmount] = useState<string>("1000");
   const [isMinting, setIsMinting] = useState(false);
   const [userBalance, setUserBalance] = useState<number>(0);
@@ -110,39 +107,41 @@ export const TokenManager: React.FC = () => {
     message: string;
   }>({ type: null, message: "" });
 
-  // Mock NFT data for demonstration - replace with actual NFT hook data
-  const [mockNFTs] = useState([
-    {
-      mint: new PublicKey("7Uc3xCQxiPqMHVXPrzcgUw8rrKQ7vCu5HUXL4TVRntDS"),
-      name: "Access NFT #1",
-      uniqueId: [1, 2, 3, 4],
-    },
-    {
-      mint: new PublicKey("Ggbz1DvG6sh5FwTCFUqc85M6RYVduivGu3BhyxVHqpP1"),
-      name: "Access NFT #2",
-      uniqueId: [5, 6, 7, 8],
-    },
-  ]);
-
-  console.log("[TokenManager] Local state:", {
+  console.log("[TokenManager] Local UI state:", {
     mintAmount,
     isMinting,
     userBalance,
     hasNotification: !!notification.type,
-    mockNFTsCount: mockNFTs.length,
   });
 
-
-  // Load data when ready
+  // Load balance when program is ready - NO network calls in effects
   useEffect(() => {
-    console.log("[TokenManager] === LOAD DATA EFFECT START ===");
-    if (hookConnected && isNetworkReady && walletAddress) {
-      console.log("[TokenManager] Loading token accounts and balance");
+    console.log("[TokenManager] === BALANCE EFFECT START ===");
+    
+    const loadBalance = async () => {
+      if (!address || !program) {
+        console.log("[TokenManager] No address or program for balance loading");
+        return;
+      }
+
+      console.log("[TokenManager] Loading balance for default mint");
+      try {
+        const mint = new PublicKey(DEFAULT_MINT);
+        const balance = await getUserBalance(mint);
+        setUserBalance(balance);
+        console.log("[TokenManager] Balance loaded:", balance);
+      } catch (err) {
+        console.error("[TokenManager] Failed to load balance:", err);
+      }
+    };
+
+    // Only load balance when we have program (data already loaded by store)
+    if (program && address) {
       loadBalance();
-      getAllUserTokenAccounts();
     }
-    console.log("[TokenManager] === LOAD DATA EFFECT END ===");
-  }, [hookConnected, isNetworkReady, walletAddress, getAllUserTokenAccounts]);
+    
+    console.log("[TokenManager] === BALANCE EFFECT END ===");
+  }, [program, address, getUserBalance]); // Stable dependencies
 
   const showNotification = (type: "success" | "error", message: string) => {
     console.log("[TokenManager] Showing notification:", { type, message });
@@ -163,20 +162,6 @@ export const TokenManager: React.FC = () => {
       showNotification("success", `${label} copied to clipboard`);
     } catch (err) {
       showNotification("error", `Failed to copy: ${(err as Error).message}`);
-    }
-  };
-
-  const loadBalance = async () => {
-    console.log("[TokenManager] Loading balance for default mint");
-    if (!address) return;
-
-    try {
-      const mint = new PublicKey(DEFAULT_MINT);
-      const balance = await getUserBalance(mint);
-      setUserBalance(balance);
-      console.log("[TokenManager] Balance loaded:", balance);
-    } catch (err) {
-      console.error("[TokenManager] Failed to load balance:", err);
     }
   };
 
@@ -209,8 +194,11 @@ export const TokenManager: React.FC = () => {
           "success",
           `Successfully minted ${mintAmount} tokens!`
         );
-        await loadBalance(); // Refresh balance
-        await getAllUserTokenAccounts(); // Refresh token accounts
+        
+        // Refresh balance after successful mint
+        const newBalance = await getUserBalance(targetMint);
+        setUserBalance(newBalance);
+        
         setMintAmount("1000"); // Reset
         console.log("[TokenManager] Minting completed successfully");
       }
@@ -238,6 +226,11 @@ export const TokenManager: React.FC = () => {
   const handleSelectNFT = (nftMint: PublicKey) => {
     console.log("[TokenManager] Selecting NFT:", nftMint.toBase58());
     setSelectedNFT(nftMint);
+  };
+
+  const handleRefresh = () => {
+    console.log("[TokenManager] Manual refresh triggered");
+    refreshAllData();
   };
 
   const formatBalance = (balance: number, decimals: number = 9) => {
@@ -392,7 +385,7 @@ export const TokenManager: React.FC = () => {
                     size="icon"
                     variant="ghost"
                     className="h-6 w-6"
-                    onClick={loadBalance}
+                    onClick={handleRefresh}
                     disabled={loading}
                   >
                     {loading ? (
@@ -429,7 +422,7 @@ export const TokenManager: React.FC = () => {
         {/* Token & NFT Selection Tab */}
         <TabsContent value="history" className="space-y-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {/* Token Accounts Selection */}
+            {/* Token Accounts Selection - READ FROM STORE */}
             <Card>
               <CardHeader>
                 <CardTitle>Select Token Account</CardTitle>
@@ -492,7 +485,10 @@ export const TokenManager: React.FC = () => {
                       <Alert>
                         <Info className="h-4 w-4" />
                         <AlertDescription>
-                          No token accounts found. Mint some tokens first.
+                          {loading 
+                            ? "Loading token accounts..." 
+                            : "No token accounts found. Mint some tokens first."
+                          }
                         </AlertDescription>
                       </Alert>
                     )}
@@ -501,7 +497,7 @@ export const TokenManager: React.FC = () => {
               </CardContent>
               <CardFooter>
                 <Button
-                  onClick={getAllUserTokenAccounts}
+                  onClick={handleRefresh}
                   variant="outline"
                   size="sm"
                   disabled={loading}

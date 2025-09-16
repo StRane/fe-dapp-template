@@ -9,6 +9,7 @@ import { UniqueIdManager } from "./components/UniqueIdManager";
 import { TokenManager } from "./components/TokenManager";
 import NFTVaultInterface from "@/components/VaultManager";
 import { SelectionProvider } from "@/context/SelectionContext";
+import { useNetworkSync } from '@/lib/useNetworkSync';
 
 import {
   projectId,
@@ -112,6 +113,7 @@ function ThemeSync() {
 }
 
 export function App() {
+  useNetworkSync();
   return (
     <ThemeProvider>
       <WagmiProvider config={wagmiAdapter.wagmiConfig}>

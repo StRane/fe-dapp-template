@@ -1,8 +1,8 @@
 // components/UniqueIdManager.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useUniqueId } from '@/lib/useUniqueId';
 import { PublicKey } from '@solana/web3.js';
-import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react';
+import { useAppKitAccount } from '@reown/appkit/react';
 
 // shadcn/ui components
 import { Button } from '@/components/ui/button';
@@ -24,7 +24,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 
-// Icons (using lucide-react)
+// Icons
 import { 
   Wallet, 
   Loader2, 
@@ -46,15 +46,9 @@ export const UniqueIdManager: React.FC = () => {
   
   const { address, isConnected } = useAppKitAccount();
 
-  // Use the hook for all business logic and state
+  // Hook - now purely reads from store + provides actions
   const {
-    // Network state
-    connection,
-    currentNetwork,
-    isSolanaNetwork,
-    isNetworkReady,
-
-    // Program state  
+    // Store data (read-only)
     program,
     collection,
     userState,
@@ -63,6 +57,12 @@ export const UniqueIdManager: React.FC = () => {
     isCollectionInitialized,
     loading,
     error,
+    
+    // Network state (read-only)
+    connection,
+    currentNetwork,
+    isSolanaNetwork,
+    isNetworkReady,
 
     // AppKit state
     isConnected: hookConnected,
@@ -74,7 +74,7 @@ export const UniqueIdManager: React.FC = () => {
     // Computed values
     programId,
 
-    // Functions
+    // Actions only
     initializeCollection,
     mintNFT,
     mintMultipleNFTs,
@@ -82,16 +82,17 @@ export const UniqueIdManager: React.FC = () => {
     getTokenIdByUniqueId,
     getUniqueIdByTokenId,
     getUniqueIdByMint,
-    refreshData,
+    refreshAllData,
   } = useUniqueId();
 
-  console.log('[UniqueIdManager] Hook state:', {
+  console.log('[UniqueIdManager] Store state from hook:', {
     hasConnection: !!connection,
     connectionRpc: connection?.rpcEndpoint,
     currentNetwork,
     isSolanaNetwork,
     isNetworkReady,
     hasProgram: !!program,
+    hasCollection: !!collection,
     isCollectionInitialized,
     totalSupply,
     userNonce,
@@ -102,24 +103,7 @@ export const UniqueIdManager: React.FC = () => {
     programId
   });
 
-
-  // Refresh data when ready - follows TokenManager pattern
-  useEffect(() => {
-    console.log('[UniqueIdManager] === REFRESH DATA EFFECT START ===');
-    console.log('[UniqueIdManager] Refresh conditions:', {
-      hookConnected,
-      isNetworkReady,
-      walletAddress: !!walletAddress
-    });
-
-    if (hookConnected && isNetworkReady && walletAddress) {
-      console.log('[UniqueIdManager] Triggering data refresh');
-      refreshData();
-    }
-    console.log('[UniqueIdManager] === REFRESH DATA EFFECT END ===');
-  }, [hookConnected, isNetworkReady, walletAddress, refreshData]);
-
-  // Local state for forms
+  // Local state for forms - UI only
   const [collectionForm, setCollectionForm] = useState({
     name: '',
     symbol: '',
@@ -139,7 +123,7 @@ export const UniqueIdManager: React.FC = () => {
     message: '' 
   });
 
-  console.log('[UniqueIdManager] Local state:', {
+  console.log('[UniqueIdManager] Local UI state:', {
     collectionForm,
     mintCount,
     isInitializing,
@@ -173,7 +157,6 @@ export const UniqueIdManager: React.FC = () => {
   // Initialize collection handler
   const handleInitializeCollection = async () => {
     console.log('[UniqueIdManager] === INITIALIZE COLLECTION HANDLER START ===');
-    console.log('[UniqueIdManager] Collection form data:', collectionForm);
 
     if (!collectionForm.name || !collectionForm.symbol || !collectionForm.baseUri) {
       showNotification('error', 'Please fill in all fields');
@@ -182,7 +165,6 @@ export const UniqueIdManager: React.FC = () => {
 
     setIsInitializing(true);
     try {
-      console.log('[UniqueIdManager] Calling initializeCollection...');
       const txId = await initializeCollection(
         collectionForm.name,
         collectionForm.symbol,
@@ -193,8 +175,6 @@ export const UniqueIdManager: React.FC = () => {
         console.log('[UniqueIdManager] Collection initialized successfully:', txId);
         showNotification('success', `Collection initialized! Transaction: ${txId.slice(0, 8)}...`);
         setCollectionForm({ name: '', symbol: '', baseUri: '' });
-      } else {
-        console.log('[UniqueIdManager] Collection initialization returned null');
       }
     } catch (err) {
       console.error('[UniqueIdManager] Collection initialization failed:', err);
@@ -202,23 +182,19 @@ export const UniqueIdManager: React.FC = () => {
     } finally {
       setIsInitializing(false);
     }
-    console.log('[UniqueIdManager] === INITIALIZE COLLECTION HANDLER END ===');
   };
 
   // Mint NFT handler
   const handleMintNFT = async () => {
     console.log('[UniqueIdManager] === MINT NFT HANDLER START ===');
-    console.log('[UniqueIdManager] Mint parameters:', { mintCount });
 
     setIsMinting(true);
     try {
       let result;
       if (mintCount === 1) {
-        console.log('[UniqueIdManager] Minting single NFT');
         const nft = await mintNFT();
         result = nft ? [nft] : null;
       } else {
-        console.log('[UniqueIdManager] Minting multiple NFTs:', mintCount);
         result = await mintMultipleNFTs(mintCount);
       }
       
@@ -229,8 +205,6 @@ export const UniqueIdManager: React.FC = () => {
         });
         setMintedNFTs(prev => [...result, ...prev]);
         showNotification('success', `Successfully minted ${result.length} NFT(s)`);
-      } else {
-        console.log('[UniqueIdManager] Minting returned null');
       }
     } catch (err) {
       console.error('[UniqueIdManager] Minting failed:', err);
@@ -238,87 +212,59 @@ export const UniqueIdManager: React.FC = () => {
     } finally {
       setIsMinting(false);
     }
-    console.log('[UniqueIdManager] === MINT NFT HANDLER END ===');
   };
 
-  // Search by unique ID
+  // Search handlers
   const handleSearchByUniqueId = async () => {
-    console.log('[UniqueIdManager] === SEARCH BY UNIQUE ID START ===');
-    console.log('[UniqueIdManager] Search input:', searchUniqueId);
-
     try {
       const uniqueIdArray = searchUniqueId.split(',').map(id => parseInt(id.trim()));
-      console.log('[UniqueIdManager] Parsed unique ID array:', uniqueIdArray);
-      
       const exists = await uniqueIdExists(uniqueIdArray);
       const tokenId = exists ? await getTokenIdByUniqueId(uniqueIdArray) : null;
       
-      const results = {
+      setSearchResults({
         type: 'uniqueId',
         uniqueId: uniqueIdArray,
         exists,
         tokenId
-      };
-      
-      console.log('[UniqueIdManager] Search results:', results);
-      setSearchResults(results);
+      });
     } catch (err) {
-      console.error('[UniqueIdManager] Search by unique ID failed:', err);
       showNotification('error', `Search failed: ${(err as Error).message}`);
     }
-    console.log('[UniqueIdManager] === SEARCH BY UNIQUE ID END ===');
   };
 
-  // Search by token ID
   const handleSearchByTokenId = async () => {
-    console.log('[UniqueIdManager] === SEARCH BY TOKEN ID START ===');
-    console.log('[UniqueIdManager] Search input:', searchTokenId);
-
     try {
       const tokenId = parseInt(searchTokenId);
-      console.log('[UniqueIdManager] Parsed token ID:', tokenId);
-      
       const uniqueId = await getUniqueIdByTokenId(tokenId);
       
-      const results = {
+      setSearchResults({
         type: 'tokenId',
         tokenId,
         uniqueId
-      };
-      
-      console.log('[UniqueIdManager] Search results:', results);
-      setSearchResults(results);
+      });
     } catch (err) {
-      console.error('[UniqueIdManager] Search by token ID failed:', err);
       showNotification('error', `Search failed: ${(err as Error).message}`);
     }
-    console.log('[UniqueIdManager] === SEARCH BY TOKEN ID END ===');
   };
 
-  // Search by mint address
   const handleSearchByMint = async () => {
-    console.log('[UniqueIdManager] === SEARCH BY MINT START ===');
-    console.log('[UniqueIdManager] Search input:', searchMint);
-
     try {
       const mintPubkey = new PublicKey(searchMint);
-      console.log('[UniqueIdManager] Parsed mint pubkey:', mintPubkey.toBase58());
-      
       const uniqueId = await getUniqueIdByMint(mintPubkey);
       
-      const results = {
+      setSearchResults({
         type: 'mint',
         mint: searchMint,
         uniqueId
-      };
-      
-      console.log('[UniqueIdManager] Search results:', results);
-      setSearchResults(results);
+      });
     } catch (err) {
-      console.error('[UniqueIdManager] Search by mint failed:', err);
       showNotification('error', `Search failed: ${(err as Error).message}`);
     }
-    console.log('[UniqueIdManager] === SEARCH BY MINT END ===');
+  };
+
+  const handleRefresh = () => {
+    console.log('[UniqueIdManager] Manual refresh triggered');
+    refreshAllData();
   };
 
   // Not connected state
@@ -349,10 +295,7 @@ export const UniqueIdManager: React.FC = () => {
 
   // Network not ready state
   if (!isSolanaNetwork || !isNetworkReady) {
-    console.log('[UniqueIdManager] Rendering network issue state:', {
-      isSolanaNetwork,
-      isNetworkReady
-    });
+    console.log('[UniqueIdManager] Rendering network issue state');
     return (
       <Card className="w-full max-w-md mx-auto mt-10">
         <CardHeader>
@@ -396,7 +339,7 @@ export const UniqueIdManager: React.FC = () => {
         </Alert>
       )}
 
-      {/* Header Stats */}
+      {/* Header Stats - READ FROM STORE */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -452,7 +395,7 @@ export const UniqueIdManager: React.FC = () => {
         </CardContent>
         <CardFooter>
           <Button 
-            onClick={refreshData} 
+            onClick={handleRefresh} 
             variant="outline" 
             size="sm"
             disabled={loading}
@@ -831,7 +774,7 @@ export const UniqueIdManager: React.FC = () => {
           )}
         </TabsContent>
 
-        {/* History Tab */}
+        {/* History Tab - READ FROM STORE */}
         <TabsContent value="history" className="space-y-4">
           <Card>
             <CardHeader>
@@ -841,7 +784,7 @@ export const UniqueIdManager: React.FC = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {collection && collection.uniqueIdToTokenId.length > 0 ? (
+              {collection && collection.tokenIdToUniqueId.length > 0 ? (
                 <Table>
                   <TableCaption>Complete mapping of unique IDs to token IDs</TableCaption>
                   <TableHeader>
@@ -854,7 +797,6 @@ export const UniqueIdManager: React.FC = () => {
                   <TableBody>
                     {collection.tokenIdToUniqueId.map((item, index) => {
                       const mint = collection.mintToUniqueId[index];
-                      // Convert BN to number for display
                       const tokenId = typeof item.tokenId === 'object' 
                         ? item.tokenId.toString() 
                         : item.tokenId.toString();
@@ -893,7 +835,10 @@ export const UniqueIdManager: React.FC = () => {
                 <Alert>
                   <Info className="h-4 w-4" />
                   <AlertDescription>
-                    No NFTs minted yet. Mint your first NFT to see the history.
+                    {loading 
+                      ? "Loading NFT data..." 
+                      : "No NFTs minted yet. Mint your first NFT to see the history."
+                    }
                   </AlertDescription>
                 </Alert>
               )}

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useMemo, useCallback } from 'react';
 import { PublicKey } from '@solana/web3.js';
 
 interface SelectionState {
@@ -55,34 +55,33 @@ export const SelectionProvider: React.FC<SelectionProviderProps> = ({ children }
     operationType
   });
 
-  // Token selection handlers
-  const handleSetSelectedTokenAccount = (account: PublicKey | null) => {
+  // Memoized handlers to prevent recreation on every render
+  const handleSetSelectedTokenAccount = useCallback((account: PublicKey | null) => {
     console.log('[SelectionContext] Setting selected token account:', {
       from: selectedTokenAccount?.toBase58(),
       to: account?.toBase58()
     });
     setSelectedTokenAccount(account);
-  };
+  }, [selectedTokenAccount]);
 
-  const handleSetSelectedTokenMint = (mint: PublicKey | null) => {
+  const handleSetSelectedTokenMint = useCallback((mint: PublicKey | null) => {
     console.log('[SelectionContext] Setting selected token mint:', {
       from: selectedTokenMint?.toBase58(),
       to: mint?.toBase58()
     });
     setSelectedTokenMint(mint);
-  };
+  }, [selectedTokenMint]);
 
-  // NFT selection handlers
-  const handleSetSelectedNFT = (nft: PublicKey | null) => {
+  const handleSetSelectedNFT = useCallback((nft: PublicKey | null) => {
     console.log('[SelectionContext] Setting selected NFT:', {
       from: selectedNFT?.toBase58(),
       to: nft?.toBase58()
     });
     setSelectedNFT(nft);
-  };
+  }, [selectedNFT]);
 
-  // Operation management
-  const startOperation = (type: SelectionState['operationType']) => {
+  // Operation management - memoized
+  const startOperation = useCallback((type: SelectionState['operationType']) => {
     console.log('[SelectionContext] Starting operation:', {
       type,
       previousOperation: operationType,
@@ -90,19 +89,19 @@ export const SelectionProvider: React.FC<SelectionProviderProps> = ({ children }
     });
     setOperationType(type);
     setOperationInProgress(true);
-  };
+  }, [operationType, operationInProgress]);
 
-  const endOperation = () => {
+  const endOperation = useCallback(() => {
     console.log('[SelectionContext] Ending operation:', {
       type: operationType,
       wasInProgress: operationInProgress
     });
     setOperationType(null);
     setOperationInProgress(false);
-  };
+  }, [operationType, operationInProgress]);
 
-  // Utility functions
-  const clearAllSelections = () => {
+  // Utility functions - memoized
+  const clearAllSelections = useCallback(() => {
     console.log('[SelectionContext] Clearing all selections:', {
       hadTokenAccount: !!selectedTokenAccount,
       hadNFT: !!selectedNFT,
@@ -112,9 +111,9 @@ export const SelectionProvider: React.FC<SelectionProviderProps> = ({ children }
     setSelectedNFT(null);
     setSelectedTokenMint(null);
     endOperation();
-  };
+  }, [selectedTokenAccount, selectedNFT, selectedTokenMint, endOperation]);
 
-  const hasValidSelection = (): boolean => {
+  const hasValidSelection = useCallback((): boolean => {
     const hasSelection = !!(selectedTokenAccount || selectedNFT || selectedTokenMint);
     console.log('[SelectionContext] Checking valid selection:', {
       hasTokenAccount: !!selectedTokenAccount,
@@ -123,9 +122,10 @@ export const SelectionProvider: React.FC<SelectionProviderProps> = ({ children }
       hasValidSelection: hasSelection
     });
     return hasSelection;
-  };
+  }, [selectedTokenAccount, selectedNFT, selectedTokenMint]);
 
-  const contextValue: SelectionContextType = {
+  // Memoize the entire context value to prevent unnecessary re-renders
+  const contextValue = useMemo<SelectionContextType>(() => ({
     // State
     selectedTokenAccount,
     selectedNFT,
@@ -133,7 +133,7 @@ export const SelectionProvider: React.FC<SelectionProviderProps> = ({ children }
     operationInProgress,
     operationType,
 
-    // Actions
+    // Actions (already memoized above)
     setSelectedTokenAccount: handleSetSelectedTokenAccount,
     setSelectedTokenMint: handleSetSelectedTokenMint,
     setSelectedNFT: handleSetSelectedNFT,
@@ -141,7 +141,20 @@ export const SelectionProvider: React.FC<SelectionProviderProps> = ({ children }
     endOperation,
     clearAllSelections,
     hasValidSelection,
-  };
+  }), [
+    selectedTokenAccount,
+    selectedNFT,
+    selectedTokenMint,
+    operationInProgress,
+    operationType,
+    handleSetSelectedTokenAccount,
+    handleSetSelectedTokenMint,
+    handleSetSelectedNFT,
+    startOperation,
+    endOperation,
+    clearAllSelections,
+    hasValidSelection,
+  ]);
 
   console.log('[SelectionContext] === PROVIDER RENDER END ===');
 
@@ -152,7 +165,7 @@ export const SelectionProvider: React.FC<SelectionProviderProps> = ({ children }
   );
 };
 
-// Custom hook for using selection context
+// Custom hook for using selection context - memoized
 export const useSelection = (): SelectionContextType => {
   console.log('[SelectionContext] === USE SELECTION HOOK CALL ===');
   
@@ -175,7 +188,7 @@ export const useSelection = (): SelectionContextType => {
   return context;
 };
 
-// Utility hooks for specific selections
+// Utility hooks for specific selections - memoized
 export const useTokenSelection = () => {
   const { 
     selectedTokenAccount, 
@@ -189,13 +202,14 @@ export const useTokenSelection = () => {
     hasTokenMint: !!selectedTokenMint
   });
 
-  return {
+  // Memoize the returned object to prevent recreation
+  return useMemo(() => ({
     selectedTokenAccount,
     selectedTokenMint,
     setSelectedTokenAccount,
     setSelectedTokenMint,
     hasTokenSelection: !!(selectedTokenAccount || selectedTokenMint)
-  };
+  }), [selectedTokenAccount, selectedTokenMint, setSelectedTokenAccount, setSelectedTokenMint]);
 };
 
 export const useNFTSelection = () => {
@@ -205,11 +219,12 @@ export const useNFTSelection = () => {
     hasSelectedNFT: !!selectedNFT
   });
 
-  return {
+  // Memoize the returned object to prevent recreation
+  return useMemo(() => ({
     selectedNFT,
     setSelectedNFT,
     hasNFTSelection: !!selectedNFT
-  };
+  }), [selectedNFT, setSelectedNFT]);
 };
 
 export const useOperationState = () => {
@@ -225,11 +240,12 @@ export const useOperationState = () => {
     operationType
   });
 
-  return {
+  // Memoize the returned object and isOperationType function
+  return useMemo(() => ({
     operationInProgress,
     operationType,
     startOperation,
     endOperation,
     isOperationType: (type: SelectionState['operationType']) => operationType === type
-  };
+  }), [operationInProgress, operationType, startOperation, endOperation]);
 };
