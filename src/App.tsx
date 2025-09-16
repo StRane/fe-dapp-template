@@ -10,6 +10,7 @@ import { TokenManager } from "./components/TokenManager";
 import NFTVaultInterface from "@/components/VaultManager";
 import { SelectionProvider } from "@/context/SelectionContext";
 import { useNetworkSync } from '@/lib/useNetworkSync';
+import { AssetIdentityHub } from "./components/AssetIdentityHub";
 
 import {
   projectId,
@@ -124,6 +125,7 @@ export function App() {
               <div className="min-h-screen">
                 <ActionButtonList />
                 <Routes>
+                  <Route path="/identitymanager" element={<AssetIdentityHub />} />
                   <Route path="/token" element={<TokenManager />} />
                   <Route path="/uniqueid" element={<UniqueIdManager />} />
                   <Route path="/vault" element={<NFTVaultInterface />} />

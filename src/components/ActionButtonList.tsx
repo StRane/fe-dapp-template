@@ -40,6 +40,8 @@ export const ActionButtonList = () => {
   // Determine current tab based on pathname
   const getCurrentTab = () => {
     switch (location.pathname) {
+      case "/identitymanager":
+        return "identitymanager";
       case "/token":
         return "token";
       case "/vault":
@@ -55,6 +57,9 @@ export const ActionButtonList = () => {
 
   const handleTabChange = (value: string) => {
     switch (value) {
+      case "identitymanager":
+        navigate("/identitymanager");
+        break;
       case "token":
         navigate("/token");
         break;
@@ -76,6 +81,10 @@ export const ActionButtonList = () => {
         {solanaAccountState.isConnected && (
           <Tabs value={currentTab} onValueChange={handleTabChange}>
             <TabsList>
+              <TabsTrigger value="identitymanager" className="flex items-center gap-2">
+                <Zap className="w-4 h-4" />
+                Identity Manager
+              </TabsTrigger>
               <TabsTrigger value="token" className="flex items-center gap-2">
                 <Zap className="w-4 h-4" />
                 Test Token
