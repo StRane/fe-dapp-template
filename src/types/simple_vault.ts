@@ -14,6 +14,59 @@ export type SimpleVault = {
   },
   "instructions": [
     {
+      "name": "closeVault",
+      "discriminator": [
+        141,
+        103,
+        17,
+        126,
+        72,
+        75,
+        29,
+        29
+      ],
+      "accounts": [
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  118,
+                  51
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "assetMint"
+              },
+              {
+                "kind": "account",
+                "path": "authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "assetMint"
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": []
+    },
+    {
       "name": "deposit",
       "discriminator": [
         242,
@@ -172,7 +225,10 @@ export type SimpleVault = {
                   97,
                   114,
                   101,
-                  115
+                  115,
+                  95,
+                  118,
+                  51
                 ]
               },
               {
@@ -280,11 +336,18 @@ export type SimpleVault = {
               {
                 "kind": "const",
                 "value": [
-                  118,
-                  97,
                   117,
-                  108,
-                  116
+                  115,
+                  101,
+                  114,
+                  95,
+                  105,
+                  110,
+                  102,
+                  111,
+                  95,
+                  118,
+                  51
                 ]
               },
               {
@@ -351,7 +414,10 @@ export type SimpleVault = {
                   97,
                   117,
                   108,
-                  116
+                  116,
+                  95,
+                  118,
+                  51
                 ]
               },
               {
@@ -639,7 +705,10 @@ export type SimpleVault = {
                   97,
                   114,
                   101,
-                  115
+                  115,
+                  95,
+                  118,
+                  51
                 ]
               },
               {
@@ -747,11 +816,18 @@ export type SimpleVault = {
               {
                 "kind": "const",
                 "value": [
-                  118,
-                  97,
                   117,
-                  108,
-                  116
+                  115,
+                  101,
+                  114,
+                  95,
+                  105,
+                  110,
+                  102,
+                  111,
+                  95,
+                  118,
+                  51
                 ]
               },
               {

@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ActionButtonList } from "./components/ActionButtonList";
 import { UniqueIdManager } from "./components/UniqueIdManager";
 import { TokenManager } from "./components/TokenManager";
-import NFTVaultInterface from "@/components/VaultManager";
+import {VaultManager} from "@/components/VaultManager";
 import { SelectionProvider } from "@/context/SelectionContext";
 import { useNetworkSync } from '@/lib/useNetworkSync';
 import { AssetIdentityHub } from "./components/AssetIdentityHub";
@@ -128,7 +128,7 @@ export function App() {
                   <Route path="/identitymanager" element={<AssetIdentityHub />} />
                   <Route path="/token" element={<TokenManager />} />
                   <Route path="/uniqueid" element={<UniqueIdManager />} />
-                  <Route path="/vault" element={<NFTVaultInterface />} />
+                  <Route path="/vault" element={<VaultManager />} />
                 </Routes>
               </div>
             </Router>
