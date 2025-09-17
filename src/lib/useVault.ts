@@ -65,11 +65,27 @@ export interface UseVaultReturn {
     // Actions only (no direct data fetching in components)
     deposit: (amount: BN, assetMint: PublicKey, userNftMint: PublicKey) => Promise<string | null>;
     withdraw: (shares: BN, assetMint: PublicKey, userNftMint: PublicKey) => Promise<string | null>;
-
+    transactionState: () => TransactionState
     // Store actions
     refreshVaultData: () => void;
     refreshUserPosition: () => void;
     refreshAllData: () => void;
+}
+
+export enum TransactionStatus {
+    IDLE = 'idle',
+    BUILDING = 'building',
+    SIGNING = 'signing',
+    CONFIRMING = 'confirming',
+    SUCCESS = 'success',
+    FAILED = 'failed'
+}
+
+export interface TransactionState {
+    status: TransactionStatus;
+    signature: string | null;
+    error: string | null;
+    message: string;
 }
 
 export const useVault = (): UseVaultReturn => {
@@ -79,10 +95,12 @@ export const useVault = (): UseVaultReturn => {
     const { address, isConnected } = useAppKitAccount();
     const { caipNetwork } = useAppKitNetwork();
     const { walletProvider } = useAppKitProvider<AnchorWallet>('solana');
-    const [notification, setNotification] = useState<{
-        type: 'success' | 'error' | null;
-        message: string;
-    }>({ type: null, message: '' });
+    const [transactionState, setTransactionState] = useState<TransactionState>({
+        status: TransactionStatus.IDLE,
+        signature: null,
+        error: null,
+        message: ''
+    });
 
     // Network store (read-only)
     const { connection, currentNetwork, isSolanaNetwork, isReady: isNetworkReady } = useNetworkStore();
@@ -408,66 +426,243 @@ export const useVault = (): UseVaultReturn => {
     }, []);
 
     // Transaction functions
+
     const deposit = useCallback(async (
         amount: BN,
         assetMint: PublicKey,    // From context: selectedTokenMint 
         userNftMint: PublicKey   // From context: selectedNFT
     ): Promise<string | null> => {
+        console.log('[useVault] === DEPOSIT START ===');
+        console.log('[useVault] Deposit parameters:', {
+            amount: amount.toString(),
+            assetMint: assetMint.toBase58(),
+            userNftMint: userNftMint.toBase58()
+        });
 
-        const userWallet = new PublicKey(address);
+        if (!program || !address || !connection) {
+            const error = 'Missing program, address, or connection for deposit';
+            console.error('[useVault] Deposit failed:', error);
 
-        // You already have this from context - no derivation needed!
-        const userAssetToken = selectedTokenAccount; // Direct from context
+            setTransactionState({
+                status: TransactionStatus.FAILED,
+                signature: null,
+                error: 'Connection error',
+                message: 'Wallet not connected or program not loaded'
+            });
 
-        // Only derive the NFT token account
-        const userNftToken = getAssociatedTokenAddressSync(userNftMint, userWallet);
+            return null;
+        }
 
-        // Derive user share PDA (seeds: ["user_shares_v3", nft_mint])
-        const [userSharePda] = PublicKey.findProgramAddressSync(
-            [Buffer.from("user_shares_v3"), userNftMint.toBuffer()],
-            program.programId
-        );
+        try {
+            // Reset state and start building
+            setTransactionState({
+                status: TransactionStatus.BUILDING,
+                signature: null,
+                error: null,
+                message: 'Building transaction and deriving accounts...'
+            });
 
-        // Derive user share token account (ATA of userSharePda + share_mint)
-        const userShareToken = getAssociatedTokenAddressSync(
-            CONFIG.SHARE_MINT,
-            userSharePda,
-            true // allowOwnerOffCurve for PDA
-        );
+            setLoading(true);
 
-        // Derive NFT user info PDA (seeds: ["user_info_v3", nft_token, share_token])
-        const [nftInfo] = PublicKey.findProgramAddressSync(
-            [
-                Buffer.from("user_info_v3"),
-                userNftToken.toBuffer(),
-                userShareToken.toBuffer()
-            ],
-            program.programId
-        );
+            const userWallet = new PublicKey(address);
 
-        // Execute transaction
-        const tx = await program.methods
-            .deposit(amount)
-            .accounts({
-                user: userWallet,
-                vault: CONFIG.VAULT_PDA,
-                nftCollection: CONFIG.COLLECTION_PDA,
-                userNftToken: userNftToken,
-                userNftMint: userNftMint,
-                assetMint: assetMint,
+            // You already have this from context - no derivation needed!
+            const userAssetToken = selectedTokenAccount; // Direct from context
 
-                vaultTokenAccount: CONFIG.VAULT_TOKEN_ACCOUNT,
-                shareMint: CONFIG.SHARE_MINT,
+            // Only derive the NFT token account
+            const userNftToken = getAssociatedTokenAddressSync(userNftMint, userWallet);
+
+            // Derive user share PDA (seeds: ["user_shares_v3", nft_mint])
+            const [userSharePda] = PublicKey.findProgramAddressSync(
+                [Buffer.from("user_shares_v3"), userNftMint.toBuffer()],
+                program.programId
+            );
+
+            // Derive user share token account (ATA of userSharePda + share_mint)
+            const userShareToken = getAssociatedTokenAddressSync(
+                CONFIG.SHARE_MINT,
+                userSharePda,
+                true // allowOwnerOffCurve for PDA
+            );
+
+            // Derive NFT user info PDA (seeds: ["user_info_v3", nft_token, share_token])
+            const [nftInfo] = PublicKey.findProgramAddressSync(
+                [
+                    Buffer.from("user_info_v3"),
+                    userNftToken.toBuffer(),
+                    userShareToken.toBuffer()
+                ],
+                program.programId
+            );
+
+            console.log('[useVault] Derived accounts:', {
+                userAssetToken: userAssetToken?.toBase58(),
+                userNftToken: userNftToken.toBase58(),
+                userSharePda: userSharePda.toBase58(),
+                userShareToken: userShareToken.toBase58(),
+                nftInfo: nftInfo.toBase58()
+            });
+
+            // Update state to signing
+            setTransactionState({
+                status: TransactionStatus.SIGNING,
+                signature: null,
+                error: null,
+                message: 'Please sign the transaction in your wallet...'
+            });
+
+            console.log('[useVault] Executing deposit transaction...');
+
+            // Execute transaction
+            const tx = await program.methods
+                .deposit(amount)
+                .accounts({
+                    user: userWallet,
+                    vault: CONFIG.VAULT_PDA,
+                    nftCollection: CONFIG.COLLECTION_PDA,
+                    userNftToken: userNftToken,
+                    userNftMint: userNftMint,
+                    assetMint: assetMint,
+
+                    vaultTokenAccount: CONFIG.VAULT_TOKEN_ACCOUNT,
+                    shareMint: CONFIG.SHARE_MINT,
+
+
+                })
+                .rpc();
+
+            // Update state to confirming
+            setTransactionState({
+                status: TransactionStatus.CONFIRMING,
+                signature: tx,
+                error: null,
+                message: 'Transaction sent, waiting for network confirmation...'
+            });
+
+            console.log('[useVault] Transaction sent:', tx);
+
+            // Wait for confirmation
+            try {
+                const confirmation = await connection.confirmTransaction(tx, 'confirmed');
+
+                if (confirmation.value.err) {
+                    throw new Error(`Transaction failed during confirmation: ${confirmation.value.err}`);
+                }
+
+                // Success state
+                setTransactionState({
+                    status: TransactionStatus.SUCCESS,
+                    signature: tx,
+                    error: null,
+                    message: 'Deposit successful! Transaction confirmed on network.'
+                });
+
+                console.log('[useVault] Transaction confirmed successfully');
+
+                // Schedule data refresh and final success message
+                setTimeout(() => {
+                    refreshAllData();
+                    setTransactionState({
+                        status: TransactionStatus.SUCCESS,
+                        signature: tx,
+                        error: null,
+                        message: 'Balances updated successfully!'
+                    });
+
+                    // Reset to idle after showing success
+                    setTimeout(() => {
+                        setTransactionState({
+                            status: TransactionStatus.IDLE,
+                            signature: null,
+                            error: null,
+                            message: ''
+                        });
+                    }, 3000);
+                }, 1000);
+
+                console.log('[useVault] === DEPOSIT END (SUCCESS) ===');
+                return tx;
+
+            } catch (confirmError) {
+                console.error('[useVault] Transaction confirmation failed:', confirmError);
+
+                setTransactionState({
+                    status: TransactionStatus.FAILED,
+                    signature: tx,
+                    error: `Confirmation failed: ${(confirmError as Error).message}`,
+                    message: 'Transaction was sent but network confirmation failed. Check the transaction status manually.'
+                });
+
+                // Reset to idle after showing error
+                setTimeout(() => {
+                    setTransactionState({
+                        status: TransactionStatus.IDLE,
+                        signature: null,
+                        error: null,
+                        message: ''
+                    });
+                }, 5000);
+
+                return null;
+            }
+
+        } catch (err) {
+            console.error('[useVault] Deposit error:', err);
+
+            let errorMessage = 'Transaction failed';
+            let userMessage = 'An unexpected error occurred';
+
+            if (err instanceof Error) {
+                if (err.message.includes('User rejected') || err.message.includes('rejected')) {
+                    errorMessage = 'Transaction cancelled';
+                    userMessage = 'Transaction was cancelled by user';
+                } else if (err.message.includes('already been processed')) {
+                    errorMessage = 'Duplicate transaction';
+                    userMessage = 'This transaction has already been processed';
+                } else if (err.message.includes('insufficient funds')) {
+                    errorMessage = 'Insufficient funds';
+                    userMessage = 'Insufficient funds to complete the transaction';
+                } else if (err.message.includes('overflow')) {
+                    errorMessage = 'Amount too large';
+                    userMessage = 'Transaction amount causes mathematical overflow. Try a smaller amount.';
+                } else {
+                    errorMessage = err.message;
+                    userMessage = `Transaction failed: ${err.message}`;
+                }
+            }
+
+            setTransactionState({
+                status: TransactionStatus.FAILED,
+                signature: null,
+                error: errorMessage,
+                message: userMessage
+            });
+
+            // Reset to idle after showing error
+            setTimeout(() => {
+                setTransactionState({
+                    status: TransactionStatus.IDLE,
+                    signature: null,
+                    error: null,
+                    message: ''
+                });
+            }, 5000);
+
+            console.log('[useVault] === DEPOSIT END (ERROR) ===');
+            return null;
+        } finally {
+            setLoading(false);
+        }
+    }, [program, address, connection, selectedTokenAccount, setLoading, refreshAllData]);
 
 
 
-            })
-            .rpc();
 
-        return tx;
-    }, [program, address, selectedTokenAccount, getVaultConfig]);
-
-    const withdraw = useCallback(async (shares: BN, assetMint: PublicKey, userNftMint: PublicKey): Promise<string | null> => {
+    const withdraw = useCallback(async (
+        shares: BN,
+        assetMint: PublicKey,    // From context: selectedTokenMint 
+        userNftMint: PublicKey   // From context: selectedNFT
+    ): Promise<string | null> => {
         console.log('[useVault] === WITHDRAW START ===');
         console.log('[useVault] Withdraw parameters:', {
             shares: shares.toString(),
@@ -478,32 +673,169 @@ export const useVault = (): UseVaultReturn => {
         if (!program || !address || !connection) {
             const error = 'Missing program, address, or connection for withdraw';
             console.error('[useVault] Withdraw failed:', error);
-            setError(error);
+
+            setTransactionState({
+                status: TransactionStatus.FAILED,
+                signature: null,
+                error: 'Connection error',
+                message: 'Wallet not connected or program not loaded'
+            });
+
             return null;
         }
 
         try {
+            // Reset state and start building
+            setTransactionState({
+                status: TransactionStatus.BUILDING,
+                signature: null,
+                error: null,
+                message: 'Building withdraw transaction and deriving accounts...'
+            });
+
             setLoading(true);
 
-            // TODO: Implement withdraw transaction logic
-            console.log('[useVault] Withdraw transaction logic to be implemented');
+            const userWallet = new PublicKey(address);
 
-            // After successful withdraw, refresh data
+            // ===== ACCOUNT DERIVATIONS (Same as deposit) =====
+
+            // User's asset token account (from context)
+            const userAssetToken = selectedTokenAccount;
+            if (!userAssetToken) {
+                throw new Error('User asset token account not found in context');
+            }
+
+            // User's NFT token account (derived)
+            const userNftToken = getAssociatedTokenAddressSync(userNftMint, userWallet);
+
+            // Derive user share PDA (seeds: ["user_shares_v3", nft_mint])
+            const [userSharePda] = PublicKey.findProgramAddressSync(
+                [CONFIG.USER_SHARES_SEED, userNftMint.toBuffer()],
+                program.programId
+            );
+
+            // Derive user share token account (ATA of userSharePda + share_mint)
+            const userShareToken = getAssociatedTokenAddressSync(
+                CONFIG.SHARE_MINT,
+                userSharePda,
+                true // allowOwnerOffCurve for PDA
+            );
+
+            // Derive NFT user info PDA (seeds: ["user_info_v3", nft_token, share_token])
+            const [nftInfo] = PublicKey.findProgramAddressSync(
+                [
+                    CONFIG.USER_INFO_SEED,
+                    userNftToken.toBuffer(),
+                    userShareToken.toBuffer()
+                ],
+                program.programId
+            );
+
+            console.log('[useVault] Derived accounts for withdraw:', {
+                userAssetToken: userAssetToken.toBase58(),
+                userNftToken: userNftToken.toBase58(),
+                userSharePda: userSharePda.toBase58(),
+                userShareToken: userShareToken.toBase58(),
+                nftInfo: nftInfo.toBase58()
+            });
+
+            // ===== VALIDATION: Check if user has enough shares =====
+            try {
+                const userShareTokenAccount = await connection.getAccountInfo(userShareToken);
+                if (!userShareTokenAccount) {
+                    throw new Error('User has no share tokens to withdraw');
+                }
+
+                // Parse token account to get balance
+                const shareTokenInfo = await connection.getTokenAccountBalance(userShareToken);
+                const availableShares = new BN(shareTokenInfo.value.amount);
+
+                console.log('[useVault] Share balance check:', {
+                    requestedShares: shares.toString(),
+                    availableShares: availableShares.toString()
+                });
+
+                if (availableShares.lt(shares)) {
+                    throw new Error(`Insufficient shares. Available: ${availableShares.toString()}, Requested: ${shares.toString()}`);
+                }
+            } catch (err) {
+                throw new Error(`Cannot validate share balance: ${(err as Error).message}`);
+            }
+
+            // Update state to signing
+            setTransactionState({
+                status: TransactionStatus.SIGNING,
+                signature: null,
+                error: null,
+                message: 'Please sign the withdraw transaction in your wallet...'
+            });
+
+            console.log('[useVault] Executing withdraw transaction...');
+
+            // ===== EXECUTE WITHDRAW TRANSACTION =====
+            const tx = await program.methods
+                .withdraw(shares)
+                .accounts({
+                    user: userWallet,
+                    vault: CONFIG.VAULT_PDA,
+                    nftCollection: CONFIG.COLLECTION_PDA,
+                    userNftToken: userNftToken,
+                    userNftMint: userNftMint,
+                    assetMint: assetMint,
+                    vaultTokenAccount: CONFIG.VAULT_TOKEN_ACCOUNT,
+                    shareMint: CONFIG.SHARE_MINT,
+                })
+                .rpc();
+
+            console.log('[useVault] Withdraw transaction sent:', tx);
+
+            // Update state to confirming
+            setTransactionState({
+                status: TransactionStatus.CONFIRMING,
+                signature: tx,
+                error: null,
+                message: 'Transaction sent! Waiting for confirmation...'
+            });
+
+            // ===== WAIT FOR CONFIRMATION =====
+            console.log('[useVault] Waiting for transaction confirmation...');
+            await connection.confirmTransaction(tx, 'confirmed');
+
+            console.log('[useVault] Withdraw transaction confirmed!');
+
+            // Update state to success
+            setTransactionState({
+                status: TransactionStatus.SUCCESS,
+                signature: tx,
+                error: null,
+                message: 'Withdraw completed successfully!'
+            });
+
+            // ===== REFRESH DATA AFTER SUCCESS =====
+            console.log('[useVault] Refreshing data after successful withdraw...');
             refreshAllData();
 
             console.log('[useVault] === WITHDRAW END (SUCCESS) ===');
-            return 'withdraw-tx-signature';
+            return tx;
 
         } catch (err) {
             const error = `Withdraw failed: ${(err as Error).message}`;
             console.error('[useVault] Withdraw error:', err);
+
+            setTransactionState({
+                status: TransactionStatus.FAILED,
+                signature: null,
+                error: error,
+                message: 'Withdraw transaction failed'
+            });
+
             setError(error);
             console.log('[useVault] === WITHDRAW END (ERROR) ===');
             return null;
         } finally {
             setLoading(false);
         }
-    }, [program, address, connection, setError, setLoading, refreshAllData]);
+    }, [program, address, connection, selectedTokenAccount, setError, setLoading, setTransactionState, refreshAllData]);
 
     console.log('[useVault] === HOOK CALL END ===');
 
@@ -536,6 +868,7 @@ export const useVault = (): UseVaultReturn => {
         // Computed values
         programId: CONFIG.PROGRAM_ID,
         vaultConfig: getVaultConfig(),
+        transactionState,
 
         // Actions only
         deposit,
