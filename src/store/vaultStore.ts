@@ -379,7 +379,6 @@ export const selectUserPositionLoading = (state: VaultStore) => state.userPositi
 export const selectVaultError = (state: VaultStore) => state.error;
 export const selectVaultConfig = () => CONFIG;
 
-// import { create } from 'zustand';
 // import { devtools } from 'zustand/middleware';
 // import { immer } from 'zustand/middleware/immer';
 // import { Program } from '@coral-xyz/anchor';
