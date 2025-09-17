@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BN } from "@coral-xyz/anchor";
 import { PublicKey } from "@solana/web3.js";
-import { useAppKitAccount } from "@reown/appkit/react";
+import { useAppKitAccount, useAppKitProvider } from "@reown/appkit/react";
+import { AnchorWallet } from "@solana/wallet-adapter-react";
 
 // Import hooks
 import { useVault } from "@/lib/useVault";
@@ -104,57 +105,90 @@ export const VaultManager: React.FC = () => {
     refreshAllData,
   } = useVault();
 
-  console.log("[VaultManager] Store state from hook:", {
-    hasConnection: !!connection,
-    currentNetwork,
-    isNetworkReady,
-    hasProgram: !!program,
-    hasVault: !!vault,
-    hasSelectedPosition: !!selectedNFTPosition,
-    totalPositions: allUserPositions.length,
-    loading,
-    userPositionLoading,
-    hasError: !!error,
-  });
-
   // Local UI state
   const [depositAmount, setDepositAmount] = useState("100");
   const [withdrawShares, setWithdrawShares] = useState("50");
   const [isDepositing, setIsDepositing] = useState(false);
   const [isWithdrawing, setIsWithdrawing] = useState(false);
   const [notification, setNotification] = useState<{
-    type: 'success' | 'error' | null;
+    type: "success" | "error" | null;
     message: string;
-  }>({ type: null, message: '' });
+  }>({ type: null, message: "" });
 
-  console.log("[VaultManager] Local UI state:", {
-    depositAmount,
-    withdrawShares,
-    isDepositing,
-    isWithdrawing,
-    hasNotification: !!notification.type
-  });
+  const { walletProvider: debugProvider } =
+    useAppKitProvider<AnchorWallet>("solana");
+
+  useEffect(() => {
+    console.log("[VaultManager] === WALLET PROVIDER DEBUG ===");
+    console.log("[VaultManager] Solana provider:", {
+      exists: !!debugProvider,
+      type: typeof debugProvider,
+      publicKey: debugProvider?.publicKey?.toBase58(),
+      hasSignTransaction: !!debugProvider?.signTransaction,
+    });
+  }, [debugProvider]);
 
   // Show notification helper
-  const showNotification = (type: 'success' | 'error', message: string) => {
+  const showNotification = (type: "success" | "error", message: string) => {
     setNotification({ type, message });
-    setTimeout(() => setNotification({ type: null, message: '' }), 5000);
+    setTimeout(() => setNotification({ type: null, message: "" }), 5000);
   };
 
   // Copy to clipboard helper
   const copyToClipboard = async (text: string, label: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      showNotification('success', `${label} copied to clipboard`);
+      showNotification("success", `${label} copied to clipboard`);
     } catch (err) {
-      showNotification('error', `Failed to copy: ${(err as Error).message}`);
+      showNotification("error", `Failed to copy: ${(err as Error).message}`);
     }
   };
 
   // Deposit handler
   const handleDeposit = async () => {
+    console.log("[VaultManager] === DEPOSIT HANDLER START ===");
+
+    // DEBUG: Check all the deposit dependencies
+    console.log("[VaultManager] Deposit dependencies check:", {
+      hasProgram: !!program,
+      hasConnection: !!connection,
+      hasAddress: !!address,
+      selectedTokenMint: selectedTokenMint?.toBase58(),
+      selectedNFT: selectedNFT?.toBase58(),
+      isConnected,
+      isNetworkReady,
+      isSolanaNetwork,
+    });
+
     if (!selectedTokenMint || !selectedNFT) {
-      showNotification('error', 'Please select both token and NFT');
+      showNotification("error", "Please select both token and NFT");
+      return;
+    }
+
+    if (!depositAmount || parseFloat(depositAmount) <= 0) {
+      showNotification("error", "Please enter a valid deposit amount");
+      return;
+    }
+
+    // CRITICAL DEBUG: Check exactly what's missing for deposit
+    if (!program) {
+      console.error("[VaultManager] DEPOSIT BLOCKED: No program");
+      showNotification(
+        "error",
+        "Program not initialized. Check wallet connection."
+      );
+      return;
+    }
+
+    if (!address) {
+      console.error("[VaultManager] DEPOSIT BLOCKED: No address");
+      showNotification("error", "Wallet address not available.");
+      return;
+    }
+
+    if (!connection) {
+      console.error("[VaultManager] DEPOSIT BLOCKED: No connection");
+      showNotification("error", "Network connection not available.");
       return;
     }
 
@@ -162,15 +196,18 @@ export const VaultManager: React.FC = () => {
     try {
       const amount = new BN(parseFloat(depositAmount) * 1e9); // Convert to lamports
       const signature = await deposit(amount, selectedTokenMint, selectedNFT);
-      
+
       if (signature) {
-        showNotification('success', `Deposit successful! Signature: ${signature.slice(0, 8)}...`);
+        showNotification(
+          "success",
+          `Deposit successful! Signature: ${signature.slice(0, 8)}...`
+        );
         setDepositAmount("100");
       } else {
-        showNotification('error', 'Deposit failed');
+        showNotification("error", "Deposit failed");
       }
     } catch (err) {
-      showNotification('error', `Deposit failed: ${(err as Error).message}`);
+      showNotification("error", `Deposit failed: ${(err as Error).message}`);
     } finally {
       setIsDepositing(false);
     }
@@ -179,7 +216,7 @@ export const VaultManager: React.FC = () => {
   // Withdraw handler
   const handleWithdraw = async () => {
     if (!selectedTokenMint || !selectedNFT) {
-      showNotification('error', 'Please select both token and NFT');
+      showNotification("error", "Please select both token and NFT");
       return;
     }
 
@@ -187,15 +224,18 @@ export const VaultManager: React.FC = () => {
     try {
       const shares = new BN(parseFloat(withdrawShares) * 1e9); // Convert to lamports
       const signature = await withdraw(shares, selectedTokenMint, selectedNFT);
-      
+
       if (signature) {
-        showNotification('success', `Withdraw successful! Signature: ${signature.slice(0, 8)}...`);
+        showNotification(
+          "success",
+          `Withdraw successful! Signature: ${signature.slice(0, 8)}...`
+        );
         setWithdrawShares("50");
       } else {
-        showNotification('error', 'Withdraw failed');
+        showNotification("error", "Withdraw failed");
       }
     } catch (err) {
-      showNotification('error', `Withdraw failed: ${(err as Error).message}`);
+      showNotification("error", `Withdraw failed: ${(err as Error).message}`);
     } finally {
       setIsWithdrawing(false);
     }
@@ -230,13 +270,21 @@ export const VaultManager: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="flex items-center gap-2">
             <Badge variant={isConnected ? "default" : "secondary"}>
-              {isConnected ? <CheckCircle2 className="h-3 w-3" /> : <XCircle className="h-3 w-3" />}
+              {isConnected ? (
+                <CheckCircle2 className="h-3 w-3" />
+              ) : (
+                <XCircle className="h-3 w-3" />
+              )}
               Wallet: {isConnected ? "Connected" : "Disconnected"}
             </Badge>
           </div>
           <div className="flex items-center gap-2">
             <Badge variant={isNetworkReady ? "default" : "secondary"}>
-              {isNetworkReady ? <CheckCircle2 className="h-3 w-3" /> : <XCircle className="h-3 w-3" />}
+              {isNetworkReady ? (
+                <CheckCircle2 className="h-3 w-3" />
+              ) : (
+                <XCircle className="h-3 w-3" />
+              )}
               Network: {isNetworkReady ? "Ready" : "Not Ready"}
             </Badge>
           </div>
@@ -248,7 +296,11 @@ export const VaultManager: React.FC = () => {
           </div>
           <div className="flex items-center gap-2">
             <Badge variant={hasRequiredSelections ? "default" : "secondary"}>
-              {hasRequiredSelections ? <CheckCircle2 className="h-3 w-3" /> : <XCircle className="h-3 w-3" />}
+              {hasRequiredSelections ? (
+                <CheckCircle2 className="h-3 w-3" />
+              ) : (
+                <XCircle className="h-3 w-3" />
+              )}
               Selections: {hasRequiredSelections ? "Complete" : "Incomplete"}
             </Badge>
           </div>
@@ -258,11 +310,13 @@ export const VaultManager: React.FC = () => {
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium">Wallet Address:</span>
               <div className="flex items-center gap-2">
-                <span className="text-sm font-mono">{address.slice(0, 4)}...{address.slice(-4)}</span>
+                <span className="text-sm font-mono">
+                  {address.slice(0, 4)}...{address.slice(-4)}
+                </span>
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => copyToClipboard(address, 'Wallet address')}
+                  onClick={() => copyToClipboard(address, "Wallet address")}
                 >
                   <Copy className="h-3 w-3" />
                 </Button>
@@ -287,7 +341,11 @@ export const VaultManager: React.FC = () => {
             onClick={handleRefreshVault}
             disabled={loading}
           >
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
+            {loading ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <RefreshCw className="h-4 w-4" />
+            )}
           </Button>
         </CardTitle>
       </CardHeader>
@@ -303,11 +361,15 @@ export const VaultManager: React.FC = () => {
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Vault Owner</Label>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-mono">{vault.owner.toBase58().slice(0, 8)}...</span>
+                  <span className="text-sm font-mono">
+                    {vault.owner.toBase58().slice(0, 8)}...
+                  </span>
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => copyToClipboard(vault.owner.toBase58(), 'Vault owner')}
+                    onClick={() =>
+                      copyToClipboard(vault.owner.toBase58(), "Vault owner")
+                    }
                   >
                     <Copy className="h-3 w-3" />
                   </Button>
@@ -316,11 +378,15 @@ export const VaultManager: React.FC = () => {
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Asset Mint</Label>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-mono">{vault.assetMint.toBase58().slice(0, 8)}...</span>
+                  <span className="text-sm font-mono">
+                    {vault.assetMint.toBase58().slice(0, 8)}...
+                  </span>
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => copyToClipboard(vault.assetMint.toBase58(), 'Asset mint')}
+                    onClick={() =>
+                      copyToClipboard(vault.assetMint.toBase58(), "Asset mint")
+                    }
                   >
                     <Copy className="h-3 w-3" />
                   </Button>
@@ -328,11 +394,15 @@ export const VaultManager: React.FC = () => {
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Total Shares</Label>
-                <span className="text-sm font-mono">{vault.totalShares.toString()}</span>
+                <span className="text-sm font-mono">
+                  {vault.totalShares.toString()}
+                </span>
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Total Borrowed</Label>
-                <span className="text-sm font-mono">{vault.totalBorrowed.toString()}</span>
+                <span className="text-sm font-mono">
+                  {vault.totalBorrowed.toString()}
+                </span>
               </div>
             </div>
           </div>
@@ -359,11 +429,18 @@ export const VaultManager: React.FC = () => {
             onClick={handleRefreshPosition}
             disabled={userPositionLoading}
           >
-            {userPositionLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
+            {userPositionLoading ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <RefreshCw className="h-4 w-4" />
+            )}
           </Button>
         </CardTitle>
         <CardDescription>
-          Position for selected NFT: {selectedNFT ? selectedNFT.toBase58().slice(0, 8) + '...' : 'None selected'}
+          Position for selected NFT:{" "}
+          {selectedNFT
+            ? selectedNFT.toBase58().slice(0, 8) + "..."
+            : "None selected"}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -377,20 +454,31 @@ export const VaultManager: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Deposit Amount</Label>
-                <span className="text-lg font-mono">{selectedNFTPosition.depositAmount.toFixed(4)}</span>
+                <span className="text-lg font-mono">
+                  {selectedNFTPosition.depositAmount.toFixed(4)}
+                </span>
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Share Amount</Label>
-                <span className="text-lg font-mono">{selectedNFTPosition.shareAmount.toFixed(4)}</span>
+                <span className="text-lg font-mono">
+                  {selectedNFTPosition.shareAmount.toFixed(4)}
+                </span>
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium">NFT Mint</Label>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-mono">{selectedNFTPosition.nftMint.toBase58().slice(0, 8)}...</span>
+                  <span className="text-sm font-mono">
+                    {selectedNFTPosition.nftMint.toBase58().slice(0, 8)}...
+                  </span>
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => copyToClipboard(selectedNFTPosition.nftMint.toBase58(), 'NFT mint')}
+                    onClick={() =>
+                      copyToClipboard(
+                        selectedNFTPosition.nftMint.toBase58(),
+                        "NFT mint"
+                      )
+                    }
                   >
                     <Copy className="h-3 w-3" />
                   </Button>
@@ -398,7 +486,9 @@ export const VaultManager: React.FC = () => {
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Last Updated</Label>
-                <span className="text-sm">{new Date(selectedNFTPosition.timestamp).toLocaleDateString()}</span>
+                <span className="text-sm">
+                  {new Date(selectedNFTPosition.timestamp).toLocaleDateString()}
+                </span>
               </div>
             </div>
           </div>
@@ -406,7 +496,9 @@ export const VaultManager: React.FC = () => {
           <div className="text-center p-8">
             <CreditCard className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
             <p className="text-muted-foreground">
-              {selectedNFT ? 'No position found for selected NFT' : 'Select an NFT to view position'}
+              {selectedNFT
+                ? "No position found for selected NFT"
+                : "Select an NFT to view position"}
             </p>
           </div>
         )}
@@ -447,7 +539,9 @@ export const VaultManager: React.FC = () => {
             </div>
             <Button
               onClick={handleDeposit}
-              disabled={isDepositing || !hasRequiredSelections || !depositAmount}
+              disabled={
+                isDepositing || !hasRequiredSelections || !depositAmount
+              }
               className="w-full"
             >
               {isDepositing ? (
@@ -478,7 +572,9 @@ export const VaultManager: React.FC = () => {
             </div>
             <Button
               onClick={handleWithdraw}
-              disabled={isWithdrawing || !hasRequiredSelections || !withdrawShares}
+              disabled={
+                isWithdrawing || !hasRequiredSelections || !withdrawShares
+              }
               variant="outline"
               className="w-full"
             >
@@ -501,7 +597,8 @@ export const VaultManager: React.FC = () => {
           <Alert className="mt-4">
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>
-              Please select both a token account and an NFT to perform vault operations.
+              Please select both a token account and an NFT to perform vault
+              operations.
             </AlertDescription>
           </Alert>
         )}
@@ -513,8 +610,8 @@ export const VaultManager: React.FC = () => {
   if (error) {
     return (
       <div className="container max-w-4xl mx-auto p-6">
-        <AppHeader 
-          title="Vault Manager" 
+        <AppHeader
+          title="Vault Manager"
           hasAddress={!!address}
           hasSelectedToken={!!selectedTokenMint}
           hasSelectedNFT={!!selectedNFT}
@@ -537,8 +634,8 @@ export const VaultManager: React.FC = () => {
 
   return (
     <div className="container max-w-4xl mx-auto p-6">
-      <AppHeader 
-        title="Vault Manager" 
+      <AppHeader
+        title="Vault Manager"
         hasAddress={!!address}
         hasSelectedToken={!!selectedTokenMint}
         hasSelectedNFT={!!selectedNFT}
@@ -547,8 +644,18 @@ export const VaultManager: React.FC = () => {
       />
 
       {notification.type && (
-        <Alert className={`mb-6 ${notification.type === 'error' ? 'border-destructive' : 'border-green-500'}`}>
-          {notification.type === 'error' ? <XCircle className="h-4 w-4" /> : <CheckCircle2 className="h-4 w-4" />}
+        <Alert
+          className={`mb-6 ${
+            notification.type === "error"
+              ? "border-destructive"
+              : "border-green-500"
+          }`}
+        >
+          {notification.type === "error" ? (
+            <XCircle className="h-4 w-4" />
+          ) : (
+            <CheckCircle2 className="h-4 w-4" />
+          )}
           <AlertDescription>{notification.message}</AlertDescription>
         </Alert>
       )}
