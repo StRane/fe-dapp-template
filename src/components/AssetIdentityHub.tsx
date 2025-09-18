@@ -3,7 +3,7 @@ import { BN } from '@coral-xyz/anchor';
 import { PublicKey } from '@solana/web3.js';
 import { useAppKitAccount } from '@reown/appkit/react';
 
-// Import your existing hooks and stores
+// Import your new hooks
 import { useToken } from '@/lib/useToken';
 import { useUniqueId } from '@/lib/useUniqueId';
 import { useTokenSelection, useNFTSelection } from '@/context/SelectionContext';
@@ -26,8 +26,8 @@ import {
   ArrowRight, Settings, Info, User, CreditCard
 } from 'lucide-react';
 
-// Constants
-const DEFAULT_TOKEN_MINT = "4kXBWAG92UZA1FPEQDN5bjePoFyQsbTnZ9rpxgRBbFYk";
+// Import config for default mint
+import { CONFIG } from '@/config/programs';
 
 // Custom hooks for unified state management
 const useAssetReadiness = () => {
@@ -95,8 +95,8 @@ const useAssetActions = () => {
   };
 
   const mintTokensQuick = async (amount: string) => {
-    const targetMint = new PublicKey(DEFAULT_TOKEN_MINT);
-    const decimals = 9;
+    const targetMint = CONFIG.VAULT_ASSET_MINT; // Use from config
+    const decimals = 6; // Adjust based on your token decimals
     const amountBN = new BN(parseFloat(amount)).mul(new BN(10).pow(new BN(decimals)));
     
     const tx = await mintTokens(amountBN, targetMint);
@@ -164,7 +164,7 @@ export const AssetIdentityHub: React.FC = () => {
   } = useTokenSelection();
   const { selectedNFT, setSelectedNFT } = useNFTSelection();
 
-  // Get data from stores
+  // Get data from hooks
   const { userTokens, currentNetwork } = useToken();
   const { collection } = useUniqueId();
 
@@ -255,7 +255,7 @@ export const AssetIdentityHub: React.FC = () => {
     showNotification('success', 'NFT selected for operations');
   };
 
-  const formatBalance = (balance: number, decimals: number = 9) => {
+  const formatBalance = (balance: number, decimals: number = 6) => {
     return (balance / Math.pow(10, decimals)).toLocaleString();
   };
 
@@ -684,7 +684,7 @@ export const AssetIdentityHub: React.FC = () => {
                               <div className="space-y-1">
                                 <div className="flex items-center gap-2">
                                   <Badge variant="outline" className="font-mono text-xs">
-                                    NFT #{tokenData?.uniqueId.slice(0, 3).join("-") || index + 1}
+                                    NFT #{tokenData?.tokenId?.toString() || index + 1}
                                   </Badge>
                                   {selectedNFT?.equals(item.mint) && (
                                     <Check className="h-4 w-4 text-primary" />

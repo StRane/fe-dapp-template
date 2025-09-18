@@ -5,7 +5,7 @@ import {
 } from "@reown/appkit/react";
 
 import { Button } from "@/components/ui/button";
-import { Wallet, Coins, Fingerprint, Zap } from "lucide-react";
+import { Wallet, Coins, Zap } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -42,14 +42,10 @@ export const ActionButtonList = () => {
     switch (location.pathname) {
       case "/identitymanager":
         return "identitymanager";
-      case "/token":
-        return "token";
       case "/vault":
         return "vault";
-      case "/uniqueid":
-        return "uniqueid";
       default:
-        return "uniqueid"; // Default tab
+        return "identitymanager"; // Default tab
     }
   };
 
@@ -60,17 +56,11 @@ export const ActionButtonList = () => {
       case "identitymanager":
         navigate("/identitymanager");
         break;
-      case "token":
-        navigate("/token");
-        break;
       case "vault":
         navigate("/vault");
         break;
-      case "uniqueid":
-        navigate("/uniqueid");
-        break;
       default:
-        navigate("/uniqueid");
+        navigate("/identitymanager");
     }
   };
 
@@ -84,14 +74,6 @@ export const ActionButtonList = () => {
               <TabsTrigger value="identitymanager" className="flex items-center gap-2">
                 <Zap className="w-4 h-4" />
                 Identity Manager
-              </TabsTrigger>
-              <TabsTrigger value="token" className="flex items-center gap-2">
-                <Zap className="w-4 h-4" />
-                Test Token
-              </TabsTrigger>
-              <TabsTrigger value="uniqueid" className="flex items-center gap-2">
-                <Fingerprint className="w-4 h-4" />
-                Unique ID NFT
               </TabsTrigger>
               <TabsTrigger value="vault" className="flex items-center gap-2">
                 <Coins className="w-4 h-4" />
