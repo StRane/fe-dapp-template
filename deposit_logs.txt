@@ -1,0 +1,195 @@
+deposit
+
+
+[useVault] Store state: 
+{hasProgram: true, hasVault: true, userPositionsCount: 1, selectedVaultNFT: '4xZMLJQp6MQegkGbZFWZfzDmugLX8Ke5kCk3dbCnwKdf', loading: false, …}
+useVault.ts:162 [useVault] Selection context state: 
+{selectedTokenMint: '4kXBWAG92UZA1FPEQDN5bjePoFyQsbTnZ9rpxgRBbFYk', selectedTokenAccount: 'AWAtfk8GiAxZQ9c5YnRYpDE7CeFveZ6SattRDFoBeiQA', contextSelectedNFT: '4xZMLJQp6MQegkGbZFWZfzDmugLX8Ke5kCk3dbCnwKdf'}
+vaultStore.ts:324 [VaultStore] Getting vault config: 
+{programId: '6szSVnHy2GrCi6y7aQxJfQG9WpVkTgdB6kDXixepvdoW', vaultPda: 'DbCxNx4uvjK2wxvJbrd5DVJ6jVM8eJirYk8RbAL9Mvt1', assetMint: '4kXBWAG92UZA1FPEQDN5bjePoFyQsbTnZ9rpxgRBbFYk'}
+VaultManager.tsx:58 [VaultManager] === COMPONENT RENDER START ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: 
+{hasTokenAccount: true, hasTokenMint: true}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: 
+{hasSelectedNFT: true}
+useVault.ts:110 [useVault] === HOOK CALL START ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: 
+{hasTokenAccount: true, hasTokenMint: true}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: 
+{hasSelectedNFT: true}
+useVault.ts:153 [useVault] Store state: 
+{hasProgram: true, hasVault: true, userPositionsCount: 1, selectedVaultNFT: '4xZMLJQp6MQegkGbZFWZfzDmugLX8Ke5kCk3dbCnwKdf', loading: false, …}
+useVault.ts:162 [useVault] Selection context state: 
+{selectedTokenMint: '4kXBWAG92UZA1FPEQDN5bjePoFyQsbTnZ9rpxgRBbFYk', selectedTokenAccount: 'AWAtfk8GiAxZQ9c5YnRYpDE7CeFveZ6SattRDFoBeiQA', contextSelectedNFT: '4xZMLJQp6MQegkGbZFWZfzDmugLX8Ke5kCk3dbCnwKdf'}
+vaultStore.ts:324 [VaultStore] Getting vault config: 
+{programId: '6szSVnHy2GrCi6y7aQxJfQG9WpVkTgdB6kDXixepvdoW', vaultPda: 'DbCxNx4uvjK2wxvJbrd5DVJ6jVM8eJirYk8RbAL9Mvt1', assetMint: '4kXBWAG92UZA1FPEQDN5bjePoFyQsbTnZ9rpxgRBbFYk'}
+AppHeader.tsx:32 [AppHeader] === COMPONENT RENDER START ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: 
+{hasTokenAccount: true, hasTokenMint: true}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: 
+{hasSelectedNFT: true}
+AppHeader.tsx:38 [AppHeader] Props and state: 
+{title: 'Vault Manager', hasAddress: true, hasSelectedToken: true, hasSelectedNFT: true, programConnected: undefined, …}
+AppHeader.tsx:61 [AppHeader] === COMPONENT RENDER END ===
+AppHeader.tsx:32 [AppHeader] === COMPONENT RENDER START ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: 
+{hasTokenAccount: true, hasTokenMint: true}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: 
+{hasSelectedNFT: true}
+AppHeader.tsx:38 [AppHeader] Props and state: 
+{title: 'Vault Manager', hasAddress: true, hasSelectedToken: true, hasSelectedNFT: true, programConnected: undefined, …}
+AppHeader.tsx:61 [AppHeader] === COMPONENT RENDER END ===
+useVault.ts:684 [useVault] User Asset Token Info: 
+{exists: true, balance: 10510852009.810999, rawBalance: '10510852009811000000'}
+useVault.ts:696 [useVault] User NFT Token Info: 
+{exists: true, balance: 1, rawBalance: '1'}
+useVault.ts:708 [useVault] Share PDA Info: 
+{exists: false, owner: undefined, lamports: undefined}
+useVault.ts:720 [useVault] Share Token Account Info: 
+{exists: true, balance: 10000.000149902, rawBalance: '10000000149902'}
+useVault.ts:732 [useVault] User Info PDA: 
+{exists: true, shares: '10000000149902', lastUpdate: BN}
+useVault.ts:742 [useVault] === FINAL ACCOUNT SUMMARY FOR DEPOSIT ===
+useVault.ts:762 
+(index)
+Value
+user	'GXHdciYz5RQS5oGyF7JWF61sxFNuM4RxXw2s2ZX25cVd'
+vault	'DbCxNx4uvjK2wxvJbrd5DVJ6jVM8eJirYk8RbAL9Mvt1'
+nftCollection	'EoZ5NFigrZ7uqUUSH6ShDsYGMooe5ziTfgWvAbFmVTXt'
+userNftToken	'AyRs1nFpHnH1bAPpg8yrS5AzLgaSWXKtGkz7EKJD8Qt7'
+userNftMint	'4xZMLJQp6MQegkGbZFWZfzDmugLX8Ke5kCk3dbCnwKdf'
+assetMint	'4kXBWAG92UZA1FPEQDN5bjePoFyQsbTnZ9rpxgRBbFYk'
+userAssetToken	'AWAtfk8GiAxZQ9c5YnRYpDE7CeFveZ6SattRDFoBeiQA'
+vaultTokenAccount	'Ak7DxLGEauBkW769NSRvA9kVkc41SxJKK29mbeJu5gzE'
+shareMint	'5CTdzZxPhqC4DWpTM5MFzwqCtHFmKQTsXE7VWUC6UxTG'
+userSharePda	'8bRDw2w9Wnd1zTKw36hfSeokzaxUQh97S3T4HpUy9u66'
+userShareToken	'HyA25GhFC77gGHcWGhH7hnxgcPzf3Rhoti8ZLS4kzSDL'
+nftInfo	'Dgzff5pzTaA79mJ834t4ejJgRjKCwZ9CvS9TLPk4UeTj'
+userShareBump	254
+nftInfoBump	252
+Object
+useVault.ts:452 [PDAValidation] === VALIDATING PDA DERIVATIONS ===
+useVault.ts:481 [PDAValidation] Validating seeds against contract:
+useVault.ts:494 [PDAValidation] Cross-checking with test patterns...
+useVault.ts:512 [PDAValidation] ✅ Share PDA matches test pattern
+VaultManager.tsx:58 [VaultManager] === COMPONENT RENDER START ===
+﻿
+
+
+withdraw
+
+[AppHeader] === COMPONENT RENDER END ===
+AppHeader.tsx:32 [AppHeader] === COMPONENT RENDER START ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: 
+{hasTokenAccount: true, hasTokenMint: true}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: 
+{hasSelectedNFT: true}
+AppHeader.tsx:38 [AppHeader] Props and state: 
+{title: 'Vault Manager', hasAddress: true, hasSelectedToken: true, hasSelectedNFT: true, programConnected: undefined, …}
+AppHeader.tsx:61 [AppHeader] === COMPONENT RENDER END ===
+useVault.ts:930 [useVault] Share Token Validation: 
+{exists: true, balance: 10000.000149911, rawBalance: '10000000149911', requestedShares: '50', hasEnoughShares: true}
+useVault.ts:950 [useVault] User Info Validation: 
+{exists: true, shares: '10000000149911', vault: 'DbCxNx4uvjK2wxvJbrd5DVJ6jVM8eJirYk8RbAL9Mvt1', nftMint: 'EoZ5NFigrZ7uqUUSH6ShDsYGMooe5ziTfgWvAbFmVTXt', owner: 'AyRs1nFpHnH1bAPpg8yrS5AzLgaSWXKtGkz7EKJD8Qt7', …}
+useVault.ts:968 [useVault] Share Token Account Authority Check: 
+{owner: '8bRDw2w9Wnd1zTKw36hfSeokzaxUQh97S3T4HpUy9u66', expectedOwner: '8bRDw2w9Wnd1zTKw36hfSeokzaxUQh97S3T4HpUy9u66', ownerMatches: true, mint: '5CTdzZxPhqC4DWpTM5MFzwqCtHFmKQTsXE7VWUC6UxTG', expectedMint: '5CTdzZxPhqC4DWpTM5MFzwqCtHFmKQTsXE7VWUC6UxTG', …}
+useVault.ts:987 [useVault] === FINAL ACCOUNT SUMMARY FOR WITHDRAW ===
+useVault.ts:1012 
+(index)
+Value
+user	'GXHdciYz5RQS5oGyF7JWF61sxFNuM4RxXw2s2ZX25cVd'
+vault	'DbCxNx4uvjK2wxvJbrd5DVJ6jVM8eJirYk8RbAL9Mvt1'
+nftCollection	'EoZ5NFigrZ7uqUUSH6ShDsYGMooe5ziTfgWvAbFmVTXt'
+userNftToken	'AyRs1nFpHnH1bAPpg8yrS5AzLgaSWXKtGkz7EKJD8Qt7'
+userNftMint	'4xZMLJQp6MQegkGbZFWZfzDmugLX8Ke5kCk3dbCnwKdf'
+assetMint	'4kXBWAG92UZA1FPEQDN5bjePoFyQsbTnZ9rpxgRBbFYk'
+userAssetToken	'AWAtfk8GiAxZQ9c5YnRYpDE7CeFveZ6SattRDFoBeiQA'
+vaultTokenAccount	'Ak7DxLGEauBkW769NSRvA9kVkc41SxJKK29mbeJu5gzE'
+shareMint	'5CTdzZxPhqC4DWpTM5MFzwqCtHFmKQTsXE7VWUC6UxTG'
+userSharePda	'8bRDw2w9Wnd1zTKw36hfSeokzaxUQh97S3T4HpUy9u66'
+userShareToken	'HyA25GhFC77gGHcWGhH7hnxgcPzf3Rhoti8ZLS4kzSDL'
+nftInfo	'Dgzff5pzTaA79mJ834t4ejJgRjKCwZ9CvS9TLPk4UeTj'
+shareBalance	'10000000149911'
+requestedShares	'50'
+userInfoShares	'10000000149911'
+userShareBump	254
+nftInfoBump	252
+Object
+useVault.ts:1022 [useVault] Executing withdraw transaction with accounts: 
+{user: 'GXHdciYz5RQS5oGyF7JWF61sxFNuM4RxXw2s2ZX25cVd', vault: 'DbCxNx4uvjK2wxvJbrd5DVJ6jVM8eJirYk8RbAL9Mvt1', nftCollection: 'EoZ5NFigrZ7uqUUSH6ShDsYGMooe5ziTfgWvAbFmVTXt', userNftToken: 'AyRs1nFpHnH1bAPpg8yrS5AzLgaSWXKtGkz7EKJD8Qt7', userNftMint: '4xZMLJQp6MQegkGbZFWZfzDmugLX8Ke5kCk3dbCnwKdf', …}
+useVault.ts:452 [PDAValidation] === VALIDATING PDA DERIVATIONS ===
+useVault.ts:481 [PDAValidation] Validating seeds against contract:
+useVault.ts:494 [PDAValidation] Cross-checking with test patterns...
+useVault.ts:512 [PDAValidation] ✅ Share PDA matches test pattern
+VaultManager.tsx:58 [VaultManager] === COMPONENT RENDER START ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: 
+{hasTokenAccount: true, hasTokenMint: true}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: 
+{hasSelectedNFT: true}
+useVault.ts:110 [useVault] === HOOK CALL START ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: 
+{hasTokenAccount: true, hasTokenMint: true}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: 
+{hasSelectedNFT: true}
+useVault.ts:153 [useVault] Store state: 
+{hasProgram: true, hasVault: true, userPositionsCount: 1, selectedVaultNFT: '4xZMLJQp6MQegkGbZFWZfzDmugLX8Ke5kCk3dbCnwKdf', loading: false, …}
+useVault.ts:162 [useVault] Selection context state: 
+{selectedTokenMint: '4kXBWAG92UZA1FPEQDN5bjePoFyQsbTnZ9rpxgRBbFYk', selectedTokenAccount: 'AWAtfk8GiAxZQ9c5YnRYpDE7CeFveZ6SattRDFoBeiQA', contextSelectedNFT: '4xZMLJQp6MQegkGbZFWZfzDmugLX8Ke5kCk3dbCnwKdf'}
+vaultStore.ts:324 [VaultStore] Getting vault config: 
+{programId: '6szSVnHy2GrCi6y7aQxJfQG9WpVkTgdB6kDXixepvdoW', vaultPda: 'DbCxNx4uvjK2wxvJbrd5DVJ6jVM8eJirYk8RbAL9Mvt1', assetMint: '4kXBWAG92UZA1FPEQDN5bjePoFyQsbTnZ9rpxgRBbFYk'}
+VaultManager.tsx:58 [VaultManager] === COMPONENT RENDER START ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: 
+{hasTokenAccount: true, hasTokenMint: true}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: 
+{hasSelectedTokenAccount: true, hasSelectedNFT: true, hasSelectedTokenMint: true, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: 
+{hasSelectedNFT: true}
+useVault.ts:110 [useVault] === HOOK CALL START ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+﻿

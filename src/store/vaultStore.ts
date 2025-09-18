@@ -111,60 +111,60 @@ export const useVaultStore = create<VaultStore>()(
 
             // Program actions
             setProgram: (program) => set((state) => {
-                console.log('[VaultStore] === SET PROGRAM START ===');
-                console.log('[VaultStore] Setting program:', {
-                    hasProgram: !!program,
-                    programId: program ? CONFIG.PROGRAM_ID : null,
-                    previousProgram: !!state.program
-                });
+                // console.log('[VaultStore] === SET PROGRAM START ===');
+                // console.log('[VaultStore] Setting program:', {
+                //     hasProgram: !!program,
+                //     programId: program ? CONFIG.PROGRAM_ID : null,
+                //     previousProgram: !!state.program
+                // });
                 
                 state.program = program;
                 state.isInitialized = !!program;
                 
-                console.log('[VaultStore] Program state updated:', {
-                    hasProgram: !!state.program,
-                    isInitialized: state.isInitialized
-                });
-                console.log('[VaultStore] === SET PROGRAM END ===');
+                // console.log('[VaultStore] Program state updated:', {
+                //     hasProgram: !!state.program,
+                //     isInitialized: state.isInitialized
+                // });
+                // console.log('[VaultStore] === SET PROGRAM END ===');
             }),
 
             setIsInitialized: (initialized) => set((state) => {
-                console.log('[VaultStore] Setting isInitialized:', {
-                    from: state.isInitialized,
-                    to: initialized
-                });
+                // console.log('[VaultStore] Setting isInitialized:', {
+                //     from: state.isInitialized,
+                //     to: initialized
+                // });
                 state.isInitialized = initialized;
             }),
 
             // Vault data actions
             setVault: (vault) => set((state) => {
-                console.log('[VaultStore] === SET VAULT START ===');
-                console.log('[VaultStore] Setting vault:', {
-                    hasVault: !!vault,
-                    vaultOwner: vault?.owner.toBase58(),
-                    assetMint: vault?.assetMint.toBase58(),
-                    shareMint: vault?.shareMint.toBase58(),
-                    totalShares: vault?.totalShares,
-                    previousVault: !!state.vault
-                });
+                // console.log('[VaultStore] === SET VAULT START ===');
+                // console.log('[VaultStore] Setting vault:', {
+                //     hasVault: !!vault,
+                //     vaultOwner: vault?.owner.toBase58(),
+                //     assetMint: vault?.assetMint.toBase58(),
+                //     shareMint: vault?.shareMint.toBase58(),
+                //     totalShares: vault?.totalShares,
+                //     previousVault: !!state.vault
+                // });
                 
                 state.vault = vault;
                 
-                console.log('[VaultStore] Vault data updated:', {
-                    hasVault: !!state.vault
-                });
-                console.log('[VaultStore] === SET VAULT END ===');
+                // console.log('[VaultStore] Vault data updated:', {
+                //     hasVault: !!state.vault
+                // });
+                // console.log('[VaultStore] === SET VAULT END ===');
             }),
 
             // User position actions (separated)
             updateUserPositionForNFT: (nftMint, position) => set((state) => {
-                console.log('[VaultStore] === UPDATE USER POSITION START ===');
-                console.log('[VaultStore] Updating position for NFT:', {
-                    nftMint: nftMint.toBase58(),
-                    hasPosition: !!position,
-                    shareAmount: position?.shareAmount,
-                    depositAmount: position?.depositAmount
-                });
+                // console.log('[VaultStore] === UPDATE USER POSITION START ===');
+                // console.log('[VaultStore] Updating position for NFT:', {
+                //     nftMint: nftMint.toBase58(),
+                //     hasPosition: !!position,
+                //     shareAmount: position?.shareAmount,
+                //     depositAmount: position?.depositAmount
+                // });
 
                 if (position) {
                     state.selectedNFTPosition = position;
@@ -235,22 +235,22 @@ export const useVaultStore = create<VaultStore>()(
 
             // Network synchronization (ONLY syncs network state, NO data loading)
             syncWithNetwork: () => set((state) => {
-                console.log('[VaultStore] === SYNC WITH NETWORK START ===');
+                // console.log('[VaultStore] === SYNC WITH NETWORK START ===');
                 
                 const networkState = useNetworkStore.getState();
                 const networkHash = `${networkState.currentNetwork}-${networkState.isReady}-${!!networkState.connection}`;
                 
-                console.log('[VaultStore] Network sync state check:', {
-                    currentNetwork: networkState.currentNetwork,
-                    isReady: networkState.isReady,
-                    hasConnection: !!networkState.connection,
-                    previousHash: state.lastNetworkHash,
-                    newHash: networkHash
-                });
+                // console.log('[VaultStore] Network sync state check:', {
+                //     currentNetwork: networkState.currentNetwork,
+                //     isReady: networkState.isReady,
+                //     hasConnection: !!networkState.connection,
+                //     previousHash: state.lastNetworkHash,
+                //     newHash: networkHash
+                // });
                 
                 // Only update hash and reset data if network actually changed
                 if (state.lastNetworkHash !== networkHash) {
-                    console.log('[VaultStore] Network changed - resetting data');
+                    // console.log('[VaultStore] Network changed - resetting data');
                     
                     state.lastNetworkHash = networkHash;
                     
@@ -263,12 +263,12 @@ export const useVaultStore = create<VaultStore>()(
                     state.loading = false;
                     state.error = null;
                     
-                    console.log('[VaultStore] Data reset completed');
+                    // console.log('[VaultStore] Data reset completed');
                 } else {
-                    console.log('[VaultStore] Network unchanged - no reset needed');
+                    // console.log('[VaultStore] Network unchanged - no reset needed');
                 }
                 
-                console.log('[VaultStore] === SYNC WITH NETWORK END ===');
+                // console.log('[VaultStore] === SYNC WITH NETWORK END ===');
             }),
 
             reset: () => set((state) => {

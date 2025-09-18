@@ -945,6 +945,11 @@
       "code": 6003,
       "name": "InsufficientLiquidity",
       "msg": "Insufficent reserves"
+    },
+    {
+      "code": 6004,
+      "name": "MathOverflow",
+      "msg": "Mathematical overflow"
     }
   ],
   "types": [

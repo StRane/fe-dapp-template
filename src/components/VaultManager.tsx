@@ -37,6 +37,7 @@ import {
   AlertCircle,
   ArrowUpRight,
   ArrowDownLeft,
+  ExternalLink,
   RefreshCw,
   Shield,
   Info,
@@ -45,7 +46,6 @@ import {
   CreditCard,
   TrendingUp,
   TrendingDown,
-  ExternalLink,
 } from "lucide-react";
 
 // Toast notifications
@@ -111,32 +111,41 @@ export const VaultManager: React.FC = () => {
   const [depositAmount, setDepositAmount] = useState("100");
   const [withdrawShares, setWithdrawShares] = useState("50");
 
-  console.log("[VaultManager] Transaction state:", transactionState);
+  // console.log("[VaultManager] Transaction state:", transactionState);
 
   // Handle transaction state changes with toast notifications
   useEffect(() => {
-    if (transactionState.status === TransactionStatus.SUCCESS && transactionState.signature) {
+    if (
+      transactionState.status === TransactionStatus.SUCCESS &&
+      transactionState.signature
+    ) {
       toast.success("Deposit Successful!", {
         description: (
           <div className="flex flex-col gap-2">
             <p>Your tokens have been deposited to the vault</p>
             <div className="flex items-center gap-2">
               <code className="text-xs bg-muted px-2 py-1 rounded">
-                {transactionState.signature.slice(0, 8)}...{transactionState.signature.slice(-8)}
+                {transactionState.signature.slice(0, 8)}...
+                {transactionState.signature.slice(-8)}
               </code>
               <button
-                onClick={() => window.open(`https://solscan.io/tx/${transactionState.signature}?cluster=testnet`, '_blank')}
+                onClick={() =>
+                  window.open(
+                    `https://solscan.io/tx/${transactionState.signature}?cluster=testnet`,
+                    "_blank"
+                  )
+                }
                 className="text-xs underline hover:no-underline"
               >
                 View on Solscan
               </button>
             </div>
           </div>
-        )
+        ),
       });
     } else if (transactionState.status === TransactionStatus.FAILED) {
       toast.error("Transaction Failed", {
-        description: transactionState.message
+        description: transactionState.message,
       });
     }
   }, [transactionState.status, transactionState.signature]);
@@ -157,14 +166,14 @@ export const VaultManager: React.FC = () => {
 
     if (!selectedTokenMint || !selectedNFT) {
       toast.error("Selection Required", {
-        description: "Please select both a token and NFT first"
+        description: "Please select both a token and NFT first",
       });
       return;
     }
 
     if (!depositAmount || parseFloat(depositAmount) <= 0) {
       toast.error("Invalid Amount", {
-        description: "Please enter a valid deposit amount"
+        description: "Please enter a valid deposit amount",
       });
       return;
     }
@@ -188,7 +197,7 @@ export const VaultManager: React.FC = () => {
       });
 
       const tx = await deposit(amount, selectedTokenMint, selectedNFT);
-      
+
       if (tx) {
         setDepositAmount("100"); // Reset form on success
         console.log("[VaultManager] Deposit completed successfully");
@@ -200,12 +209,10 @@ export const VaultManager: React.FC = () => {
     console.log("[VaultManager] === DEPOSIT HANDLER END ===");
   };
 
-
-
   // Get deposit button props based on transaction state
   const getDepositButtonProps = () => {
     const baseDisabled = !hasRequiredSelections || !depositAmount;
-    
+
     switch (transactionState.status) {
       case TransactionStatus.BUILDING:
         return {
@@ -216,7 +223,7 @@ export const VaultManager: React.FC = () => {
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Building Transaction...
             </>
-          )
+          ),
         };
       case TransactionStatus.SIGNING:
         return {
@@ -227,7 +234,7 @@ export const VaultManager: React.FC = () => {
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Sign in Wallet...
             </>
-          )
+          ),
         };
       case TransactionStatus.CONFIRMING:
         return {
@@ -238,7 +245,7 @@ export const VaultManager: React.FC = () => {
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Confirming...
             </>
-          )
+          ),
         };
       case TransactionStatus.SUCCESS:
         return {
@@ -249,7 +256,7 @@ export const VaultManager: React.FC = () => {
               <CheckCircle2 className="mr-2 h-4 w-4" />
               Deposit Complete
             </>
-          )
+          ),
         };
       case TransactionStatus.FAILED:
         return {
@@ -260,7 +267,7 @@ export const VaultManager: React.FC = () => {
               <ArrowUpRight className="mr-2 h-4 w-4" />
               Try Again
             </>
-          )
+          ),
         };
       default:
         return {
@@ -271,7 +278,145 @@ export const VaultManager: React.FC = () => {
               <ArrowUpRight className="mr-2 h-4 w-4" />
               Deposit {depositAmount} Tokens
             </>
-          )
+          ),
+        };
+    }
+  };
+
+  const handleWithdraw = async () => {
+    console.log("[VaultManager] === WITHDRAW HANDLER START ===");
+
+    if (!selectedTokenMint || !selectedNFT) {
+      toast.error("Invalid Selection", {
+        description: "Please select both a token and NFT first",
+      });
+      return;
+    }
+
+    if (!selectedNFTPosition) {
+      toast.error("No Position Found", {
+        description: "You don't have a position for the selected NFT",
+      });
+      return;
+    }
+
+    const sharesAmount = parseFloat(withdrawShares);
+    if (!sharesAmount || sharesAmount <= 0) {
+      toast.error("Invalid Amount", {
+        description: "Please enter a valid number of shares to withdraw",
+      });
+      return;
+    }
+
+    if (sharesAmount > selectedNFTPosition.shareAmount) {
+      toast.error("Invalid Amount", {
+        description: `You only have ${selectedNFTPosition.shareAmount} shares available`,
+      });
+      return;
+    }
+
+    // Prevent double submission
+    if (transactionState.status !== TransactionStatus.IDLE) {
+      console.log("[VaultManager] Transaction already in progress");
+      return;
+    }
+
+    try {
+      const shares:BN = new BN(Math.floor(sharesAmount));
+
+      console.log("[VaultManager] Calling withdraw with:", {
+        shares: shares.toString(),
+        assetMint: selectedTokenMint.toBase58(),
+        userNftMint: selectedNFT.toBase58(),
+      });
+
+      const tx = await withdraw(shares, selectedTokenMint, selectedNFT);
+
+      if (tx) {
+        setWithdrawShares("50"); // Reset form on success
+        console.log("[VaultManager] Withdraw completed successfully");
+      }
+    } catch (err) {
+      console.error("[VaultManager] Withdraw failed:", err);
+      // Error handling is done in the hook
+    }
+    console.log("[VaultManager] === WITHDRAW HANDLER END ===");
+  };
+
+  const getWithdrawButtonProps = () => {
+    const baseDisabled = !hasRequiredSelections || !withdrawShares;
+
+    switch (transactionState.status) {
+      case TransactionStatus.BUILDING:
+        return {
+          disabled: true,
+          variant: "default" as const,
+          children: (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Building Transaction...
+            </>
+          ),
+        };
+
+      case TransactionStatus.SIGNING:
+        return {
+          disabled: true,
+          variant: "default" as const,
+          children: (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Waiting for Signature...
+            </>
+          ),
+        };
+
+      case TransactionStatus.CONFIRMING:
+        return {
+          disabled: true,
+          variant: "default" as const,
+          children: (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Confirming Transaction...
+            </>
+          ),
+        };
+
+      case TransactionStatus.SUCCESS:
+        return {
+          disabled: baseDisabled,
+          variant: "default" as const,
+          children: (
+            <>
+              <CheckCircle2 className="mr-2 h-4 w-4" />
+              Withdraw Again
+            </>
+          ),
+        };
+
+      case TransactionStatus.FAILED:
+        return {
+          disabled: baseDisabled,
+          variant: "destructive" as const,
+          children: (
+            <>
+              <RefreshCw className="mr-2 h-4 w-4" />
+              Retry Withdraw
+            </>
+          ),
+        };
+
+      default: // IDLE
+        return {
+          disabled: baseDisabled,
+          variant: "default" as const,
+          children: (
+            <>
+              <ArrowDownLeft className="mr-2 h-4 w-4" />
+              Withdraw Assets
+            </>
+          ),
         };
     }
   };
@@ -280,7 +425,7 @@ export const VaultManager: React.FC = () => {
   if (!isConnected) {
     return (
       <div className="container mx-auto p-6">
-        <AppHeader 
+        <AppHeader
           title="Vault Manager"
           hasAddress={!!address}
           hasSelectedToken={!!selectedTokenMint}
@@ -289,19 +434,21 @@ export const VaultManager: React.FC = () => {
           currentNetwork={currentNetwork}
           onCopyToClipboard={copyToClipboard}
         />
-        
+
         <Card className="mt-6">
           <CardContent className="flex items-center justify-center p-8">
             <div className="text-center">
               <Wallet className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-              <h3 className="text-lg font-semibold mb-2">Connect Your Wallet</h3>
+              <h3 className="text-lg font-semibold mb-2">
+                Connect Your Wallet
+              </h3>
               <p className="text-muted-foreground">
                 Please connect your wallet to access the vault
               </p>
             </div>
           </CardContent>
         </Card>
-        
+
         <Toaster richColors position="top-right" />
       </div>
     );
@@ -309,7 +456,7 @@ export const VaultManager: React.FC = () => {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      <AppHeader 
+      <AppHeader
         title="Vault Manager"
         hasAddress={!!address}
         hasSelectedToken={!!selectedTokenMint}
@@ -326,8 +473,6 @@ export const VaultManager: React.FC = () => {
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
-
-
 
       {/* Main Content */}
       <Tabs defaultValue="operations" className="w-full">
@@ -364,10 +509,14 @@ export const VaultManager: React.FC = () => {
                       placeholder="Enter amount to deposit"
                       value={depositAmount}
                       onChange={(e) => setDepositAmount(e.target.value)}
-                      disabled={transactionState.status !== TransactionStatus.IDLE || !hasRequiredSelections}
+                      disabled={
+                        transactionState.status !== TransactionStatus.IDLE ||
+                        !hasRequiredSelections
+                      }
                     />
                     <div className="text-xs text-muted-foreground">
-                      Amount will be deposited using selected NFT as position identifier
+                      Amount will be deposited using selected NFT as position
+                      identifier
                     </div>
                   </div>
                   <Button
@@ -386,21 +535,22 @@ export const VaultManager: React.FC = () => {
                       placeholder="Enter shares to withdraw"
                       value={withdrawShares}
                       onChange={(e) => setWithdrawShares(e.target.value)}
-                      disabled={transactionState.status !== TransactionStatus.IDLE || !hasRequiredSelections}
+                      disabled={
+                        transactionState.status !== TransactionStatus.IDLE ||
+                        !hasRequiredSelections
+                      }
                     />
                     <div className="text-xs text-muted-foreground">
-                      Shares will be withdrawn from the selected NFT position
+                      {selectedNFTPosition
+                        ? `Available shares: ${selectedNFTPosition.shareAmount.toLocaleString()}`
+                        : "Select an NFT to see your position"}
                     </div>
                   </div>
                   <Button
-                    onClick={() => {/* TODO: implement withdraw handler */}}
-                    disabled={transactionState.status !== TransactionStatus.IDLE || !hasRequiredSelections || !withdrawShares}
-                    variant="outline"
+                    onClick={handleWithdraw}
                     className="w-full"
-                  >
-                    <ArrowDownLeft className="mr-2 h-4 w-4" />
-                    Withdraw {withdrawShares} Shares
-                  </Button>
+                    {...getWithdrawButtonProps()}
+                  />
                 </TabsContent>
               </Tabs>
             </CardContent>
@@ -411,7 +561,8 @@ export const VaultManager: React.FC = () => {
             <Alert>
               <Info className="h-4 w-4" />
               <AlertDescription>
-                Please select both a token and NFT from the Asset Identity Hub to enable vault operations.
+                Please select both a token and NFT from the Asset Identity Hub
+                to enable vault operations.
               </AlertDescription>
             </Alert>
           )}
@@ -434,14 +585,18 @@ export const VaultManager: React.FC = () => {
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <p className="text-sm font-medium text-muted-foreground">NFT</p>
+                      <p className="text-sm font-medium text-muted-foreground">
+                        NFT
+                      </p>
                       <p className="font-mono text-sm">
                         {selectedNFTPosition.nftMint.toBase58().slice(0, 8)}...
                         {selectedNFTPosition.nftMint.toBase58().slice(-8)}
                       </p>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-sm font-medium text-muted-foreground">Shares</p>
+                      <p className="text-sm font-medium text-muted-foreground">
+                        Shares
+                      </p>
                       <p className="font-semibold">
                         {selectedNFTPosition.shareAmount.toLocaleString()}
                       </p>
@@ -449,15 +604,22 @@ export const VaultManager: React.FC = () => {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <p className="text-sm font-medium text-muted-foreground">Deposited</p>
+                      <p className="text-sm font-medium text-muted-foreground">
+                        Deposited
+                      </p>
                       <p className="font-semibold">
-                        {selectedNFTPosition.depositAmount.toLocaleString()} tokens
+                        {selectedNFTPosition.depositAmount.toLocaleString()}{" "}
+                        tokens
                       </p>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-sm font-medium text-muted-foreground">Last Updated</p>
+                      <p className="text-sm font-medium text-muted-foreground">
+                        Last Updated
+                      </p>
                       <p className="text-sm">
-                        {new Date(selectedNFTPosition.timestamp * 1000).toLocaleDateString()}
+                        {new Date(
+                          selectedNFTPosition.timestamp * 1000
+                        ).toLocaleDateString()}
                       </p>
                     </div>
                   </div>
@@ -466,7 +628,9 @@ export const VaultManager: React.FC = () => {
                 <div className="text-center py-8">
                   <CreditCard className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
                   <p className="text-muted-foreground">
-                    {selectedNFT ? 'No position found for selected NFT' : 'Select an NFT to view position'}
+                    {selectedNFT
+                      ? "No position found for selected NFT"
+                      : "Select an NFT to view position"}
                   </p>
                 </div>
               )}

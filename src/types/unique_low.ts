@@ -408,7 +408,7 @@ export type UniqueLow = {
         },
         {
           "name": "wormholeProgram",
-          "address": "worm2ZoG2kUd4vFXhvjh93UUH596ayRfgQ2MgjNMTth"
+          "address": "11111111111111111111111111111111"
         },
         {
           "name": "clock",

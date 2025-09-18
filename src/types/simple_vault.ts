@@ -951,6 +951,11 @@ export type SimpleVault = {
       "code": 6003,
       "name": "insufficientLiquidity",
       "msg": "Insufficent reserves"
+    },
+    {
+      "code": 6004,
+      "name": "mathOverflow",
+      "msg": "Mathematical overflow"
     }
   ],
   "types": [
