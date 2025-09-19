@@ -113,17 +113,17 @@ export const useUniqueId = (): UseUniqueIdReturn => {
   });
 
   // Network change effect - resets loading flags only
-  // useEffect(() => {
-  //   const unsubscribe = useNetworkStore.subscribe((state, prevState) => {
-  //     if (state.currentNetwork !== prevState?.currentNetwork) {
-  //       console.log('[useUniqueId] Network changed - resetting loading flags');
-  //       hasInitializedProgram.current = false;
-  //       hasLoadedNFTData.current = false;
-  //       setUserStatePda(null);
-  //     }
-  //   });
-  //   return unsubscribe;
-  // }, []);
+  useEffect(() => {
+    const unsubscribe = useNetworkStore.subscribe((state, prevState) => {
+      if (state.currentNetwork !== prevState?.currentNetwork) {
+        console.log('[useUniqueId] Network changed - resetting loading flags');
+        hasInitializedProgram.current = false;
+        hasLoadedNFTData.current = false;
+        setUserStatePda(null);
+      }
+    });
+    return unsubscribe;
+  }, []);
 
   // Program initialization effect - ONLY sets up program (no manual sync)
   useEffect(() => {
@@ -139,7 +139,7 @@ export const useUniqueId = (): UseUniqueIdReturn => {
       }
 
       try {
-        console.log('[useUniqueId] Initializing program...');
+        // console.log('[useUniqueId] Initializing program...');
         hasInitializedProgram.current = true;
         setLoading(true);
         setError(null);
@@ -172,7 +172,7 @@ export const useUniqueId = (): UseUniqueIdReturn => {
         setUserStatePda(derivedUserStatePda);
 
       } catch (err) {
-        console.error('[useUniqueId] Program initialization failed:', err);
+        // console.error('[useUniqueId] Program initialization failed:', err);
         setError(`Failed to initialize: ${(err as Error).message}`);
         hasInitializedProgram.current = false;
       } finally {
@@ -181,7 +181,7 @@ export const useUniqueId = (): UseUniqueIdReturn => {
     };
 
     if (connection && address && walletProvider && isNetworkReady && isSolanaNetwork && !hasInitializedProgram.current) {
-      console.log('[useUniqueId] Starting program initialization...');
+      // console.log('[useUniqueId] Starting program initialization...');
       initializeProgram();
     }
 
@@ -202,20 +202,20 @@ export const useUniqueId = (): UseUniqueIdReturn => {
       }
 
       try {
-        console.log('[useUniqueId] Loading NFT data...');
+        
         hasLoadedNFTData.current = true;
         setLoading(true);
         
-        console.log('[useUniqueId] Fetching collection data from:', collectionPda.toBase58());
+        
         
         // Fetch collection data
         const collectionData = await program.account.collection.fetchNullable(collectionPda);
         if (collectionData) {
-          console.log('[useUniqueId] Collection data loaded:', {
-            name: collectionData.name,
-            totalSupply: collectionData.totalSupply.toNumber(),
-            authority: collectionData.authority.toBase58()
-          });
+          // console.log('[useUniqueId] Collection data loaded:', {
+          //   name: collectionData.name,
+          //   totalSupply: collectionData.totalSupply.toNumber(),
+          //   authority: collectionData.authority.toBase58()
+          // });
           setCollection(collectionData);
           setIsCollectionInitialized(true);
         } else {
@@ -223,14 +223,11 @@ export const useUniqueId = (): UseUniqueIdReturn => {
           setIsCollectionInitialized(false);
         }
 
-        console.log('[useUniqueId] Fetching user state from:', userStatePda.toBase58());
         
         // Fetch user state
         const userStateData = await program.account.userState.fetchNullable(userStatePda);
         if (userStateData) {
-          console.log('[useUniqueId] User state loaded:', {
-            nonce: userStateData.nonce.toNumber()
-          });
+          
           setUserState({ 
             user: userStatePda,
             nonce: userStateData.nonce.toNumber() 
@@ -240,10 +237,10 @@ export const useUniqueId = (): UseUniqueIdReturn => {
           setUserState(null);
         }
 
-        console.log('[useUniqueId] NFT data loaded successfully');
+        
 
       } catch (err) {
-        console.error('[useUniqueId] Error loading NFT data:', err);
+        // console.error('[useUniqueId] Error loading NFT data:', err);
         setError(`Failed to load NFT data: ${(err as Error).message}`);
         hasLoadedNFTData.current = false;
       } finally {
@@ -252,12 +249,13 @@ export const useUniqueId = (): UseUniqueIdReturn => {
     };
 
     if (program && userStatePda && connection && !hasLoadedNFTData.current && !loading) {
-      console.log('[useUniqueId] Starting NFT data loading...');
+      
       loadNFTData();
     }
 
     console.log('[useUniqueId] === NFT DATA LOADING EFFECT END ===');
-  }, [program, userStatePda, connection, collectionPda, setCollection, setUserState, setIsCollectionInitialized, setLoading, setError, loading]);
+  }, [program, userStatePda, connection, collectionPda, setCollection, setUserState, setIsCollectionInitialized, setLoading, setError]);
+// [program, userStatePda, connection, collectionPda, setCollection, setUserState, setIsCollectionInitialized, setLoading, setError, loading]);
 
   // Action functions
   const refreshAllData = useCallback(() => {
@@ -294,13 +292,13 @@ export const useUniqueId = (): UseUniqueIdReturn => {
       // Generate a random Wormhole program ID (or use a real one if you have it)
       const wormholeProgramId = Keypair.generate().publicKey;
 
-      console.log('[useUniqueId] Initializing collection with params:', {
-        name,
-        symbol,
-        baseUri,
-        authority: address,
-        wormholeProgramId: wormholeProgramId.toBase58(),
-      });
+      // console.log('[useUniqueId] Initializing collection with params:', {
+      //   name,
+      //   symbol,
+      //   baseUri,
+      //   authority: address,
+      //   wormholeProgramId: wormholeProgramId.toBase58(),
+      // });
 
       const tx = await program.methods
         .initialize(name, symbol, baseUri, wormholeProgramId)
@@ -329,7 +327,6 @@ export const useUniqueId = (): UseUniqueIdReturn => {
 
   // Mint NFT - ACTION only, updates store automatically
   const mintNFT = useCallback(async (): Promise<MintedNFT | null> => {
-    console.log('[useUniqueId] === MINT NFT START ===');
 
     if (!program || !address || !userStatePda || !walletProvider) {
       setError('Wallet not connected or program not initialized');
@@ -350,11 +347,11 @@ export const useUniqueId = (): UseUniqueIdReturn => {
         TOKEN_PROGRAM_ID
       );
 
-      console.log('[useUniqueId] Minting NFT with params:', {
-        mint: mintKeypair.publicKey.toBase58(),
-        user: userPublicKey.toBase58(),
-        tokenAccount: tokenAccount.toBase58()
-      });
+      // console.log('[useUniqueId] Minting NFT with params:', {
+      //   mint: mintKeypair.publicKey.toBase58(),
+      //   user: userPublicKey.toBase58(),
+      //   tokenAccount: tokenAccount.toBase58()
+      // });
 
       const tx = await program.methods
         .mintNft()
@@ -377,7 +374,7 @@ export const useUniqueId = (): UseUniqueIdReturn => {
         mint: mintKeypair.publicKey,
         tokenAccount,
         tokenId: (collection?.totalSupply?.toNumber() || 0) + 1,
-        uniqueId: [], // Will be populated after refresh
+        uniqueId: [],
         txSignature: tx,
       };
 

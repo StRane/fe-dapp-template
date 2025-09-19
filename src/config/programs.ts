@@ -24,7 +24,7 @@ export const CONFIG = {
     VAULT_PROGRAM_ID: requirePublicKey('VITE_VAULT_PROGRAM_ID'),
     NFT_PROGRAM_ID: requirePublicKey('VITE_NFT_PROGRAM_ID'),
     TOKEN_PROGRAM_ID: requirePublicKey('VITE_TOKEN_PROGRAM_ID'),
-    
+
     // Core addresses
     OWNER_ID: requirePublicKey('VITE_OWNER_PUBKEY'),
     VAULT_ASSET_MINT: requirePublicKey('VITE_VAULT_ASSET_MINT'),
@@ -43,12 +43,16 @@ export const CONFIG = {
         USER_SHARES: Buffer.from("user_shares_" + requireEnv('VITE_VAULT_VERSION')),
         COLLECTION: Buffer.from("collection"),
         USER_STATE: Buffer.from("user_state"),
-    }
+    },
+
+    TEST_TOKEN_MINTS: [
+        requirePublicKey('VITE_MINT_1'),
+    ],
 } as const;
 
 // Utility functions for deriving all PDAs and accounts
 export class VaultUtils {
-    
+
     // Core vault PDA
     static getVaultPDA(): [PublicKey, number] {
         return PublicKey.findProgramAddressSync(
@@ -126,12 +130,12 @@ export class VaultUtils {
         const [vaultPda, vaultBump] = this.getVaultPDA();
         const [collectionPda, collectionBump] = this.getCollectionPDA();
         const [userSharesPda, userSharesBump] = this.getUserSharesPDA(nftMint);
-        
+
         const userNftTokenAccount = this.getUserNFTTokenAccount(userPubkey, nftMint);
         const userAssetTokenAccount = this.getUserAssetTokenAccount(userPubkey);
         const userShareTokenAccount = this.getUserShareTokenAccount(userSharesPda);
         const vaultTokenAccount = this.getVaultTokenAccount();
-        
+
         const [userInfoPda, userInfoBump] = this.getUserInfoPDA(userNftTokenAccount, userShareTokenAccount);
 
         return {
@@ -144,7 +148,7 @@ export class VaultUtils {
             userSharesBump,
             userInfoPda,
             userInfoBump,
-            
+
             // Token accounts
             userNftTokenAccount,
             userAssetTokenAccount,

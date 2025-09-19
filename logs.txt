@@ -1,0 +1,1239 @@
+Razor Wallet Injected Successfully
+vaultStore.ts:337 [VaultStore] Setting up network store subscription
+uniqueIdStore.ts:490 [UniqueIdStore] Setting up network store subscription
+hook.js:608 Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.
+overrideMethod @ hook.js:608
+issueWarning @ chunk-YZJSNBYU.js?v=4e3eab4c:23
+(anonymous) @ chunk-YZJSNBYU.js?v=4e3eab4c:28Understand this warning
+useNetworkSync.ts:15 [useNetworkSync] === HOOK CALL ===
+useNetworkSync.ts:37 [useNetworkSync] === HOOK CALL END ===
+useNetworkSync.ts:15 [useNetworkSync] === HOOK CALL ===
+useNetworkSync.ts:37 [useNetworkSync] === HOOK CALL END ===
+SelectionContext.tsx:39 [SelectionContext] === PROVIDER RENDER START ===
+SelectionContext.tsx:50 [SelectionContext] Current state: {selectedTokenAccount: undefined, selectedNFT: undefined, selectedTokenMint: undefined, operationInProgress: false, operationType: null}
+SelectionContext.tsx:159 [SelectionContext] === PROVIDER RENDER END ===
+SelectionContext.tsx:39 [SelectionContext] === PROVIDER RENDER START ===
+SelectionContext.tsx:50 [SelectionContext] Current state: {selectedTokenAccount: undefined, selectedNFT: undefined, selectedTokenMint: undefined, operationInProgress: false, operationType: null}
+SelectionContext.tsx:159 [SelectionContext] === PROVIDER RENDER END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:103 [useToken] === PROGRAM INIT EFFECT START ===
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:130 [useUniqueId] === PROGRAM INIT EFFECT START ===
+useUniqueId.ts:188 [useUniqueId] === PROGRAM INIT EFFECT END ===
+useUniqueId.ts:193 [useUniqueId] === NFT DATA LOADING EFFECT START ===
+useUniqueId.ts:256 [useUniqueId] === NFT DATA LOADING EFFECT END ===
+useToken.ts:103 [useToken] === PROGRAM INIT EFFECT START ===
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:130 [useUniqueId] === PROGRAM INIT EFFECT START ===
+useUniqueId.ts:188 [useUniqueId] === PROGRAM INIT EFFECT END ===
+useUniqueId.ts:193 [useUniqueId] === NFT DATA LOADING EFFECT START ===
+useUniqueId.ts:256 [useUniqueId] === NFT DATA LOADING EFFECT END ===
+useToken.ts:103 [useToken] === PROGRAM INIT EFFECT START ===
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:130 [useUniqueId] === PROGRAM INIT EFFECT START ===
+useUniqueId.ts:188 [useUniqueId] === PROGRAM INIT EFFECT END ===
+useUniqueId.ts:193 [useUniqueId] === NFT DATA LOADING EFFECT START ===
+useUniqueId.ts:256 [useUniqueId] === NFT DATA LOADING EFFECT END ===
+useNetworkSync.ts:19 [useNetworkSync] === NETWORK SYNC EFFECT START ===
+useNetworkSync.ts:20 [useNetworkSync] Network sync inputs: {isConnected: false, networkName: 'Solana Testnet', networkId: '4uhcVJyU9pJkvQyS88uRDiswHXSCkY3z'}
+useNetworkSync.ts:34 [useNetworkSync] === NETWORK SYNC EFFECT END ===
+useToken.ts:103 [useToken] === PROGRAM INIT EFFECT START ===
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:130 [useUniqueId] === PROGRAM INIT EFFECT START ===
+useUniqueId.ts:188 [useUniqueId] === PROGRAM INIT EFFECT END ===
+useUniqueId.ts:193 [useUniqueId] === NFT DATA LOADING EFFECT START ===
+useUniqueId.ts:256 [useUniqueId] === NFT DATA LOADING EFFECT END ===
+useToken.ts:103 [useToken] === PROGRAM INIT EFFECT START ===
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:130 [useUniqueId] === PROGRAM INIT EFFECT START ===
+useUniqueId.ts:188 [useUniqueId] === PROGRAM INIT EFFECT END ===
+useUniqueId.ts:193 [useUniqueId] === NFT DATA LOADING EFFECT START ===
+useUniqueId.ts:256 [useUniqueId] === NFT DATA LOADING EFFECT END ===
+useToken.ts:103 [useToken] === PROGRAM INIT EFFECT START ===
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:130 [useUniqueId] === PROGRAM INIT EFFECT START ===
+useUniqueId.ts:188 [useUniqueId] === PROGRAM INIT EFFECT END ===
+useUniqueId.ts:193 [useUniqueId] === NFT DATA LOADING EFFECT START ===
+useUniqueId.ts:256 [useUniqueId] === NFT DATA LOADING EFFECT END ===
+useNetworkSync.ts:19 [useNetworkSync] === NETWORK SYNC EFFECT START ===
+useNetworkSync.ts:20 [useNetworkSync] Network sync inputs: {isConnected: false, networkName: 'Solana Testnet', networkId: '4uhcVJyU9pJkvQyS88uRDiswHXSCkY3z'}
+useNetworkSync.ts:34 [useNetworkSync] === NETWORK SYNC EFFECT END ===
+chunk-FJHTYVD2.js?v=4e3eab4c:2043 Discarding cache for address solana:4uhcVJyU9pJkvQyS88uRDiswHXSCkY3z:GXHdciYz5RQS5oGyF7JWF61sxFNuM4RxXw2s2ZX25cVd
+useNetworkSync.ts:15 [useNetworkSync] === HOOK CALL ===
+useNetworkSync.ts:37 [useNetworkSync] === HOOK CALL END ===
+useNetworkSync.ts:15 [useNetworkSync] === HOOK CALL ===
+useNetworkSync.ts:37 [useNetworkSync] === HOOK CALL END ===
+SelectionContext.tsx:39 [SelectionContext] === PROVIDER RENDER START ===
+SelectionContext.tsx:50 [SelectionContext] Current state: {selectedTokenAccount: undefined, selectedNFT: undefined, selectedTokenMint: undefined, operationInProgress: false, operationType: null}
+SelectionContext.tsx:159 [SelectionContext] === PROVIDER RENDER END ===
+SelectionContext.tsx:39 [SelectionContext] === PROVIDER RENDER START ===
+SelectionContext.tsx:50 [SelectionContext] Current state: {selectedTokenAccount: undefined, selectedNFT: undefined, selectedTokenMint: undefined, operationInProgress: false, operationType: null}
+SelectionContext.tsx:159 [SelectionContext] === PROVIDER RENDER END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:103 [useToken] === PROGRAM INIT EFFECT START ===
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:130 [useUniqueId] === PROGRAM INIT EFFECT START ===
+useUniqueId.ts:188 [useUniqueId] === PROGRAM INIT EFFECT END ===
+useToken.ts:103 [useToken] === PROGRAM INIT EFFECT START ===
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:130 [useUniqueId] === PROGRAM INIT EFFECT START ===
+useUniqueId.ts:188 [useUniqueId] === PROGRAM INIT EFFECT END ===
+useToken.ts:103 [useToken] === PROGRAM INIT EFFECT START ===
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:130 [useUniqueId] === PROGRAM INIT EFFECT START ===
+useUniqueId.ts:188 [useUniqueId] === PROGRAM INIT EFFECT END ===
+useNetworkSync.ts:19 [useNetworkSync] === NETWORK SYNC EFFECT START ===
+useNetworkSync.ts:20 [useNetworkSync] Network sync inputs: {isConnected: true, networkName: 'Solana Testnet', networkId: '4uhcVJyU9pJkvQyS88uRDiswHXSCkY3z'}
+useNetworkSync.ts:28 [useNetworkSync] Triggering centralized network sync from AppKit
+networkStore.ts:84 [NetworkStore] Final isSolanaNetwork: true
+networkStore.ts:85 [NetworkStore] Current state network: Solana Testnet
+networkStore.ts:86 [NetworkStore] === SYNC DEBUG END ===
+networkStore.ts:98 [NetworkStore] No connection exists, creating new connection for: Solana Testnet
+networkStore.ts:104 [NetworkStore] Creating connection with RPC: https://api.testnet.solana.com
+networkStore.ts:111 [NetworkStore] Connection created successfully
+networkStore.ts:133 [NetworkStore] Final state AFTER sync: {currentNetwork: 'Solana Testnet', hasConnection: true, connectionRpc: 'https://api.testnet.solana.com', isSolanaNetwork: true, isReady: true}
+networkStore.ts:140 [NetworkStore] === SYNC DEBUG END ===
+vaultStore.ts:340 [VaultStore] === NETWORK STORE SUBSCRIPTION TRIGGER ===
+vaultStore.ts:341 [VaultStore] Network state change detected: {currentNetwork: 'Solana Testnet', previousNetwork: 'Solana Testnet', isReady: true, previousReady: false, hasConnection: true, …}
+vaultStore.ts:352 [VaultStore] Triggering network sync only...
+vaultStore.ts:354 [VaultStore] === NETWORK STORE SUBSCRIPTION END ===
+uniqueIdStore.ts:493 [UniqueIdStore] === NETWORK STORE SUBSCRIPTION TRIGGER ===
+uniqueIdStore.ts:494 [UniqueIdStore] Network state change detected: {currentNetwork: 'Solana Testnet', previousNetwork: 'Solana Testnet', isReady: true, previousReady: false, hasConnection: true, …}
+uniqueIdStore.ts:505 [UniqueIdStore] Triggering sync with network...
+uniqueIdStore.ts:291 [UniqueIdStore] === SYNC WITH NETWORK START ===
+uniqueIdStore.ts:296 [UniqueIdStore] Network sync state check: {currentNetwork: 'Solana Testnet', isReady: true, hasConnection: true, connectionRpc: 'https://api.testnet.solana.com', isSolanaNetwork: true, …}
+uniqueIdStore.ts:305 [UniqueIdStore] Hash comparison: {currentHash: null, newHash: 'Solana Testnet-true-true', hashChanged: true}
+uniqueIdStore.ts:313 [UniqueIdStore] Network hash changed, processing sync...
+uniqueIdStore.ts:340 [UniqueIdStore] Network ready for program initialization: {network: 'Solana Testnet', rpc: 'https://api.testnet.solana.com'}
+uniqueIdStore.ts:351 [UniqueIdStore] Final sync state: {lastNetworkHash: 'Solana Testnet-true-true', hasProgram: false, isInitialized: false, isCollectionInitialized: false, error: null}
+uniqueIdStore.ts:358 [UniqueIdStore] === SYNC WITH NETWORK END ===
+uniqueIdStore.ts:507 [UniqueIdStore] === NETWORK STORE SUBSCRIPTION END ===
+useNetworkSync.ts:34 [useNetworkSync] === NETWORK SYNC EFFECT END ===
+useNetworkSync.ts:15 [useNetworkSync] === HOOK CALL ===
+useNetworkSync.ts:37 [useNetworkSync] === HOOK CALL END ===
+useNetworkSync.ts:15 [useNetworkSync] === HOOK CALL ===
+useNetworkSync.ts:37 [useNetworkSync] === HOOK CALL END ===
+SelectionContext.tsx:39 [SelectionContext] === PROVIDER RENDER START ===
+SelectionContext.tsx:50 [SelectionContext] Current state: {selectedTokenAccount: undefined, selectedNFT: undefined, selectedTokenMint: undefined, operationInProgress: false, operationType: null}
+SelectionContext.tsx:159 [SelectionContext] === PROVIDER RENDER END ===
+SelectionContext.tsx:39 [SelectionContext] === PROVIDER RENDER START ===
+SelectionContext.tsx:50 [SelectionContext] Current state: {selectedTokenAccount: undefined, selectedNFT: undefined, selectedTokenMint: undefined, operationInProgress: false, operationType: null}
+SelectionContext.tsx:159 [SelectionContext] === PROVIDER RENDER END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: false, userTokensCount: 0, hasMintAuthPda: false, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: false, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:103 [useToken] === PROGRAM INIT EFFECT START ===
+tokenStore.ts:96 [TokenStore] Program set: true
+tokenStore.ts:100 [TokenStore] setMintAuthPda called with: {mintAuthPda: 'Eugyc4rLEsvZJ2kr1p4wnLzNqGJHruz7Q1dkZm4jxhsV', currentValue: undefined}
+tokenStore.ts:105 [TokenStore] MintAuth PDA set to: Eugyc4rLEsvZJ2kr1p4wnLzNqGJHruz7Q1dkZm4jxhsV
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:130 [useUniqueId] === PROGRAM INIT EFFECT START ===
+uniqueIdStore.ts:266 [UniqueIdStore] Setting loading state: {from: false, to: true}
+uniqueIdStore.ts:274 [UniqueIdStore] === SET ERROR START ===
+uniqueIdStore.ts:275 [UniqueIdStore] Setting error: {hasError: false, error: null, previousError: null}
+uniqueIdStore.ts:286 [UniqueIdStore] === SET ERROR END ===
+useUniqueId.ts:164 [useUniqueId] Program initialized successfully: {programId: '5XdsDEXPiHndfBkrvJKjsFZy3Zf95bUZLRZQvJ4W6Bpa', collectionPda: 'EoZ5NFigrZ7uqUUSH6ShDsYGMooe5ziTfgWvAbFmVTXt', userStatePda: '21jjZEHjTDoavUbZVf8CKykLnE5h219232Ax3Vvr9Ekr'}
+uniqueIdStore.ts:119 [UniqueIdStore] === SET PROGRAM START ===
+uniqueIdStore.ts:120 [UniqueIdStore] Setting program: {hasProgram: true, programId: '5XdsDEXPiHndfBkrvJKjsFZy3Zf95bUZLRZQvJ4W6Bpa', previousProgram: false}
+uniqueIdStore.ts:129 [UniqueIdStore] Program state updated: {hasProgram: true, isInitialized: true}
+uniqueIdStore.ts:133 [UniqueIdStore] === SET PROGRAM END ===
+uniqueIdStore.ts:266 [UniqueIdStore] Setting loading state: {from: true, to: false}
+useUniqueId.ts:188 [useUniqueId] === PROGRAM INIT EFFECT END ===
+useUniqueId.ts:193 [useUniqueId] === NFT DATA LOADING EFFECT START ===
+useUniqueId.ts:256 [useUniqueId] === NFT DATA LOADING EFFECT END ===
+useToken.ts:103 [useToken] === PROGRAM INIT EFFECT START ===
+tokenStore.ts:96 [TokenStore] Program set: true
+tokenStore.ts:100 [TokenStore] setMintAuthPda called with: {mintAuthPda: 'Eugyc4rLEsvZJ2kr1p4wnLzNqGJHruz7Q1dkZm4jxhsV', currentValue: 'Eugyc4rLEsvZJ2kr1p4wnLzNqGJHruz7Q1dkZm4jxhsV'}
+tokenStore.ts:105 [TokenStore] MintAuth PDA set to: Eugyc4rLEsvZJ2kr1p4wnLzNqGJHruz7Q1dkZm4jxhsV
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:130 [useUniqueId] === PROGRAM INIT EFFECT START ===
+uniqueIdStore.ts:266 [UniqueIdStore] Setting loading state: {from: false, to: true}
+uniqueIdStore.ts:274 [UniqueIdStore] === SET ERROR START ===
+uniqueIdStore.ts:275 [UniqueIdStore] Setting error: {hasError: false, error: null, previousError: null}
+uniqueIdStore.ts:286 [UniqueIdStore] === SET ERROR END ===
+useUniqueId.ts:164 [useUniqueId] Program initialized successfully: {programId: '5XdsDEXPiHndfBkrvJKjsFZy3Zf95bUZLRZQvJ4W6Bpa', collectionPda: 'EoZ5NFigrZ7uqUUSH6ShDsYGMooe5ziTfgWvAbFmVTXt', userStatePda: '21jjZEHjTDoavUbZVf8CKykLnE5h219232Ax3Vvr9Ekr'}
+uniqueIdStore.ts:119 [UniqueIdStore] === SET PROGRAM START ===
+uniqueIdStore.ts:120 [UniqueIdStore] Setting program: {hasProgram: true, programId: '5XdsDEXPiHndfBkrvJKjsFZy3Zf95bUZLRZQvJ4W6Bpa', previousProgram: true}
+uniqueIdStore.ts:129 [UniqueIdStore] Program state updated: {hasProgram: true, isInitialized: true}
+uniqueIdStore.ts:133 [UniqueIdStore] === SET PROGRAM END ===
+uniqueIdStore.ts:266 [UniqueIdStore] Setting loading state: {from: true, to: false}
+useUniqueId.ts:188 [useUniqueId] === PROGRAM INIT EFFECT END ===
+useUniqueId.ts:193 [useUniqueId] === NFT DATA LOADING EFFECT START ===
+useUniqueId.ts:256 [useUniqueId] === NFT DATA LOADING EFFECT END ===
+useToken.ts:103 [useToken] === PROGRAM INIT EFFECT START ===
+tokenStore.ts:96 [TokenStore] Program set: true
+tokenStore.ts:100 [TokenStore] setMintAuthPda called with: {mintAuthPda: 'Eugyc4rLEsvZJ2kr1p4wnLzNqGJHruz7Q1dkZm4jxhsV', currentValue: 'Eugyc4rLEsvZJ2kr1p4wnLzNqGJHruz7Q1dkZm4jxhsV'}
+tokenStore.ts:105 [TokenStore] MintAuth PDA set to: Eugyc4rLEsvZJ2kr1p4wnLzNqGJHruz7Q1dkZm4jxhsV
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:130 [useUniqueId] === PROGRAM INIT EFFECT START ===
+uniqueIdStore.ts:266 [UniqueIdStore] Setting loading state: {from: false, to: true}
+uniqueIdStore.ts:274 [UniqueIdStore] === SET ERROR START ===
+uniqueIdStore.ts:275 [UniqueIdStore] Setting error: {hasError: false, error: null, previousError: null}
+uniqueIdStore.ts:286 [UniqueIdStore] === SET ERROR END ===
+useUniqueId.ts:164 [useUniqueId] Program initialized successfully: {programId: '5XdsDEXPiHndfBkrvJKjsFZy3Zf95bUZLRZQvJ4W6Bpa', collectionPda: 'EoZ5NFigrZ7uqUUSH6ShDsYGMooe5ziTfgWvAbFmVTXt', userStatePda: '21jjZEHjTDoavUbZVf8CKykLnE5h219232Ax3Vvr9Ekr'}
+uniqueIdStore.ts:119 [UniqueIdStore] === SET PROGRAM START ===
+uniqueIdStore.ts:120 [UniqueIdStore] Setting program: {hasProgram: true, programId: '5XdsDEXPiHndfBkrvJKjsFZy3Zf95bUZLRZQvJ4W6Bpa', previousProgram: true}
+uniqueIdStore.ts:129 [UniqueIdStore] Program state updated: {hasProgram: true, isInitialized: true}
+uniqueIdStore.ts:133 [UniqueIdStore] === SET PROGRAM END ===
+uniqueIdStore.ts:266 [UniqueIdStore] Setting loading state: {from: true, to: false}
+useUniqueId.ts:188 [useUniqueId] === PROGRAM INIT EFFECT END ===
+useUniqueId.ts:193 [useUniqueId] === NFT DATA LOADING EFFECT START ===
+useUniqueId.ts:256 [useUniqueId] === NFT DATA LOADING EFFECT END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:193 [useUniqueId] === NFT DATA LOADING EFFECT START ===
+uniqueIdStore.ts:266 [UniqueIdStore] Setting loading state: {from: false, to: true}
+useUniqueId.ts:256 [useUniqueId] === NFT DATA LOADING EFFECT END ===
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:193 [useUniqueId] === NFT DATA LOADING EFFECT START ===
+uniqueIdStore.ts:266 [UniqueIdStore] Setting loading state: {from: true, to: true}
+useUniqueId.ts:256 [useUniqueId] === NFT DATA LOADING EFFECT END ===
+useToken.ts:165 [useToken] === TOKEN DATA LOADING EFFECT START ===
+useToken.ts:243 [useToken] === TOKEN DATA LOADING EFFECT END ===
+useUniqueId.ts:193 [useUniqueId] === NFT DATA LOADING EFFECT START ===
+uniqueIdStore.ts:266 [UniqueIdStore] Setting loading state: {from: true, to: true}
+useUniqueId.ts:256 [useUniqueId] === NFT DATA LOADING EFFECT END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: false, isCollectionInitialized: false, totalSupply: 0, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+uniqueIdStore.ts:146 [UniqueIdStore] === SET COLLECTION START ===
+uniqueIdStore.ts:147 [UniqueIdStore] Setting collection: {hasCollection: true, collectionName: 'Vault Access NFTs', totalSupply: BN, authority: 'GXHdciYz5RQS5oGyF7JWF61sxFNuM4RxXw2s2ZX25cVd', previousCollection: false}
+uniqueIdStore.ts:159 [UniqueIdStore] Collection data processed: {totalSupply: BN, isCollectionInitialized: true, uniqueIdMappings: 4, tokenIdMappings: 4, mintMappings: 4}
+uniqueIdStore.ts:171 [UniqueIdStore] === SET COLLECTION END ===
+uniqueIdStore.ts:195 [UniqueIdStore] Setting isCollectionInitialized: {from: true, to: true}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+uniqueIdStore.ts:146 [UniqueIdStore] === SET COLLECTION START ===
+uniqueIdStore.ts:147 [UniqueIdStore] Setting collection: {hasCollection: true, collectionName: 'Vault Access NFTs', totalSupply: BN, authority: 'GXHdciYz5RQS5oGyF7JWF61sxFNuM4RxXw2s2ZX25cVd', previousCollection: true}
+uniqueIdStore.ts:159 [UniqueIdStore] Collection data processed: {totalSupply: BN, isCollectionInitialized: true, uniqueIdMappings: 4, tokenIdMappings: 4, mintMappings: 4}
+uniqueIdStore.ts:171 [UniqueIdStore] === SET COLLECTION END ===
+uniqueIdStore.ts:195 [UniqueIdStore] Setting isCollectionInitialized: {from: true, to: true}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+uniqueIdStore.ts:146 [UniqueIdStore] === SET COLLECTION START ===
+uniqueIdStore.ts:147 [UniqueIdStore] Setting collection: {hasCollection: true, collectionName: 'Vault Access NFTs', totalSupply: BN, authority: 'GXHdciYz5RQS5oGyF7JWF61sxFNuM4RxXw2s2ZX25cVd', previousCollection: true}
+uniqueIdStore.ts:159 [UniqueIdStore] Collection data processed: {totalSupply: BN, isCollectionInitialized: true, uniqueIdMappings: 4, tokenIdMappings: 4, mintMappings: 4}
+uniqueIdStore.ts:171 [UniqueIdStore] === SET COLLECTION END ===
+uniqueIdStore.ts:195 [UniqueIdStore] Setting isCollectionInitialized: {from: true, to: true}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 0, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+3useToken.ts:188 [useToken] Found 10 token accounts to process
+VM2505:1 Uncaught (in promise) SyntaxError: "[object Object]" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at l._storageChangeDispatcher (content.js:2:898238)
+    at _storageChangeDispatcherCallback (content.js:2:897686)
+_storageChangeDispatcher @ content.js:2
+_storageChangeDispatcherCallback @ content.js:2Understand this error
+VM2506:1 Uncaught (in promise) SyntaxError: "[object Object]" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at l._storageChangeDispatcher (content.js:2:898238)
+    at _storageChangeDispatcherCallback (content.js:2:897686)
+_storageChangeDispatcher @ content.js:2
+_storageChangeDispatcherCallback @ content.js:2Understand this error
+uniqueIdStore.ts:175 [UniqueIdStore] === SET USER STATE START ===
+uniqueIdStore.ts:176 [UniqueIdStore] Setting user state: {hasUserState: true, nonce: 4, previousUserState: false, previousNonce: 0}
+uniqueIdStore.ts:186 [UniqueIdStore] User nonce updated to: 4
+uniqueIdStore.ts:191 [UniqueIdStore] === SET USER STATE END ===
+uniqueIdStore.ts:266 [UniqueIdStore] Setting loading state: {from: true, to: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+uniqueIdStore.ts:175 [UniqueIdStore] === SET USER STATE START ===
+uniqueIdStore.ts:176 [UniqueIdStore] Setting user state: {hasUserState: true, nonce: 4, previousUserState: true, previousNonce: 4}
+uniqueIdStore.ts:186 [UniqueIdStore] User nonce updated to: 4
+uniqueIdStore.ts:191 [UniqueIdStore] === SET USER STATE END ===
+uniqueIdStore.ts:266 [UniqueIdStore] Setting loading state: {from: false, to: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+uniqueIdStore.ts:175 [UniqueIdStore] === SET USER STATE START ===
+uniqueIdStore.ts:176 [UniqueIdStore] Setting user state: {hasUserState: true, nonce: 4, previousUserState: true, previousNonce: 4}
+uniqueIdStore.ts:186 [UniqueIdStore] User nonce updated to: 4
+uniqueIdStore.ts:191 [UniqueIdStore] === SET USER STATE END ===
+uniqueIdStore.ts:266 [UniqueIdStore] Setting loading state: {from: false, to: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 0, hasMintAuthPda: true, loading: true, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+tokenStore.ts:120 [TokenStore] User tokens updated: 1 tokens
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+tokenStore.ts:120 [TokenStore] User tokens updated: 1 tokens
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+tokenStore.ts:120 [TokenStore] User tokens updated: 1 tokens
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:200 [SelectionContext] Token selection hook called: {hasTokenAccount: false, hasTokenMint: false}
+SelectionContext.tsx:170 [SelectionContext] === USE SELECTION HOOK CALL ===
+SelectionContext.tsx:180 [SelectionContext] Hook returning context: {hasSelectedTokenAccount: false, hasSelectedNFT: false, hasSelectedTokenMint: false, operationInProgress: false, operationType: null}
+SelectionContext.tsx:218 [SelectionContext] NFT selection hook called: {hasSelectedNFT: false}
+useToken.ts:54 [useToken] === HOOK CALL START ===
+useToken.ts:81 [useToken] Store state: {hasProgram: true, userTokensCount: 1, hasMintAuthPda: true, loading: false, hasError: false}
+useUniqueId.ts:67 [useUniqueId] === HOOK CALL START ===
+useUniqueId.ts:105 [useUniqueId] Store state: {hasProgram: true, hasCollection: true, isCollectionInitialized: true, totalSupply: BN, userNonce: 4, …}
+useUniqueId.ts:473 [useUniqueId] === HOOK CALL END ===
